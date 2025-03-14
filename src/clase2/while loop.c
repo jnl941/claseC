@@ -6,11 +6,10 @@ int main()
     //While loop
     while(x>0)
     {
-        printf("%d ",x);
-        x--;
+        printf("%d ", x);
+        x = x - 3; // x = x - 1
     }
     printf("\n");
-
     return 0;
 }
 
