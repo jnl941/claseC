@@ -1,0 +1,15 @@
+//Clonar repositorios
+git
+git clone https://github.com/jnl941/claseC.git
+cd claseC
+git status
+
+//Actualizar cambios
+git status
+git add .
+git status
+git commit -m "mensaje del commit"
+git push
+
+//Actualizar repositorio (si no has sido tu el que ha subido los cambios)
+git pull
