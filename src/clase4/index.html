@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente de Prácticas de Programación en C</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --dark-bg: #34495e;
+            --text-color: #333;
+            --light-text: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 20px;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .practice-selector {
+            display: flex;
+            background-color: var(--dark-bg);
+            padding: 10px;
+        }
+        
+        .practice-btn {
+            background-color: var(--dark-bg);
+            border: none;
+            color: var(--light-text);
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        .practice-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .practice-btn.active {
+            background-color: var(--secondary-color);
+        }
+        
+        .exercises-container {
+            display: flex;
+            height: 600px;
+        }
+        
+        .exercise-list {
+            width: 300px;
+            background-color: var(--light-bg);
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+        }
+        
+        .exercise-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .exercise-item:hover {
+            background-color: #ddd;
+        }
+        
+        .exercise-item.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .exercise-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .exercise-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .exercise-description {
+            margin-bottom: 20px;
+        }
+        
+        .exercise-expected {
+            background-color: var(--light-bg);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-hint {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .btn.active {
+            background-color: #4caf50 !important; /* Verde */
+            color: white;
+        }
+        
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+        }
+        
+        .hint-container, .base-code-container, .solution-container {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .hint-container {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .base-code-container {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .solution-container {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Asistente de Prácticas de Programación en C</h1>
+            <p>Selecciona una práctica y un ejercicio para empezar</p>
+        </header>
+        
+        <div class="practice-selector">
+            <button class="practice-btn active" data-practice="pr3">Práctica 3: Iteración I</button>
+            <button class="practice-btn" data-practice="pr4">Práctica 4: Iteración II</button>
+        </div>
+        
+        <div class="exercises-container">
+            <div class="exercise-list" id="exercise-list">
+                <!-- Ejercicios se cargan dinámicamente -->
+            </div>
+            
+            <div class="exercise-content" id="exercise-content">
+                <div class="initial-message">
+                    <h2>Bienvenido al Asistente de Prácticas</h2>
+                    <p>Selecciona un ejercicio de la lista para ver su descripción y opciones disponibles.</p>
+                </div>
+                
+                <div class="exercise-details hidden">
+                    <h2 class="exercise-title" id="exercise-title"></h2>
+                    
+                    <div class="exercise-description" id="exercise-description"></div>
+                    
+                    <div class="exercise-expected" id="exercise-expected">
+                        <h3>Salida esperada / Datos de prueba:</h3>
+                        <div id="expected-content"></div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="base-code-btn">Ver código base</button>
+                        <button class="btn btn-hint" id="hint1-btn">Pista 1</button>
+                        <button class="btn btn-hint" id="hint2-btn">Pista 2</button>
+                        <button class="btn btn-hint" id="hint3-btn">Pista 3</button>
+                        <button class="btn btn-secondary" id="solution-btn">Ver solución</button>
+                    </div>
+                    
+                    <div class="base-code-container" id="base-code-container">
+                        <h3>Código Base:</h3>
+                        <pre><code id="base-code"></code></pre>
+                    </div>
+                    
+                    <div class="hint-container" id="hint1-container">
+                        <h3>Pista 1:</h3>
+                        <p id="hint1-text"></p>
+                    </div>
+                    
+                    <div class="hint-container" id="hint2-container">
+                        <h3>Pista 2:</h3>
+                        <p id="hint2-text"></p>
+                    </div>
+                    
+                    <div class="hint-container" id="hint3-container">
+                        <h3>Pista 3:</h3>
+                        <p id="hint3-text"></p>
+                    </div>
+                    
+                    <div class="solution-container" id="solution-container">
+                        <h3>Solución:</h3>
+                        <pre><code id="solution-code"></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los ejercicios
+        const practicas = {
+            pr3: {
+                title: "Práctica 3: Instrucción de control iteración I",
+                exercises: [
+                    {
+                        id: "contar",
+                        title: "1. Contar pares e impares (ContarPR.c)",
+                        description: "Partiendo del código proporcionado, añade las instrucciones necesarias para contar cuántos de los 10 números leídos por teclado son pares y cuántos son impares.",
+                        expected: `
+                        <table>
+                            <tr>
+                                <th>Entrada</th>
+                                <th>Salida esperada</th>
+                            </tr>
+                            <tr>
+                                <td>2 4 6 8 10 12 14 16 18 20</td>
+                                <td>Hay 10 pares y 0 impares</td>
+                            </tr>
+                            <tr>
+                                <td>1 3 5 7 9 11 13 15 17 19</td>
+                                <td>Hay 0 pares y 10 impares</td>
+                            </tr>
+                            <tr>
+                                <td>2 3 4 5 6 7 8 9 10 11</td>
+                                <td>Hay 5 pares y 5 impares</td>
+                            </tr>
+                        </table>`,
+                        baseCode: `#include <stdio.h>
+
+int main() {
+    int pares = 0;       // Variable para contar los números pares 
+    int nones = 0;       // Variable para contar los números impares
+    int numero;          // Variable para almacenar cada número introducido por el usuario
+
+    for (int contador = 0; contador < 10; contador++)
+    {
+        printf("Introduce un número entero: ");
+        scanf("%d", &numero);
+        
+        // Tu código aquí
+        
+    }
+
+    printf("Hay %d pares y %d nones\\n", pares, nones);
+    
+    return 0;
+}`,
+                        hints: [
+                            "Un número es par si al dividirlo por 2 el resto es 0. Puedes usar el operador módulo % para comprobar esto.",
+                            "Dentro del bucle, después de leer cada número, debes verificar si es par o impar y actualizar el contador correspondiente.",
+                            "La condición para verificar si un número es par es: if (numero % 2 == 0)"
+                        ],
+                        solution: `#include <stdio.h>
+
+int main() {
+    int pares = 0;       // Variable para contar los números pares 
+    int nones = 0;       // Variable para contar los números impares
+    int numero;          // Variable para almacenar cada número introducido por el usuario
+
+    for (int contador = 0; contador < 10; contador++)
+    {
+        printf("Introduce un número entero: ");
+        scanf("%d", &numero);
+        
+        // Comprobar si el número es par o impar
+        if (numero % 2 == 0) {
+            pares++;     // Si es divisible por 2, es par
+        } else {
+            nones++;     // Si no es divisible por 2, es impar
+        }
+    }
+
+    printf("Hay %d pares y %d nones\\n", pares, nones);
+    
+    return 0;
+}`
+                    },
+                    {
+                        id: "expan-gas",
+                        title: "2. Expansión de un gas ideal (ExpanGasPR.c)",
+                        description: "Desarrolla un programa que muestre una tabla con el aumento de volumen de un gas ideal al calentarse desde una temperatura inicial hasta una temperatura final, según la fórmula: Aumento_de_volumen = V₀ ((T/T₀)-1). El programa debe leer el volumen inicial, la temperatura inicial y final, validarlas, y generar la tabla con incrementos de 5 grados.",
+                        expected: `
+                        <p>Tabla de expansión de volumen para un gas ideal (ejemplo con V₀=10 m^3, T₀=300K, Tf=350K):</p>
+                        <pre>
+Temperatura (K) | Aumento de volumen (m^3)
+---------------|------------------------
+300.00         | 0.00
+305.00         | 0.17
+310.00         | 0.33
+315.00         | 0.50
+320.00         | 0.67
+325.00         | 0.83
+330.00         | 1.00
+335.00         | 1.17
+340.00         | 1.33
+345.00         | 1.50
+350.00         | 1.67
+                        </pre>`,
+                        baseCode: `#include <stdio.h>
+
+int main() {
+    float volumen_inicial, temp_inicial, temp_final;
+    float aumento_volumen;
+    
+    // Código para leer y validar datos
+    
+    // Código para generar la tabla
+    
+    return 0;
+}`,
+                        hints: [
+                            "Primero lee y valida que el volumen inicial sea positivo, y que las temperaturas estén en el rango [0, 6000]K.",
+                            "Si la temperatura inicial es mayor que la final, intercámbialas para que el bucle funcione correctamente.",
+                            "Usa un bucle for con incrementos de 5 grados, que calcule y muestre el aumento de volumen para cada temperatura. Recuerda la fórmula: aumento_volumen = volumen_inicial * ((temp / temp_inicial) - 1)."
+                        ],
+                        solution: `#include <stdio.h>
+
+int main() {
+    float volumen_inicial, temp_inicial, temp_final;
+    float aumento_volumen;
+    
+    // Leer volumen inicial
+    printf("Introduce el volumen inicial (m^3): ");
+    scanf("%f", &volumen_inicial);
+    
+    // Validar que el volumen sea positivo
+    if (volumen_inicial <= 0) {
+        printf("Error: El volumen debe ser positivo\\n");
+        return 1;
+    }
+    
+    // Leer temperatura inicial
+    printf("Introduce la temperatura inicial (K): ");
+    scanf("%f", &temp_inicial);
+    
+    // Validar temperatura inicial (entre 0 y 6000K)
+    if (temp_inicial < 0 || temp_inicial > 6000) {
+        printf("Error: La temperatura inicial debe estar entre 0 y 6000K\\n");
+        return 1;
+    }
+    
+    // Leer temperatura final
+    printf("Introduce la temperatura final (K): ");
+    scanf("%f", &temp_final);
+    
+    // Validar temperatura final (entre 0 y 6000K)
+    if (temp_final < 0 || temp_final > 6000) {
+        printf("Error: La temperatura final debe estar entre 0 y 6000K\\n");
+        return 1;
+    }
+    
+    // Intercambiar temperaturas si la inicial es mayor que la final
+    if (temp_inicial > temp_final) {
+        float temp = temp_inicial;
+        temp_inicial = temp_final;
+        temp_final = temp;
+    }
+    
+    // Mostrar encabezado de la tabla
+    printf("\\nTabla de expansión de volumen para un gas ideal:\\n");
+    printf("Temperatura (K) | Aumento de volumen (m^3)\\n");
+    printf("---------------|------------------------\\n");
+    
+    // Generar la tabla
+    for (float temp = temp_inicial; temp <= temp_final; temp += 5) {
+        // Calcular el aumento de volumen usando la fórmula
+        aumento_volumen = volumen_inicial * ((temp / temp_inicial) - 1);
+        
+        // Imprimir fila de la tabla
+        printf("%.2f         | %.2f\\n", temp, aumento_volumen);
+    }
+    
+    return 0;
+}`
+                    },
+                    {
+                        id: "correlacion",
+                        title: "3. Coeficiente Correlación (CorrelacionPR.c)",
+                        description: "Construye un programa que calcule e imprima el coeficiente de correlación r de un conjunto de n puntos bidimensionales (xi,yi) introducidos por teclado, usando la fórmula estadística apropiada.",
+                        expected: `
+                        <p>El coeficiente de correlación mide la relación lineal entre dos variables.</p>
+                        <table>
+                            <tr>
+                                <th>Ejemplo</th>
+                                <th>n</th>
+                                <th>Puntos (x,y)</th>
+                                <th>Resultado</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>(1,2), (2,3), (3,4)</td>
+                                <td>1.0 (correlación perfecta)</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>(1,1), (2,2), (3,1)</td>
+                                <td>0.0 (sin correlación)</td>
+                            </tr>
+                        </table>`,
+                        baseCode: `#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n;
+    double x, y;
+    double sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0;
+    double r;
+    
+    // Código para leer n y validarlo
+    
+    // Código para leer los n pares de puntos
+    
+    // Código para calcular el coeficiente
+    
+    return 0;
+}`,
+                        hints: [
+                            "Primero lee y valida el número de puntos n. Luego, lee las coordenadas x e y de cada punto y ve acumulando las sumas necesarias: sumX, sumY, sumXY, sumX2, sumY2.",
+                            "La fórmula del coeficiente de correlación es: r = (n*sumXY - sumX*sumY) / sqrt((n*sumX2 - sumX*sumX) * (n*sumY2 - sumY*sumY))",
+                            "Asegúrate de manejar el caso donde el denominador es cero (no hay correlación). El valor de r está siempre entre -1 y 1."
+                        ],
+                        solution: `#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n;
+    double x, y;
+    double sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0;
+    double r;
+    
+    // Leer el número de puntos
+    printf("Introduce el número de puntos: ");
+    scanf("%d", &n);
+    
+    // Validar que el número de puntos sea positivo
+    if (n <= 0) {
+        printf("Error: El número de puntos debe ser positivo\\n");
+        return 1;
+    }
+    
+    // Leer las coordenadas de cada punto y calcular las sumas necesarias
+    for (int i = 0; i < n; i++) {
+        printf("Introduce la coordenada x del punto %d: ", i+1);
+        scanf("%lf", &x);
+        
+        printf("Introduce la coordenada y del punto %d: ", i+1);
+        scanf("%lf", &y);
+        
+        sumX += x;
+        sumY += y;
+        sumXY += x * y;
+        sumX2 += x * x;
+        sumY2 += y * y;
+    }
+    
+    // Calcular el coeficiente de correlación
+    double numerador = n * sumXY - sumX * sumY;
+    double denominador = sqrt((n * sumX2 - sumX * sumX) * (n * sumY2 - sumY * sumY));
+    
+    // Evitar división por cero
+    if (denominador == 0) {
+        r = 0;  // No hay correlación si el denominador es cero
+    } else {
+        r = numerador / denominador;
+    }
+    
+    printf("El coeficiente de correlación es: %.5lf\\n", r);
+    
+    return 0;
+}`
+                    },
+                    {
+                        id: "insertar",
+                        title: "4. Insertar Número (InsertarCentroPR.c)",
+                        description: "Escribe un programa que lea un número entero positivo de entre 2 y 8 dígitos y un entero positivo de un dígito a añadir. El programa generará un nuevo entero insertando el dígito en una posición determinada según reglas específicas.",
+                        expected: `
+                        <p>Reglas de inserción:</p>
+                        <ul>
+                            <li>Si el número original tiene una cantidad par de dígitos, el nuevo dígito se inserta en el centro.</li>
+                            <li>Si el número original tiene una cantidad impar de dígitos, el nuevo dígito se inserta:
+                                <ul>
+                                    <li>A la izquierda del centro si es mayor que 5</li>
+                                    <li>A la derecha del centro si es menor o igual a 5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <table>
+                            <tr>
+                                <th>Número original</th>
+                                <th>Dígito a insertar</th>
+                                <th>Nuevo número</th>
+                            </tr>
+                            <tr>
+                                <td>123</td>
+                                <td>0</td>
+                                <td>1203</td>
+                            </tr>
+                            <tr>
+                                <td>123</td>
+                                <td>9</td>
+                                <td>1923</td>
+                            </tr>
+                            <tr>
+                                <td>1111</td>
+                                <td>2</td>
+                                <td>11211</td>
+                            </tr>
+                        </table>`,
+                        baseCode: `#include <stdio.h>
+
+int main() {
+    int numero, i;
+    int nuevo_numero = 0;
+    int temp, contador = 0;
+    int digitos[10];  // Array para almacenar los dígitos del número original
+    
+    // Código para leer y validar datos
+    
+    // Código para contar dígitos y almacenarlos
+    
+    // Código para determinar posición de inserción
+    
+    // Código para construir el nuevo número
+    
+    return 0;
+}`,
+                        hints: [
+                            "Lee el número original y el dígito a insertar, validando que el dígito esté entre 0 y 9. Almacena los dígitos del número original en un array, extrayéndolos con el operador módulo % y dividiendo entre 10.",
+                            "Determina la posición de inserción según las reglas: si el número de dígitos es par, inserta en la mitad; si es impar, a la izquierda del centro (si i > 5) o a la derecha (si i <= 5).",
+                            "Construye el nuevo número recorriendo los dígitos almacenados, insertando el nuevo dígito en la posición calculada. Multiplica por la potencia de 10 adecuada para cada posición."
+                        ],
+                        solution: `#include <stdio.h>
+
+int main() {
+    int numero, i;
+    int nuevo_numero = 0;
+    int temp, contador = 0;
+    int digitos[10];  // Array para almacenar los dígitos del número original
+    
+    // Leer el número original
+    printf("Introduce un número entero positivo (2-8 dígitos): ");
+    scanf("%d", &numero);
+    
+    // Validar que el número sea positivo
+    if (numero <= 0) {
+        printf("Error: El número debe ser positivo\\n");
+        return 1;
+    }
+    
+    // Leer el dígito a insertar
+    printf("Introduce el dígito a añadir (0-9): ");
+    scanf("%d", &i);
+    
+    // Validar que el dígito sea de un solo dígito
+    if (i < 0 || i > 9) {
+        printf("Error: Debe ser un solo dígito (0-9)\\n");
+        return 1;
+    }
+    
+    // Contar dígitos y almacenarlos en el array
+    temp = numero;
+    while (temp > 0) {
+        digitos[contador] = temp % 10;
+        temp /= 10;
+        contador++;
+    }
+    
+    // Validar que el número tenga entre 2 y 8 dígitos
+    if (contador < 2 || contador > 8) {
+        printf("Error: El número debe tener entre 2 y 8 dígitos\\n");
+        return 1;
+    }
+    
+    // Determinar la posición de inserción
+    int posicion;
+    if (contador % 2 == 0) {
+        // Si el número de dígitos es par, insertar en el centro
+        posicion = contador / 2;
+    } else {
+        // Si es impar, insertar a la izquierda o derecha del centro según el valor de i
+        if (i > 5) {
+            posicion = contador / 2 + 1;  // A la izquierda del centro
+        } else {
+            posicion = contador / 2;      // A la derecha del centro
+        }
+    }
+    
+    // Construir el nuevo número con el dígito insertado
+    int potencia = 1;
+    for (int j = 0; j < contador + 1; j++) {
+        if (j == posicion) {
+            nuevo_numero += i * potencia;
+            potencia *= 10;
+        }
+        
+        if (j < contador) {
+            nuevo_numero += digitos[contador - 1 - j] * potencia;
+            potencia *= 10;
+        }
+    }
+    
+    printf("Nuevo número: %d\\n", nuevo_numero);
+    
+    return 0;
+}`
+                    },
+                    {
+                        id: "media-desviacion",
+                        title: "5. Media y desviación típica (MediaDesPR.c)",
+                        description: "Diseña un programa que lea por teclado un conjunto de datos de temperatura en el intervalo [-50,+50] y calcule su media aritmética y su desviación estándar. La entrada finaliza con el valor -99.",
+                        expected: `
+                        <p>El programa debe calcular:</p>
+                        <ul>
+                            <li>La media aritmética: T<sub>media</sub> = (∑T<sub>i</sub>)/n</li>
+                            <li>La desviación estándar: √(∑(T<sub>i</sub>² - n*T<sub>media</sub>²)/n)</li>
+                        </ul>
+                        <p>Ejemplos:</p>
+                        <p>Datos: 4, 5, 5, 6, 5, 5, 5, 5, -99</p>
+                        <ul>
+                            <li>Número de datos válidos: 8</li>
+                            <li>T<sub>media</sub> = 5.00</li>
+                            <li>Desviación = 0.50</li>
+                        </ul>
+                        <p>Datos: -5, 0, 5, 10, -99</p>
+                        <ul>
+                            <li>Número de datos válidos: 4</li>
+                            <li>T<sub>media</sub> = 2.50</li>
+                            <li>Desviación = 5.59</li>
+                        </ul>`,
+                        baseCode: `#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float temperatura;
+    float suma = 0, suma_cuadrados = 0;
+    int n = 0;  // Contador de datos válidos
+    float media, desviacion;
+    
+    // Código para leer temperaturas y acumular datos
+    
+    // Código para calcular media y desviación
+    
+    // Código para mostrar resultados
+    
+    return 0;
+}`,
+                        hints: [
+                            "Lee temperaturas en un bucle infinito hasta encontrar el valor -99. Asegúrate de validar que cada temperatura esté en el rango [-50, 50].",
+                            "Para cada temperatura válida, incrementa el contador n, acumula la suma de temperaturas y la suma de temperaturas al cuadrado (necesario para calcular la desviación).",
+                            "Cuando termines de leer datos, calcula la media (suma/n) y la desviación estándar usando la fórmula: sqrt((suma_cuadrados - n * media * media) / n). Maneja el caso donde no hay datos válidos."
+                        ],
+                        solution: `#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float temperatura;
+    float suma = 0, suma_cuadrados = 0;
+    int n = 0;  // Contador de datos válidos
+    float media, desviacion;
+    
+    printf("Introduce temperaturas entre -50 y 50 grados (-99 para terminar):\\n");
+    
+    while (1) {
+        scanf("%f", &temperatura);
+        
+        // Comprobar si es el valor de terminación
+        if (temperatura == -99) {
+            break;
+        }
+        
+        // Validar que la temperatura esté en el rango correcto
+        if (temperatura < -50 || temperatura > 50) {
+            printf("Temperatura fuera de rango. Debe estar entre -50 y 50 grados.\\n");
+            continue;  // Ignorar este valor y pedir el siguiente
+        }
+        
+        // Acumular datos para cálculos
+        suma += temperatura;
+        suma_cuadrados += temperatura * temperatura;
+        n++;
+    }
+    
+    // Comprobar si se ingresaron datos válidos
+    if (n == 0) {
+        printf("NO DATOS\\n");
+        return 0;
+    }
+    
+    // Calcular la media
+    media = suma / n;
+    
+    // Calcular la desviación estándar
+    desviacion = sqrt((suma_cuadrados - n * media * media) / n);
+    
+    // Mostrar resultados
+    printf("Nº de datos válidos: %d\\n", n);
+    printf("Temperatura media: %.2f\\n", media);
+    printf("Desviación estándar: %.2f\\n", desviacion);
+    
+    return 0;
+}`
+                    }
+                ]
+            },
+            pr4: {
+                title: "Práctica 4: Instrucción de control iteración II",
+                exercises: [
+                    {
+                        id: "patron-ast",
+                        title: "1. Triángulos de asteriscos (PatronAstPR.c)",
+                        description: "Escribe un programa que imprima dos patrones de asteriscos: uno creciente (A) y otro decreciente (B), usando bucles for. Todos los asteriscos deben imprimirse mediante una única instrucción printf de la forma printf(\"%s\",\"*\").",
+                        expected: `
+                        <p>Patrones para una entrada de 5:</p>
+                        <pre>
+Patrón A:
+*
+**
+***
+****
+*****
+
+Patrón B:
+*****
+****
+***
+**
+*
+                        </pre>`,
+                        baseCode: `#include <stdio.h>
+
+int main() {
+    int max;
+    
+    // Leer el número máximo de asteriscos
+    printf("Introduce el número máximo de asteriscos: ");
+    scanf("%d", &max);
+    
+    // Validar que el número sea positivo
+    if (max <= 0) {
+        printf("Error: El número debe ser positivo\\n");
+        return 1;
+    }
+    
+    // Código para imprimir patrón A
+    
+    // Código para imprimir patrón B
+    
+    return 0;
+}`,
+                        hints: [
+                            "Para el patrón A, necesitas dos bucles for anidados: uno externo que vaya desde 1 hasta max, y uno interno que imprima tantos asteriscos como el valor actual del bucle externo.",
+                            "Para el patrón B, necesitas dos bucles for anidados: uno externo que vaya desde 1 hasta max, y uno interno que imprima (max - i + 1) asteriscos, donde i es el contador del bucle externo.",
+                            "No olvides imprimir un salto de línea (printf(\"\\n\")) después de cada fila de asteriscos en ambos patrones."
+                        ],
+                        solution: `#include <stdio.h>
+
+int main() {
+    int max;
+    
+    // Leer el número máximo de asteriscos
+    printf("Introduce el número máximo de asteriscos: ");
+    scanf("%d", &max);
+    
+    // Validar que el número sea positivo
+    if (max <= 0) {
+        printf("Error: El número debe ser positivo\\n");
+        return 1;
+    }
+    
+    // Imprimir patrón A
+    printf("Patrón A:\\n");
+    for (int i = 1; i <= max; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%s", "*");
+        }
+        printf("\\n");
+    }
+    
+    // Imprimir patrón B
+    printf("\\nPatrón B:\\n");
+    for (int i = 1; i <= max; i++) {
+        for (int j = 1; j <= max - i + 1; j++) {
+            printf("%s", "*");
+        }
+        printf("\\n");
+    }
+    
+    return 0;
+}`
+                    },
+                    {
+                        id: "rect-grosor",
+                        title: "2. Rectángulo de asteriscos con grosor (RecGrosorPR.c)",
+                        description: "Dibujar un rectángulo de asteriscos indicando el alto, el ancho y el grosor del borde. Se debe comprobar que se puede hacer un rectángulo con ese grosor del borde. El mínimo en alto y ancho es 4 y el máximo 14.",
+                        expected: `
+                        <p>El programa debe dibujar un rectángulo con las dimensiones especificadas, donde solo el borde tiene el grosor indicado.</p>
+                        <p>Ejemplo para alto=6, ancho=10, grosor=2:</p>
+                        <pre>
+**********
+**********
+**    **
+**    **
+**********
+**********
+                        </pre>`,
+                        baseCode: `#include <stdio.h>
+
+int main() {
+    int alto, ancho, grosor;
+    
+    // Leer dimensiones y grosor
+    printf("Introduce el alto (4-14): ");
+    scanf("%d", &alto);
+    
+    printf("Introduce el ancho (4-14): ");
+    scanf("%d", &ancho);
+    
+    printf("Introduce el grosor del borde: ");
+    scanf("%d", &grosor);
+    
+    // Código para validar dimensiones
+    
+    // Código para dibujar el rectángulo
+    
+    return 0;
+}`,
+                        hints: [
+                            "Primero valida que el alto y ancho estén entre 4 y 14, y que el grosor sea válido (no puede ser mayor que la mitad de la dimensión más pequeña).",
+                            "Usa dos bucles anidados para recorrer todas las posiciones del rectángulo. El bucle externo recorre las filas y el interno las columnas.",
+                            "Para cada posición, determina si está dentro del borde con el grosor especificado. Si es así, imprime un asterisco, de lo contrario, imprime un espacio."
+                        ],
+                        solution: `#include <stdio.h>
+
+int main() {
+    int alto, ancho, grosor;
+    
+    // Leer dimensiones y grosor
+    printf("Introduce el alto (4-14): ");
+    scanf("%d", &alto);
+    
+    printf("Introduce el ancho (4-14): ");
+    scanf("%d", &ancho);
+    
+    printf("Introduce el grosor del borde: ");
+    scanf("%d", &grosor);
+    
+    // Validar dimensiones
+    if (alto < 4 || alto > 14 || ancho < 4 || ancho > 14) {
+        printf("Error: El alto y ancho deben estar entre 4 y 14\\n");
+        return 1;
+    }
+    
+    // Validar grosor
+    int min_dimension = (alto < ancho) ? alto : ancho;
+    if (grosor < 1 || grosor > min_dimension / 2) {
+        printf("Error: Grosor inválido para estas dimensiones\\n");
+        return 1;
+    }
+    
+    // Dibujar el rectángulo
+    for (int i = 0; i < alto; i++) {
+        for (int j = 0; j < ancho; j++) {
+            // Comprobar si estamos en el borde con el grosor especificado
+            if (i < grosor || i >= alto - grosor || j < grosor || j >= ancho - grosor) {
+                printf("*");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\\n");
+    }
+    
+    return 0;
+}`
+                    },
+                    {
+                        id: "centroide",
+                        title: "3. Centroide de un Polígono (CentroidePoligonoPR.c)",
+                        description: "Diseñar un programa que calcule e imprima en pantalla el centroide de un objeto con forma poligonal (centroide: posición del centro de masas para un objeto con densidad uniforme). El número de lados del polígono (n) será leído previamente por teclado, comprobándose que es mayor o igual a 3, introduciéndose a continuación en orden la abscisa (x) y la ordenada (y) de cada uno de los n vértices del polígono.",
+                        expected: `
+                        <p>El programa debe calcular el centroide usando las fórmulas:</p>
+                        <ul>
+                            <li>A = (1/2) · ∑(xₖ · yₖ₊₁ - xₖ₊₁ · yₖ)</li>
+                            <li>Xₑₙₜ = (1/6A) · ∑((xₖ₊₁+xₖ)(xₖ · yₖ₊₁-xₖ₊₁ · yₖ))</li>
+                            <li>Yₑₙₜ = (1/6A) · ∑((yₖ₊₁+yₖ)(xₖ · yₖ₊₁-xₖ₊₁ · yₖ))</li>
+                        </ul>
+                        <p>Ejemplos:</p>
+                        <table>
+                            <tr>
+                                <th>Nº de lados</th>
+                                <th>Vértices</th>
+                                <th>Centroide</th>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>(0,0), (10,0), (10,10)</td>
+                                <td>(6.667,3.333)</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>(0,0), (10,0), (10,10), (0,10)</td>
+                                <td>(5.000,5.000)</td>
+                            </tr>
+                        </table>`,
+                        baseCode: `#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n;
+    double x[100], y[100]; // Asumo un máximo de 100 vértices
+    double area = 0.0, x_cent = 0.0, y_cent = 0.0;
+    double termino;
+    
+    // Código para leer y validar el número de lados
+    
+    // Código para leer las coordenadas de los vértices
+    
+    // Código para calcular el área y el centroide
+    
+    return 0;
+}`,
+                        hints: [
+                            "Primero lee el número de lados n y verifica que sea al menos 3. Luego, lee las coordenadas x e y de cada vértice.",
+                            "Para los cálculos, considera que el polígono se cierra conectando el último vértice con el primero, es decir, (xₙ₊₁,yₙ₊₁) = (x₁,y₁).",
+                            "Calcula primero el área del polígono usando la fórmula dada, y luego usa ese valor para calcular las coordenadas del centroide."
+                        ],
+                        solution: `#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int n;
+    double x[100], y[100]; // Asumo un máximo de 100 vértices
+    double area = 0.0, x_cent = 0.0, y_cent = 0.0;
+    double termino;
+    
+    // Leer el número de lados del polígono
+    printf("Introduce el número de lados del polígono: ");
+    scanf("%d", &n);
+    
+    // Validar que n >= 3
+    if (n < 3) {
+        printf("Error: El polígono debe tener al menos 3 lados\\n");
+        return 1;
+    }
+    
+    // Leer las coordenadas de los vértices
+    for (int i = 0; i < n; i++) {
+        printf("Introduce la coordenada x del vértice %d: ", i+1);
+        scanf("%lf", &x[i]);
+        
+        printf("Introduce la coordenada y del vértice %d: ", i+1);
+        scanf("%lf", &y[i]);
+    }
+    
+    // Cerrar el polígono (el último punto se conecta con el primero)
+    x[n] = x[0];
+    y[n] = y[0];
+    
+    // Calcular el área del polígono
+    for (int i = 0; i < n; i++) {
+        termino = x[i] * y[i+1] - x[i+1] * y[i];
+        area += termino;
+    }
+    area = 0.5 * fabs(area); // Asegurar que el área sea positiva
+    
+    // Calcular las coordenadas del centroide
+    for (int i = 0; i < n; i++) {
+        termino = x[i] * y[i+1] - x[i+1] * y[i];
+        x_cent += (x[i+1] + x[i]) * termino;
+        y_cent += (y[i+1] + y[i]) * termino;
+    }
+    
+    x_cent = x_cent / (6 * area);
+    y_cent = y_cent / (6 * area);
+    
+    // Mostrar resultados
+    printf("Centroide: (%.3f, %.3f)\\n", x_cent, y_cent);
+    
+    return 0;
+}`
+                    },
+                    {
+                        id: "integral",
+                        title: "4. Área bajo la curva (IntegralDefinidaPR.c)",
+                        description: "Diseñar un programa que integre la función f(x)=x³-3x²+5 en un intervalo, esto es que calcule el área bajo la curva, mediante un proceso de muestreo en pasos discretos.",
+                        expected: `
+                        <p>El programa debe calcular el área bajo la curva f(x)=x³-3x²+5 usando el método de los trapecios:</p>
+                        <table>
+                            <tr>
+                                <th>a</th>
+                                <th>b</th>
+                                <th>base</th>
+                                <th>Área</th>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>0.1</td>
+                                <td>6.000000</td>
+                            </tr>
+                            <tr>
+                                <td>1.5</td>
+                                <td>4</td>
+                                <td>0.1</td>
+                                <td>14.631250</td>
+                            </tr>
+                        </table>`,
+                        baseCode: `#include <stdio.h>
+#include <math.h>
+
+// Función para calcular f(x) = x^3 - 3x^2 + 5
+double f(double x) {
+    return x*x*x - 3*x*x + 5;
+}
+
+int main() {
+    double a, b, base;
+    double area = 0.0;
+    
+    // Código para leer y validar parámetros
+    
+    // Código para calcular el área bajo la curva
+    
+    return 0;
+}`,
+                        hints: [
+                            "Lee el límite inferior (a), el límite superior (b) y el tamaño del incremento (base). Valida que b > a y que base > 0.",
+                            "Calcula el número de intervalos completos como n = (b-a)/base. Luego suma el área de cada trapecio.",
+                            "El área de cada trapecio es base*(f(x_izq)+f(x_der))/2, donde x_izq = a + i*base y x_der = a + (i+1)*base."
+                        ],
+                        solution: `#include <stdio.h>
+#include <math.h>
+
+// Función para calcular f(x) = x^3 - 3x^2 + 5
+double f(double x) {
+    return x*x*x - 3*x*x + 5;
+}
+
+int main() {
+    double a, b, base;
+    double area = 0.0;
+    
+    // Leer los límites de integración y el tamaño del incremento
+    printf("Introduce el límite inferior (a): ");
+    scanf("%lf", &a);
+    
+    printf("Introduce el límite superior (b): ");
+    scanf("%lf", &b);
+    
+    printf("Introduce el tamaño del incremento (base): ");
+    scanf("%lf", &base);
+    
+    // Validar parámetros
+    if (b <= a) {
+        printf("Error: El límite superior debe ser mayor que el inferior\\n");
+        return 1;
+    }
+    
+    if (base <= 0) {
+        printf("Error: El tamaño del incremento debe ser positivo\\n");
+        return 1;
+    }
+    
+    // Calcular el número de intervalos completos
+    int n = (int)((b - a) / base);
+    
+    // Calcular el área usando el método de los trapecios
+    for (int i = 0; i < n; i++) {
+        double x_izq = a + i * base;
+        double x_der = a + (i + 1) * base;
+        
+        double y_izq = f(x_izq);
+        double y_der = f(x_der);
+        
+        area += base * (y_izq + y_der) / 2;
+    }
+    
+    // Añadir el área del último trapecio si queda un residuo
+    double residuo = b - (a + n * base);
+    if (residuo > 0) {
+        double x_izq = a + n * base;
+        double y_izq = f(x_izq);
+        double y_der = f(b);
+        
+        area += residuo * (y_izq + y_der) / 2;
+    }
+    
+    // Mostrar resultado
+    printf("El área bajo la curva f(x) = x^3 - 3x^2 + 5 en [%.2f, %.2f] es: %.6f\\n", a, b, area);
+    
+    return 0;
+}`
+                    }
+                ]
+            }
+        };
+
+        // Variables globales
+        let currentPractice = 'pr3';
+        let currentExercise = null;
+        let activeContainer = null;
+        let activeButton = null;
+
+        // Función para ocultar todos los contenedores
+        function hideAllContainers() {
+            document.getElementById('base-code-container').style.display = 'none';
+            document.getElementById('hint1-container').style.display = 'none';
+            document.getElementById('hint2-container').style.display = 'none';
+            document.getElementById('hint3-container').style.display = 'none';
+            document.getElementById('solution-container').style.display = 'none';
+        }
+
+        // Función para quitar la clase active de todos los botones
+        function resetActiveButtons() {
+            document.getElementById('base-code-btn').classList.remove('active');
+            document.getElementById('hint1-btn').classList.remove('active');
+            document.getElementById('hint2-btn').classList.remove('active');
+            document.getElementById('hint3-btn').classList.remove('active');
+            document.getElementById('solution-btn').classList.remove('active');
+        }
+
+        // Función para cargar los ejercicios de una práctica
+        function loadExercises(practiceId) {
+            currentPractice = practiceId;
+            const exerciseList = document.getElementById('exercise-list');
+            exerciseList.innerHTML = '';
+            
+            // Obtener los ejercicios de la práctica seleccionada
+            const practice = practicas[practiceId];
+            
+            // Añadir cada ejercicio a la lista
+            practice.exercises.forEach(exercise => {
+                const exerciseItem = document.createElement('div');
+                exerciseItem.className = 'exercise-item';
+                exerciseItem.dataset.id = exercise.id;
+                exerciseItem.textContent = exercise.title;
+                
+                // Agregar evento de clic al ejercicio
+                exerciseItem.addEventListener('click', () => {
+                    // Eliminar clase 'active' de todos los ejercicios
+                    document.querySelectorAll('.exercise-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Agregar clase 'active' al ejercicio seleccionado
+                    exerciseItem.classList.add('active');
+                    
+                    // Mostrar los detalles del ejercicio
+                    showExerciseDetails(exercise);
+                });
+                
+                exerciseList.appendChild(exerciseItem);
+            });
+        }
+        
+        // Función para mostrar los detalles de un ejercicio
+        function showExerciseDetails(exercise) {
+            currentExercise = exercise;
+            
+            // Ocultar mensaje inicial y mostrar detalles
+            document.querySelector('.initial-message').classList.add('hidden');
+            document.querySelector('.exercise-details').classList.remove('hidden');
+            
+            // Actualizar contenido
+            document.getElementById('exercise-title').textContent = exercise.title;
+            document.getElementById('exercise-description').textContent = exercise.description;
+            document.getElementById('expected-content').innerHTML = exercise.expected;
+            document.getElementById('base-code').textContent = exercise.baseCode;
+            document.getElementById('hint1-text').textContent = exercise.hints[0] || 'No hay pista disponible';
+            document.getElementById('hint2-text').textContent = exercise.hints[1] || 'No hay pista disponible';
+            document.getElementById('hint3-text').textContent = exercise.hints[2] || 'No hay pista disponible';
+            document.getElementById('solution-code').textContent = exercise.solution;
+            
+            // Ocultar todos los contenedores y resetear botones activos
+            hideAllContainers();
+            resetActiveButtons();
+            
+            // Reiniciar variables de control
+            activeContainer = null;
+            activeButton = null;
+        }
+        
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cargar los ejercicios de la práctica inicial
+            loadExercises(currentPractice);
+            
+            // Agregar eventos a los botones de práctica
+            document.querySelectorAll('.practice-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Eliminar clase 'active' de todos los botones
+                    document.querySelectorAll('.practice-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // Agregar clase 'active' al botón seleccionado
+                    btn.classList.add('active');
+                    
+                    // Cargar los ejercicios de la práctica seleccionada
+                    loadExercises(btn.dataset.practice);
+                    
+                    // Ocultar detalles y mostrar mensaje inicial
+                    document.querySelector('.initial-message').classList.remove('hidden');
+                    document.querySelector('.exercise-details').classList.add('hidden');
+                });
+            });
+            
+            // Agregar eventos a los botones
+            document.getElementById('base-code-btn').addEventListener('click', () => {
+                const container = document.getElementById('base-code-container');
+                const button = document.getElementById('base-code-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+            
+            document.getElementById('hint1-btn').addEventListener('click', () => {
+                const container = document.getElementById('hint1-container');
+                const button = document.getElementById('hint1-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+            
+            document.getElementById('hint2-btn').addEventListener('click', () => {
+                const container = document.getElementById('hint2-container');
+                const button = document.getElementById('hint2-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+            
+            document.getElementById('hint3-btn').addEventListener('click', () => {
+                const container = document.getElementById('hint3-container');
+                const button = document.getElementById('hint3-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+            
+            document.getElementById('solution-btn').addEventListener('click', () => {
+                const container = document.getElementById('solution-container');
+                const button = document.getElementById('solution-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
