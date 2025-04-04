@@ -44,11 +44,11 @@ int main() {
     int posicion;
     if (contador % 2 == 0) {
         // Si el número de dígitos es par, insertar en el centro
-        posicion = contador / 2;
+        posicion = contador / 2 - 1;
     } else {
         // Si es impar, insertar a la izquierda o derecha del centro según el valor de i
-        if (i > 5) {
-            posicion = contador / 2 + 1;  // A la izquierda del centro
+        if (i <= 5) {
+            posicion = contador / 2-1;  // A la izquierda del centro
         } else {
             posicion = contador / 2;      // A la derecha del centro
         }
@@ -56,7 +56,7 @@ int main() {
     
     // Construir el nuevo número con el dígito insertado
     int potencia = 1;
-    for (int j = 0; j < contador + 1; j++) {
+    for (int j = contador + 1; j >= 0; j--) {
         if (j == posicion) {
             nuevo_numero += i * potencia;
             potencia *= 10;
