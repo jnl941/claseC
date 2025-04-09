@@ -1,0 +1,33 @@
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>      
+#include <math.h>
+#include "../include/TEST.h"
+
+extern float masaBola(float diametro, float densidad);
+void PROBAR() {
+
+    float x;
+    int a;
+    
+    x = masaBola(12, 0.00786);
+    x=x*100;
+    a=trunc(x);
+    assert((a == 711));
+
+    x = masaBola(12, 0.01049);
+    x=x*100;
+    a=trunc(x);
+    assert(a == 949);
+
+    x = masaBola(12.0, 0.02);
+    x=x*100;
+    a=trunc(x);
+    assert(a == 1809);
+    
+    x = masaBola(14.0, 0.02);
+    x=x*100;
+    a=trunc(x);
+    assert(a == 2870);
+
+}
