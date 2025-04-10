@@ -48,7 +48,7 @@ int main() {
     } else {
         // Si es impar, insertar a la izquierda o derecha del centro según el valor de i
         if (i <= 5) {
-            posicion = contador / 2-1;  // A la izquierda del centro
+            posicion = contador / 2 - 1;  // A la izquierda del centro
         } else {
             posicion = contador / 2;      // A la derecha del centro
         }

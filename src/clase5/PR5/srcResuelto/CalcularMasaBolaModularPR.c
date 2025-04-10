@@ -35,8 +35,10 @@ int main(int argc, char *argv[]) {
 
     if (material == 'N') {
         densidad = 0.00786; // Densidad del hierro en g/cm³
+        //La densidad del hierro es 7.86 g/cm³, sin embargo, aquí se pone el valor 0.00786 ya que se está calculando la masa en kg
     } else if (material == 'S') {
         densidad = 0.01049; // Densidad de la plata en g/cm³
+        //La densidad del hierro es 7.86 g/cm³, sin embargo, aquí se pone el valor 0.00786 ya que se está calculando la masa en kg
     } else {
         printf("Material no reconocido.\n");
         return 1;

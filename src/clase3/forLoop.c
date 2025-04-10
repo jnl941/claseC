@@ -52,8 +52,6 @@ void imprimirNombre(char* punteroNombre) {
         printf("\n");
     }
     printf("\n");
-    
-    
 }
 
 int main()

@@ -7,11 +7,11 @@ extern void PROBAR();
 void polares(float x, float y, float *r, float *theta) {
     *r = sqrt(x * x + y * y);
     if (x == 0 && y == 0) {
-        *theta = 0; // Indeterminate angle for the origin
+        *theta = 0;
     } else {
-        *theta = atan2(y, x) * (180.0 / M_PI); // Convert radians to degrees
+        *theta = atan2(y, x) * (180.0 / M_PI);
         if (*theta < 0) {
-            *theta += 360; // Ensure theta is in the range [0, 360)
+            *theta += 360;
         }
     }
     printf("Coordenadas polares calculadas: r = %.2f, theta = %.2f grados\n", *r, *theta);
