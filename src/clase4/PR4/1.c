@@ -1,34 +1,66 @@
 #include <stdio.h>
 
 int main() {
-    int max;
+    int max = 0;
     
-    // Leer el número máximo de asteriscos
-    printf("Introduce el número máximo de asteriscos: ");
-    scanf("%d", &max);
-    
-    // Validar que el número sea positivo
-    if (max <= 0) {
-        printf("Error: El número debe ser positivo\n");
-        return 1;
+
+    // Bucle para pedir el valor hasta que válido
+    while (max <= 0)
+    {
+        printf("Introduce el número máximo de asteriscos: ");
+        scanf("%d", &max);
+        if(max <= 0){
+            printf("Dato erróneo");
+        } else {
+            break;
+        }
     }
     
-    // Imprimir patrón A
+    // Leer el número máximo de asteriscos
+    
+    
+    // Validar que el número sea positivo
+    
+    
+    // Imprimir patrón A -> Angel
     printf("Patrón A:\n");
-    for (int i = 1; i <= max; i++) {
-        for (int j = 1; j <= i; j++) {
-            printf("%s", "*");
-            PRINT_TEST("*");
+    for(int i = 1; i <= max; i++){
+        for(int j = 1; j <= i; j++){
+            printf("*");
         }
         printf("\n");
     }
     
-    // Imprimir patrón B
+    //BUCLE ASCENDENTE:
+    // para max = 5;
+    // *
+    // **
+    // ***
+    // ****
+    // *****
+    //Bucle para las filas;
+        // Bucle para las columnas;
+            // Imprimir asterisco
+            
+    
+
+    
+    // Imprimir patrón B -> Chema
+    //BUCLE DESCENDENTE:
+    // para max = 5;
+    // *****
+    // ****
+    // ***
+    // **
+    // *
+    //Bucle para las filas;
+        // Bucle para las columnas;
+            // Imprimir asterisco
     printf("\nPatrón B:\n");
-    for (int i = 1; i <= max; i++) {
-        for (int j = 1; j <= max - i + 1; j++) {
-            printf("%s", "*");
-            PRINT_TEST("*");
+    for(int i=1; i<=max;i++ ){
+        for (int j = 1; j<= max-i+1; j++)
+        {
+            printf("*");
         }
         printf("\n");
     }
