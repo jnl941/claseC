@@ -1,0 +1,31 @@
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "../include/TEST.h"
+extern float leerRealIntervalo(float a, float b);
+extern float leerRealIntervalo1(float a, float b, float *x);
+extern float leerRealIntervalo2(float a, float b);
+extern float leerRealIntervalo3(float a, float b, float *x);
+
+void PROBAR() {
+    float result;
+
+    // Caso de prueba 2: Entrada válida con límites invertidos
+    result = leerRealIntervalo2(5.0, 1.0);
+    assert(result >= 1.0 && result <= 5.0);
+
+    // Caso de prueba 3: Límites exactos
+    result = leerRealIntervalo2(3.0, 3.0);
+    assert(result == 3.0);
+
+    // Caso de prueba 4: Entrada por debajo del límite inferior
+    result = leerRealIntervalo2(2.0, 4.0);
+    assert(result >= 2.0 && result <= 4.0);
+
+    // Caso de prueba 5: Entrada por encima del límite superior
+    result = leerRealIntervalo2(4.0, 2.0);
+    assert(result >= 2.0 && result <= 4.0);
+
+
+
+}

@@ -17,7 +17,14 @@ float masaBola(float diametro, float densidad) {
     // Donde r es el radio (diámetro / 2)
     // π es una constante matemática (aproximadamente 3.14159)
     // Se puede utilizar M_PI de math.h para mayor precisión
-    
+    // pow()
+    // 
+
+    //float volumen -> Chema
+    float r = diametro / 2;
+    float volumen = (4/3) * M_PI * r * r * r;
+    //float masa -> Angel
+    float masa = volumen * densidad;
     printf("Volumen: %.2f cm³\n", volumen);
     printf("Densidad: %.2f g/cm³\n", densidad);
     printf("Masa: %.2f cg\n", masa * 100); // Convertir a centigramos

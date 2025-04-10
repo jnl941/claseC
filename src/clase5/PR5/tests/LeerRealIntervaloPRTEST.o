@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "../include/TEST.h"
 extern float leerRealIntervalo(float a, float b);
+extern float leerRealIntervalo1(float a, float b, float *x);
+extern float leerRealIntervalo2(float a, float b);
+extern float leerRealIntervalo3(float a, float b, float *x);
 
 void PROBAR() {
     float result;
@@ -27,7 +30,6 @@ void PROBAR() {
     result = leerRealIntervalo(4.0, 2.0);
     assert(result >= 2.0 && result <= 4.0);
 
-    
     // Caso de prueba 1: Entrada válida dentro del rango
     result = leerRealIntervalo1(1.0, 5.0);
     assert(result >= 1.0 && result <= 5.0);
@@ -89,3 +91,4 @@ void PROBAR() {
     // Caso de prueba 5: Entrada por encima del límite superior
     result = leerRealIntervalo3(4.0, 2.0);
     assert(result >= 2.0 && result <= 4.0);
+}
