@@ -9,7 +9,8 @@ void sumar_dias(int *dia, int *mes, int *anno, int dias);
 int calcular_mcd(int a, int b);
 int maximo(int a, int b);
 
-/* Function definitions */
+int dias_por_mes[12];
+
 bool validar_fecha(int dia, int mes, int anno) {
     if (anno < 1 || mes < 1 || mes > 12 || dia < 1) {
         return false;

@@ -2,7 +2,7 @@
 #include "utils.h"
 
 void cambiar_fecha(int *dia, int *mes, int *anno);
-void sumar_dias(int *dia, int *mes, int *anno, int dias);
+void sumar_n_dias(int *dia, int *mes, int *anno, int dias);
 void mostrar_fecha(int dia, int mes, int anno);
 
 int main() {
@@ -27,7 +27,7 @@ int main() {
                 int dias;
                 printf("Ingrese el número de días a sumar: ");
                 scanf("%d", &dias);
-                sumar_dias(&dia, &mes, &anno, dias);
+                sumar_n_dias(&dia, &mes, &anno, dias);
                 break;
             }
             case '3':
@@ -59,7 +59,7 @@ void cambiar_fecha(int *dia, int *mes, int *anno) {
     }
 }
 
-void sumar_dias(int *dia, int *mes, int *anno, int dias) {
+void sumar_n_dias(int *dia, int *mes, int *anno, int dias) {
     for (int i = 0; i < dias; i++) {
         (*dia)++;
         if (!validar_fecha(*dia, *mes, *anno)) {

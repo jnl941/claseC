@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 void calcular_circunferencia(double x1, double y1, double x2, double y2, double x3, double y3, double *xc, double *yc, double *r) {
     double V1x = x1 - x2;

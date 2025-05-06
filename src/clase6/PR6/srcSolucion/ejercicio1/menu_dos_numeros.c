@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "utils.h"
 
-void calcular_mcd(int a, int b);
-void mostrar_maximo(int a, int b);
-void cambiar_numeros(int *a, int *b);
+void calcular_mcd_menu(int a, int b);
+void mostrar_maximo_menu(int a, int b);
+void cambiar_numeros_menu(int *a, int *b);
 
 int main() {
     int num1, num2;
@@ -25,13 +25,13 @@ int main() {
 
         switch (opcion) {
             case '1':
-                calcular_mcd(num1, num2);
+                calcular_mcd_menu(num1, num2);
                 break;
             case '2':
-                mostrar_maximo(num1, num2);
+                mostrar_maximo_menu(num1, num2);
                 break;
             case '3':
-                cambiar_numeros(&num1, &num2);
+                cambiar_numeros_menu(&num1, &num2);
                 break;
             case '4':
                 printf("Finalizando ejecucion...\n");
@@ -45,7 +45,7 @@ int main() {
     return 0;
 }
 
-void calcular_mcd(int a, int b) {
+void calcular_mcd_menu(int a, int b) {
     while (b != 0) {
         int temp = b;
         b = a % b;
@@ -54,7 +54,7 @@ void calcular_mcd(int a, int b) {
     printf("El MCD es: %d\n", a);
 }
 
-void mostrar_maximo(int a, int b) {
+void mostrar_maximo_menu(int a, int b) {
     if (a > b) {
         printf("El maximo es: %d\n", a);
     } else {
@@ -62,7 +62,7 @@ void mostrar_maximo(int a, int b) {
     }
 }
 
-void cambiar_numeros(int *a, int *b) {
+void cambiar_numeros_menu(int *a, int *b) {
     printf("Ingrese el nuevo primer numero: ");
     scanf("%d", a);
     printf("Ingrese el nuevo segundo numero: ");

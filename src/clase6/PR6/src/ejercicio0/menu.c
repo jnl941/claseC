@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "utils.h"
 
 /* Prototipos de funciones */
 void leer_opcion_menu(char *c);
