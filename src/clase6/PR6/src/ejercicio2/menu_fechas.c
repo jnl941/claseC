@@ -4,30 +4,35 @@
 /* Prototipos de funciones */
 void cambiar_fecha(int *dia, int *mes, int *anno);
 void sumar_n_dias(int *dia, int *mes, int *anno);
-void mostrar_fecha(int dia, int mes, int anno);
-void opciones(int *dia, int *mes, int *anno, char opcion);
+void mostrar_fecha(int *dia, int *mes, int *anno);
+void opciones(int *dia, int *mes, int *anno, int opcion);
 
-void opciones(int *dia, int *mes, int *anno, char opcion){
+void opciones(int *dia, int *mes, int *anno, int opcion){
     //& -> direccion de memoria
+
+
     //DEFINIR VARIABLE
         //tipo nombreVariable
         //tipo* punteroAVariable 
     //USAR VARIABLE
         //nombreVariable
-        //&nombreVariable = punteroAVariable
+        //&nombreVariable   = punteroAVariable
         //&punteroAVariable = puntero al punteroAVariable
         //*punteroAVariable = valor de la variable
+     
     switch (opcion){
-        case '1':
+        case 1:
             cambiar_fecha(dia, mes, anno);
+            printf("Fecha:%d-%d-%d\n", *dia, *mes, *anno);
             break;
-        case '2':
-            sumar_n_dias(dia, mes, anno); 
+        case 2:
+            sumar_n_dias(dia, mes, anno);
             break;
-        case '3':
-            mostrar_fecha(*dia, *mes, *anno);
+        case 3:
+            printf("Fecha:%d-%d-%d\n", *dia, *mes, *anno);
+            mostrar_fecha(dia, mes, anno);
             break;
-        case '4':
+        case 4:
             printf("\nFin de ejecución\n");
             break;
         default:
@@ -37,9 +42,10 @@ void opciones(int *dia, int *mes, int *anno, char opcion){
 }
 
 int main() {
+
     // Inicializar la fecha a 1-1-2023
     int dia = 1, mes = 1, anno = 2023;
-    char opcion;
+    int opcion;
 
 
     // TODO: Hacer un bucle para mostrar el menú y leer la opción -> Chema
@@ -55,8 +61,12 @@ int main() {
             //&nombreVariable = punteroAVariable
             //&punteroAVariable = puntero al punteroAVariable
             //*punteroAVariable = valor de la variable
-        menu(opcion);
-        opciones(&dia, &mes, &anno, opcion);// TODO: Mostrar el menú con las opciones -> Chema
+        menu(&opcion);
+        printf("Fecha main antes:%d-%d-%d\n", dia, mes, anno);
+        opciones(&dia, &mes, &anno, opcion);
+        printf("Fecha main despues:%d-%d-%d\n", dia, mes, anno);
+        
+        // TODO: Mostrar el menú con las opciones -> Chema
 
         // TODO: Ejecutar la acción correspondiente a la opción elegida -> Ángel
         
@@ -65,13 +75,14 @@ int main() {
 
     return 0;
 }
-void menu(char* opcion){
+void menu(int* opcion){
     printf("Mostrar el menu:\n");
     printf(" 1- Cambiar fecha: \n");
     printf(" 2- Sumar n dias\n");
     printf(" 3- Mostrar fecha:\n");
     printf(" 4- Finalizar la ejecucion:\n ");
-    scanf(" %d", opcion);
+    scanf("%d", opcion);
+    printf("Opcion elegida: %d\n", *opcion);
 }
 /* TODO: Implementar la función cambiar_fecha */
 void cambiar_fecha(int *dia, int *mes, int *anno) {
@@ -80,18 +91,19 @@ void cambiar_fecha(int *dia, int *mes, int *anno) {
     // 3. Si la fecha es válida, actualizar los valores usando los punteros
     // 4. Si la fecha no es válida, mostrar un mensaje de error
     printf("Introduce una nueva fecha:\n");
-    int diatemp = dia;
-    int mestemp = mes;
-    int annotemp = anno;
-    scanf("%2d %2d %4d", &diatemp, &mestemp, &annotemp);
+    int* diatemp = dia;
+    int* mestemp = mes;
+    int* annotemp = anno;
+    scanf("%2d %2d %4d", diatemp, mestemp, annotemp);
     
-    if(mestemp<=0 || mestemp >= 13 || diatemp <= 0 || diatemp >= 32 || annotemp < 0){
+    printf("%2d %2d %4d", *diatemp, *mestemp, *annotemp);
+    if(*mestemp<=0 || *mestemp >= 13 || *diatemp <= 0 || *diatemp >= 32 || *annotemp < 0){
         
         printf("Error fecha no válida\n");
     } else {
-        dia = diatemp;
-        mes = mestemp;
-        anno = annotemp;
+        *dia = *diatemp;
+        *mes = *mestemp;
+        *anno = *annotemp;
     }
 
     //SI ES VALIDO -> reemplazar valores de la fecha por los variables temporales
@@ -110,8 +122,8 @@ void sumar_n_dias(int *dia, int *mes, int *anno) {
 }
 
 /* TODO: Implementar la función mostrar_fecha */
-void mostrar_fecha(int dia, int mes, int anno) {
+void mostrar_fecha(int* dia, int* mes, int* anno) {
     // Mostrar la fecha en formato DD-MM-AAAA -> Chema
     // %2d -> 2 dígitos
-    printf("Fecha:%2d-%2d-%4d", dia ,mes, anno);
+    printf("Fecha:%d-%d-%d\n", *dia, *mes, *anno);
 }

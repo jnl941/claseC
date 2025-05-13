@@ -78,7 +78,7 @@ int main() {
     printf("b: %.2f\n", b);
     if(0 < residuo){
         //sumarlo al area
-        // x_izq += 10 residuo;
+        // x_izq += 10 residuo -> Incorrecto
         // area = base * (f(x_izq) + f(b)) / 2; -> Angel
         area += residuo * (f(x_izq) + f(b)) / 2;
     }

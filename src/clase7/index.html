@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente de Prácticas de Programación en C</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --dark-bg: #34495e;
+            --text-color: #333;
+            --light-text: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 20px;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .practice-selector {
+            display: flex;
+            background-color: var(--dark-bg);
+            padding: 10px;
+        }
+        
+        .practice-btn {
+            background-color: var(--dark-bg);
+            border: none;
+            color: var(--light-text);
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+        
+        .practice-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .practice-btn.active {
+            background-color: var(--secondary-color);
+        }
+        
+        .exercises-container {
+            display: flex;
+            height: 600px;
+        }
+        
+        .exercise-list {
+            width: 300px;
+            background-color: var(--light-bg);
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+        }
+        
+        .exercise-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .exercise-item:hover {
+            background-color: #ddd;
+        }
+        
+        .exercise-item.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .exercise-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .exercise-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .exercise-description {
+            margin-bottom: 20px;
+        }
+        
+        .exercise-expected {
+            background-color: var(--light-bg);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-hint {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .btn.active {
+            background-color: #4caf50 !important; /* Verde */
+            color: white;
+        }
+        
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+        }
+        
+        .hint-container {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .hint-container {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Asistente de Prácticas de Programación en C</h1>
+            <p>Selecciona una práctica y un ejercicio para empezar</p>
+        </header>
+        
+        <div class="practice-selector">
+            <button class="practice-btn" data-practice="pr3">Práctica 3: Iteración I</button>
+            <button class="practice-btn" data-practice="pr4">Práctica 4: Iteración II</button>
+            <button class="practice-btn" data-practice="pr5">Práctica 5: Diseño Modular</button>
+            <button class="practice-btn" data-practice="pr6">Práctica 6: Descomposición modular</button>
+            <button class="practice-btn" data-practice="pr7">Práctica 7: Estructuras de Datos. Vectores</button>
+            <button class="practice-btn" data-practice="pr8">Práctica 8: Vectores Multidimensionales</button>
+            <button class="practice-btn" data-practice="pr9">Práctica 9: Registros</button>
+        </div>
+        
+        <div class="exercises-container">
+            <div class="exercise-list" id="exercise-list">
+                <!-- Ejercicios se cargan dinámicamente -->
+            </div>
+            
+            <div class="exercise-content" id="exercise-content">
+                <div class="initial-message">
+                    <h2>Bienvenido al Asistente de Prácticas</h2>
+                    <p>Selecciona un ejercicio de la lista para ver su descripción y opciones disponibles.</p>
+                </div>
+                
+                <div class="exercise-details hidden">
+                    <h2 class="exercise-title" id="exercise-title"></h2>
+                    
+                    <div class="exercise-description" id="exercise-description"></div>
+                    
+                    <div class="exercise-expected" id="exercise-expected">
+                        <h3>Salida esperada / Datos de prueba:</h3>
+                        <div id="expected-content"></div>
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="btn btn-hint" id="hint1-btn">Pista 1</button>
+                        <button class="btn btn-hint" id="hint2-btn">Pista 2</button>
+                        <button class="btn btn-hint" id="hint3-btn">Pista 3</button>
+                    </div>
+                    
+                    <div class="hint-container" id="hint1-container">
+                        <h3>Pista 1:</h3>
+                        <p id="hint1-text"></p>
+                    </div>
+                    
+                    <div class="hint-container" id="hint2-container">
+                        <h3>Pista 2:</h3>
+                        <p id="hint2-text"></p>
+                    </div>
+                    
+                    <div class="hint-container" id="hint3-container">
+                        <h3>Pista 3:</h3>
+                        <p id="hint3-text"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los ejercicios
+        const practicas = {
+            pr3: {
+                title: "Práctica 3: Instrucción de control iteración I",
+                exercises: [
+                    {
+                        id: "contar",
+                        title: "1. Contar pares e impares (ContarPR.c)",
+                        description: "Partiendo del código proporcionado, añade las instrucciones necesarias para contar cuántos de los 10 números leídos por teclado son pares y cuántos son impares.",
+                        expected: `
+                        <table>
+                            <tr>
+                                <th>Entrada</th>
+                                <th>Salida esperada</th>
+                            </tr>
+                            <tr>
+                                <td>2 4 6 8 10 12 14 16 18 20</td>
+                                <td>Hay 10 pares y 0 impares</td>
+                            </tr>
+                            <tr>
+                                <td>1 3 5 7 9 11 13 15 17 19</td>
+                                <td>Hay 0 pares y 10 impares</td>
+                            </tr>
+                            <tr>
+                                <td>2 3 4 5 6 7 8 9 10 11</td>
+                                <td>Hay 5 pares y 5 impares</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Un número es par si al dividirlo por 2 el resto es 0. Puedes usar el operador módulo % para comprobar esto.",
+                            "Dentro del bucle, después de leer cada número, debes verificar si es par o impar y actualizar el contador correspondiente.",
+                            "La condición para verificar si un número es par es: if (numero % 2 == 0)"
+                        ]
+                    },
+                    {
+                        id: "expan-gas",
+                        title: "2. Expansión de un gas ideal (ExpanGasPR.c)",
+                        description: "Desarrolla un programa que muestre una tabla con el aumento de volumen de un gas ideal al calentarse desde una temperatura inicial hasta una temperatura final, según la fórmula: Aumento_de_volumen = V₀ ((T/T₀)-1). El programa debe leer el volumen inicial, la temperatura inicial y final, validarlas, y generar la tabla con incrementos de 5 grados.",
+                        expected: `
+                        <p>Tabla de expansión de volumen para un gas ideal (ejemplo con V₀=10 m^3, T₀=300K, Tf=350K):</p>
+                        <pre>
+Temperatura (K) | Aumento de volumen (m^3)
+---------------|------------------------
+300.00         | 0.00
+305.00         | 0.17
+310.00         | 0.33
+315.00         | 0.50
+320.00         | 0.67
+325.00         | 0.83
+330.00         | 1.00
+335.00         | 1.17
+340.00         | 1.33
+345.00         | 1.50
+350.00         | 1.67
+                        </pre>`,
+                        hints: [
+                            "Primero lee y valida que el volumen inicial sea positivo, y que las temperaturas estén en el rango [0, 6000]K.",
+                            "Si la temperatura inicial es mayor que la final, intercámbialas para que el bucle funcione correctamente.",
+                            "Usa un bucle for con incrementos de 5 grados, que calcule y muestre el aumento de volumen para cada temperatura. Recuerda la fórmula: aumento_volumen = volumen_inicial * ((temp / temp_inicial) - 1)."
+                        ]
+                    },
+                    {
+                        id: "correlacion",
+                        title: "3. Coeficiente Correlación (CorrelacionPR.c)",
+                        description: "Construye un programa que calcule e imprima el coeficiente de correlación r de un conjunto de n puntos bidimensionales (xi,yi) introducidos por teclado, usando la fórmula estadística apropiada.",
+                        expected: `
+                        <p>El coeficiente de correlación mide la relación lineal entre dos variables.</p>
+                        <table>
+                            <tr>
+                                <th>Ejemplo</th>
+                                <th>n</th>
+                                <th>Puntos (x,y)</th>
+                                <th>Resultado</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>(1,2), (2,3), (3,4)</td>
+                                <td>1.0 (correlación perfecta)</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>(1,1), (2,2), (3,1)</td>
+                                <td>0.0 (sin correlación)</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Primero lee y valida el número de puntos n. Luego, lee las coordenadas x e y de cada punto y ve acumulando las sumas necesarias: sumX, sumY, sumXY, sumX2, sumY2.",
+                            "La fórmula del coeficiente de correlación es: r = (n*sumXY - sumX*sumY) / sqrt((n*sumX2 - sumX*sumX) * (n*sumY2 - sumY*sumY))",
+                            "Asegúrate de manejar el caso donde el denominador es cero (no hay correlación). El valor de r está siempre entre -1 y 1."
+                        ]
+                    },
+                    {
+                        id: "insertar",
+                        title: "4. Insertar Número (InsertarCentroPR.c)",
+                        description: "Escribe un programa que lea un número entero positivo de entre 2 y 8 dígitos y un entero positivo de un dígito a añadir. El programa generará un nuevo entero insertando el dígito en una posición determinada según reglas específicas.",
+                        expected: `
+                        <p>Reglas de inserción:</p>
+                        <ul>
+                            <li>Si el número original tiene una cantidad par de dígitos, el nuevo dígito se inserta en el centro.</li>
+                            <li>Si el número original tiene una cantidad impar de dígitos, el nuevo dígito se inserta:
+                                <ul>
+                                    <li>A la izquierda del centro si es mayor que 5</li>
+                                    <li>A la derecha del centro si es menor o igual a 5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <table>
+                            <tr>
+                                <th>Número original</th>
+                                <th>Dígito a insertar</th>
+                                <th>Nuevo número</th>
+                            </tr>
+                            <tr>
+                                <td>123</td>
+                                <td>0</td>
+                                <td>1203</td>
+                            </tr>
+                            <tr>
+                                <td>123</td>
+                                <td>9</td>
+                                <td>1923</td>
+                            </tr>
+                            <tr>
+                                <td>1111</td>
+                                <td>2</td>
+                                <td>11211</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Lee el número original y el dígito a insertar, validando que el dígito esté entre 0 y 9. Almacena los dígitos del número original en un array, extrayéndolos con el operador módulo % y dividiendo entre 10.",
+                            "Determina la posición de inserción según las reglas: si el número de dígitos es par, inserta en la mitad; si es impar, a la izquierda del centro (si i > 5) o a la derecha (si i <= 5).",
+                            "Construye el nuevo número recorriendo los dígitos almacenados, insertando el nuevo dígito en la posición calculada. Multiplica por la potencia de 10 adecuada para cada posición."
+                        ]   
+                    },
+                    {
+                        id: "media-desviacion",
+                        title: "5. Media y desviación típica (MediaDesPR.c)",
+                        description: "Diseña un programa que lea por teclado un conjunto de datos de temperatura en el intervalo [-50,+50] y calcule su media aritmética y su desviación estándar. La entrada finaliza con el valor -99.",
+                        expected: `
+                        <p>El programa debe calcular:</p>
+                        <ul>
+                            <li>La media aritmética: T<sub>media</sub> = (∑T<sub>i</sub>)/n</li>
+                            <li>La desviación estándar: √(∑(T<sub>i</sub>² - n*T<sub>media</sub>²)/n)</li>
+                        </ul>
+                        <p>Ejemplos:</p>
+                        <p>Datos: 4, 5, 5, 6, 5, 5, 5, 5, -99</p>
+                        <ul>
+                            <li>Número de datos válidos: 8</li>
+                            <li>T<sub>media</sub> = 5.00</li>
+                            <li>Desviación = 0.50</li>
+                        </ul>
+                        <p>Datos: -5, 0, 5, 10, -99</p>
+                        <ul>
+                            <li>Número de datos válidos: 4</li>
+                            <li>T<sub>media</sub> = 2.50</li>
+                            <li>Desviación = 5.59</li>
+                        </ul>`,
+                        hints: [
+                            "Lee temperaturas en un bucle infinito hasta encontrar el valor -99. Asegúrate de validar que cada temperatura esté en el rango [-50, 50].",
+                            "Para cada temperatura válida, incrementa el contador n, acumula la suma de temperaturas y la suma de temperaturas al cuadrado (necesario para calcular la desviación).",
+                            "Cuando termines de leer datos, calcula la media (suma/n) y la desviación estándar usando la fórmula: sqrt((suma_cuadrados - n * media * media) / n). Maneja el caso donde no hay datos válidos."
+                        ]
+                    }
+                ]
+            },
+            pr4: {
+                title: "Práctica 4: Instrucción de control iteración II",
+                exercises: [
+                    {
+                        id: "patron-ast",
+                        title: "1. Triángulos de asteriscos (PatronAstPR.c)",
+                        description: "Escribe un programa que imprima dos patrones de asteriscos: uno creciente (A) y otro decreciente (B), usando bucles for. Todos los asteriscos deben imprimirse mediante una única instrucción printf de la forma printf(\"%s\",\"*\").",
+                        expected: `
+                        <p>Patrones para una entrada de 5:</p>
+                        <pre>
+Patrón A:
+*
+**
+*** 
+**** 
+***** 
+
+Patrón B:
+*****
+**** 
+***  
+**   
+*    
+                        </pre>`,
+                        hints: [
+                            "Para el patrón A, necesitas dos bucles for anidados: uno externo que vaya desde 1 hasta max, y uno interno que imprima tantos asteriscos como el valor actual del bucle externo.",
+                            "Para el patrón B, necesitas dos bucles for anidados: uno externo que vaya desde 1 hasta max, y uno interno que imprima (max - i + 1) asteriscos, donde i es el contador del bucle externo.",
+                            "No olvides imprimir un salto de línea (printf(\"\\n\")) después de cada fila de asteriscos en ambos patrones."
+                        ]
+                    },
+                    {
+                        id: "rect-grosor",
+                        title: "2. Rectángulo de asteriscos con grosor (RecGrosorPR.c)",
+                        description: "Dibujar un rectángulo de asteriscos indicando el alto, el ancho y el grosor del borde. Se debe comprobar que se puede hacer un rectángulo con ese grosor del borde. El mínimo en alto y ancho es 4 y el máximo 14.",
+                        expected: `
+                        <p>El programa debe dibujar un rectángulo con las dimensiones especificadas, donde solo el borde tiene el grosor indicado.</p>
+                        <p>Ejemplo para alto=6, ancho=10, grosor=2:</p>
+                        <pre>
+**********
+**********
+**    **
+**    **
+**********
+**********
+                        </pre>`,
+                        hints: [
+                            "Primero valida que el alto y ancho estén entre 4 y 14, y que el grosor sea válido (no puede ser mayor que la mitad de la dimensión más pequeña).",
+                            "Usa dos bucles anidados para recorrer todas las posiciones del rectángulo. El bucle externo recorre las filas y el interno las columnas.",
+                            "Para cada posición, determina si está dentro del borde con el grosor especificado. Si es así, imprime un asterisco, de lo contrario, imprime un espacio."
+                        ]
+                    },
+                    {
+                        id: "centroide",
+                        title: "3. Centroide de un Polígono (CentroidePoligonoPR.c)",
+                        description: "Diseñar un programa que calcule e imprima en pantalla el centroide de un objeto con forma poligonal (centroide: posición del centro de masas para un objeto con densidad uniforme). El número de lados del polígono (n) será leído previamente por teclado, comprobándose que es mayor o igual a 3, introduciéndose a continuación en orden la abscisa (x) y la ordenada (y) de cada uno de los n vértices del polígono.",
+                        expected: `
+                        <p>El programa debe calcular el centroide usando las fórmulas:</p>
+                        <ul>
+                            <li>A = (1/2) · ∑(xₖ · yₖ₊₁ - xₖ₊₁ · yₖ)</li>
+                            <li>Xₑₙₜ = (1/6A) · ∑((xₖ₊₁+xₖ)(xₖ · yₖ₊₁-xₖ₊₁ · yₖ))</li>
+                            <li>Yₑₙₜ = (1/6A) · ∑((yₖ₊₁+yₖ)(xₖ · yₖ₊₁-xₖ₊₁ · yₖ))</li>
+                        </ul>
+                        <p>Ejemplos:</p>
+                        <table>
+                            <tr>
+                                <th>Nº de lados</th>
+                                <th>Vértices</th>
+                                <th>Centroide</th>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>(0,0), (10,0), (10,10)</td>
+                                <td>(6.667,3.333)</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>(0,0), (10,0), (10,10), (0,10)</td>
+                                <td>(5.000,5.000)</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Primero lee el número de lados n y verifica que sea al menos 3. Luego, lee las coordenadas x e y de cada vértice.",
+                            "Para los cálculos, considera que el polígono se cierra conectando el último vértice con el primero, es decir, (xₙ₊₁,yₙ₊₁) = (x₁,y₁).",
+                            "Calcula primero el área del polígono usando la fórmula dada, y luego usa ese valor para calcular las coordenadas del centroide."
+                        ]
+                    },
+                    {
+                        id: "integral",
+                        title: "4. Área bajo la curva (IntegralDefinidaPR.c)",
+                        description: "Diseñar un programa que integre la función f(x)=x³-3x²+5 en un intervalo, esto es que calcule el área bajo la curva, mediante un proceso de muestreo en pasos discretos.",
+                        expected: `
+                        <p>El programa debe calcular el área bajo la curva f(x)=x³-3x²+5 usando el método de los trapecios:</p>
+                        <table>
+                            <tr>
+                                <th>a</th>
+                                <th>b</th>
+                                <th>base</th>
+                                <th>Área</th>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>0.1</td>
+                                <td>6.000000</td>
+                            </tr>
+                            <tr>
+                                <td>1.5</td>
+                                <td>4</td>
+                                <td>0.1</td>
+                                <td>14.631250</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Lee el límite inferior (a), el límite superior (b) y el tamaño del incremento (base). Valida que b > a y que base > 0.",
+                            "Calcula el número de intervalos completos como n = (b-a)/base. Luego suma el área de cada trapecio.",
+                            "El área de cada trapecio es base*(f(x_izq)+f(x_der))/2, donde x_izq = a + i*base y x_der = a + (i+1)*base."
+                        ]
+                    }
+                ]
+            },
+            pr5: {
+                title: "Práctica 5: Diseño Modular",
+                exercises: [
+                    {
+                        id: "masa-bola",
+                        title: "1. Calcular Masa de una Bola (CalcularMasaBolaModularPR.c)",
+                        description: "Implementa una función que calcule la masa de una esfera dado su diámetro y densidad. La función debe calcular el radio, volumen y masa de la esfera utilizando las fórmulas: Volumen = (4/3) * π * r³ y Masa = Volumen * Densidad.",
+                        expected: `
+                        <p>Este ejercicio sirve como prueba del sistema de validación. Debes implementar la función <code>masaBola</code> que calcule correctamente la masa de una esfera.</p>
+                        <table>
+                            <tr>
+                                <th>Diámetro (cm)</th>
+                                <th>Densidad (g/cm³)</th>
+                                <th>Masa (Kg)</th>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>0.00786 (Hierro)</td>
+                                <td>7.11 Kg</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>0.01049 (Plata)</td>
+                                <td>9.49 Kg</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>0.00786 (Hierro)</td>
+                                <td>64.30 Kg</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Primero calcula el radio a partir del diámetro (radio = diámetro / 2).",
+                            "Luego calcula el volumen usando la fórmula V = (4/3) * π * r³. Puedes usar M_PI de la librería math.h.",
+                            "Finalmente, multiplica el volumen por la densidad para obtener la masa. Recuerda que el resultado debe estar en kilogramos."
+                        ]
+                    },
+                    {
+                        id: "leer-real",
+                        title: "2. Leer Real en Intervalo (LeerRealIntervaloPR.c)",
+                        description: "Implementa diferentes versiones de funciones para leer un número real dentro de un intervalo dado. La primera versión debe devolver directamente el valor leído, la segunda debe usar un parámetro de salida, y la tercera debe limitar el número de intentos.",
+                        expected: `
+                        <p>Debes implementar tres funciones:</p>
+                        <ul>
+                            <li><code>leerRealIntervalo1(float a, float b, float *x)</code>: Lee un número y lo devuelve mediante el puntero x.</li>
+                            <li><code>leerRealIntervalo2(float a, float b)</code>: Utiliza la función anterior y devuelve el valor directamente.</li>
+                            <li><code>leerRealIntervalo3(float a, float b, float *x)</code>: Permite solo 3 intentos de lectura, devuelve 1 si tuvo éxito, 0 si no.</li>
+                        </ul>
+                        <p>Consideraciones:</p>
+                        <ul>
+                            <li>Si a > b, intercambiar valores</li>
+                            <li>Si a == b, devolver directamente ese valor sin pedir entrada</li>
+                        </ul>`,
+                        hints: [
+                            "Asegúrate de validar que el valor introducido esté dentro del intervalo [a,b]. Si a > b, debes intercambiarlos.",
+                            "La versión leerRealIntervalo1 debe manejar el caso especial cuando a==b, devolviendo ese valor directamente sin leer de teclado.",
+                            "En leerRealIntervalo3, usa un contador de intentos y devuelve 0 cuando se exceda el límite (3 intentos)."
+                        ]
+                    },
+                    {
+                        id: "polares",
+                        title: "3. Coordenadas Polares (PasarPolaresPR.c)",
+                        description: "Implementa una función 'polares' que convierta coordenadas cartesianas (x,y) a coordenadas polares (r,θ). El radio (r) es la distancia desde el origen, y el ángulo (θ) se mide en grados desde el eje x positivo.",
+                        expected: `
+                        <p>La función debe tener la forma: <code>void polares(float x, float y, float *r, float *theta)</code></p>
+                        <table>
+                            <tr>
+                                <th>Coordenadas (x,y)</th>
+                                <th>Coordenadas polares (r,θ)</th>
+                            </tr>
+                            <tr><td>(0,0)</td><td>(0,0°)</td></tr>
+                            <tr><td>(1,0)</td><td>(1,0°)</td></tr>
+                            <tr><td>(0,1)</td><td>(1,90°)</td></tr>
+                            <tr><td>(-1,0)</td><td>(1,180°)</td></tr>
+                            <tr><td>(0,-1)</td><td>(1,270°)</td></tr>
+                            <tr><td>(1,1)</td><td>(1.41,45°)</td></tr>
+                            <tr><td>(-1,1)</td><td>(1.41,135°)</td></tr>
+                            <tr><td>(-1,-1)</td><td>(1.41,225°)</td></tr>
+                            <tr><td>(1,-1)</td><td>(1.41,315°)</td></tr>
+                        </table>`,
+                        hints: [
+                            "El radio r se calcula como la distancia euclidiana: r = √(x² + y²).",
+                            "Para el ángulo θ, usa la función atan2(y, x) que devuelve el ángulo en radianes. Debes convertirlo a grados multiplicando por (180/π).",
+                            "Asegúrate de manejar el caso especial del origen (0,0) donde el ángulo es indeterminado (puedes asignarle 0)."
+                        ]
+                    },
+                    {
+                        id: "tabla-potencias",
+                        title: "4. Tabla de Potencias (TablaPotenciasPR.c)",
+                        description: "Implementa una función que genere una tabla de potencias para un número base n entre los límites a y b. Además, crea una función auxiliar 'potencia' que calcule la potencia sin usar la librería math.h.",
+                        expected: `
+                        <p>Debes implementar:</p>
+                        <ul>
+                            <li><code>float potencia(float base, int exponente)</code>: Calcula base^exponente sin usar math.h.</li>
+                            <li><code>void TablaPotencias(int n, int a, int b)</code>: Genera una tabla de potencias.</li>
+                        </ul>
+                        <p>Restricciones:</p>
+                        <ul>
+                            <li>n debe estar en [-5,5] y no puede ser 0</li>
+                            <li>a y b deben estar en [-10,10]</li>
+                            <li>La función potencia debe devolver 0 para representar la indeterminación 0^0</li>
+                        </ul>
+                        <table>
+                            <tr>
+                                <th>Función potencia</th>
+                                <th>Resultado</th>
+                            </tr>
+                            <tr><td>2^10</td><td>1024.000</td></tr>
+                            <tr><td>3^4</td><td>81.000</td></tr>
+                            <tr><td>2^(-2)</td><td>0.250</td></tr>
+                            <tr><td>1^0</td><td>1.000</td></tr>
+                            <tr><td>0^1</td><td>0.000</td></tr>
+                            <tr><td>0^0</td><td>0.000 (indeterminación)</td></tr>
+                            <tr><td>0^(-1)</td><td>0.000 (indeterminación)</td></tr>
+                        </table>`,
+                        hints: [
+                            "En la función potencia, maneja primero los casos especiales: indeterminación (0^0) y exponente negativo.",
+                            "Para el caso general con exponente positivo, usa un bucle que multiplique la base por sí misma 'exponente' veces.",
+                            "Para exponentes negativos, calcula 1/potencia(base, -exponente). En TablaPotencias, asegúrate de ordenar a y b si a > b."
+                        ]
+                    },
+                    {
+                        id: "bisiesto",
+                        title: "5. Año Bisiesto (EsBisiestoPR.c)",
+                        description: "Implementa una función que determine si un año es bisiesto según las reglas del calendario gregoriano.",
+                        expected: `
+                        <p>La función <code>int esBisiesto(int anio)</code> debe devolver 1 si el año es bisiesto, 0 si no lo es.</p>
+                        <p>Un año es bisiesto si:</p>
+                        <ol>
+                            <li>Es divisible por 4</li>
+                            <li>Pero no es divisible por 100, a menos que</li>
+                            <li>También sea divisible por 400</li>
+                        </ol>
+                        <table>
+                            <tr>
+                                <th>Año</th>
+                                <th>¿Bisiesto?</th>
+                            </tr>
+                            <tr><td>1980</td><td>Sí</td></tr>
+                            <tr><td>1981</td><td>No</td></tr>
+                            <tr><td>2000</td><td>Sí</td></tr>
+                            <tr><td>2100</td><td>No</td></tr>
+                            <tr><td>2020</td><td>Sí</td></tr>
+                        </table>`,
+                        hints: [
+                            "Primero verifica si el año es divisible por 4 (año % 4 == 0). Si no lo es, definitivamente no es bisiesto.",
+                            "Si es divisible por 4, verifica si es un año secular (divisible por 100). Los años seculares solo son bisiestos si también son divisibles por 400.",
+                            "La estructura lógica completa es: (año % 4 == 0) && ((año % 100 != 0) || (año % 400 == 0))"
+                        ]
+                    },
+                    {
+                        id: "ackermann",
+                        title: "6. Función de Ackermann (AckermannPR.c)",
+                        description: "Implementa la función de Ackermann, un ejemplo clásico de función recursiva que crece muy rápidamente y demuestra comportamiento recursivo no primitivo.",
+                        expected: `
+                        <p>La función Ackermann se define como:</p>
+                        <pre>
+A(m,n) = n+1                  si m=0
+A(m,n) = A(m-1,1)             si m>0 y n=0
+A(m,n) = A(m-1,A(m,n-1))      si m>0 y n>0
+                        </pre>
+                        <table>
+                            <tr>
+                                <th>Entrada (m, n)</th>
+                                <th>Salida</th>
+                            </tr>
+                            <tr><td>(0, 0)</td><td>1</td></tr>
+                            <tr><td>(0, 5)</td><td>6</td></tr>
+                            <tr><td>(1, 0)</td><td>2</td></tr>
+                            <tr><td>(1, 2)</td><td>4</td></tr>
+                            <tr><td>(2, 2)</td><td>7</td></tr>
+                            <tr><td>(3, 2)</td><td>29</td></tr>
+                        </table>
+                        <p>Cuidado: La función crece muy rápidamente. Valores grandes pueden causar desbordamiento de la pila.</p>`,
+                        hints: [
+                            "La función debe implementarse exactamente según la definición matemática, usando recursividad.",
+                            "El caso base es cuando m=0, entonces A(0,n) = n+1.",
+                            "Ten cuidado con los valores de entrada grandes, ya que pueden causar desbordamiento de la pila debido a la naturaleza rápidamente creciente de la función."
+                        ]
+                    }
+                ]
+            },
+            pr6: {
+                title: "Práctica 6: Descomposición modular",
+                exercises: [
+                    {
+                        id: "menu-opciones",
+                        title: "0. Menu de opciones (MenuPR.c)",
+                        description: "Probar el ejemplo de menu incluido en _OpenProblemas. Este ejercicio sirve como base para entender la estructura básica de un programa con menú de opciones.",
+                        expected: `
+                        <p>El programa debe mostrar un menú de opciones y ejecutar la opción seleccionada:</p>
+                        <pre>
+                MENU DE OPCIONES
+                ================
+
+                    1.- Mostrar mensaje hola mundo
+                    2.- Contar tiradas 
+                    3.- Mostrar Fibonacci
+                    4.- Finalizar ejecucion
+
+                            Introduzca opcion: 
+                        </pre>
+                        <p>Al seleccionar cada opción, debe ejecutarse la funcionalidad correspondiente.</p>`,
+                        hints: [
+                            "Analiza la estructura de módulos del programa: un módulo principal, una función para leer la opción, y otra para ejecutar la opción seleccionada.",
+                            "Observa cómo se utilizan los prototipos de funciones al inicio del programa para declarar las funciones antes de definirlas.",
+                            "Fíjate en cómo se pasa la opción seleccionada por referencia usando un puntero en la función leerOpcionMenu."
+                        ]
+                    },
+                    {
+                        id: "menu-dos-numeros",
+                        title: "1. Menu de opciones con dos números (MenuDosNumerosPR.c)",
+                        description: "Implementar un programa que permita trabajar con dos números enteros positivos leídos desde teclado. El programa debe presentar un menú con opciones para calcular el máximo común divisor, el máximo de ambos números, cambiar los números, o finalizar la ejecución.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Leer dos números enteros positivos</li>
+                            <li>Mostrar un menú con 4 opciones</li>
+                            <li>Ejecutar la opción seleccionada hasta que se elija salir</li>
+                        </ul>
+                        <pre>
+                MENU DE OPCIONES
+                ================
+
+                    1.- Calcular y mostrar el MCD
+                    2.- Calcular y mostrar el máximo
+                    3.- Cambiar los números
+                    4.- Finalizar ejecución
+
+                            Introduzca opción: 
+                        </pre>`,
+                        hints: [
+                            "Para el MCD, implementa el algoritmo de Euclides: mientras b no sea 0, calcula a%b y asigna b a 'a' y el resto a 'b'.",
+                            "Para el máximo, simplemente compara ambos números con un condicional y devuelve el mayor.",
+                            "Para la función que cambia los números, necesitarás usar punteros para modificar los valores originales."
+                        ]
+                    },
+                    {
+                        id: "menu-fechas",
+                        title: "2. Fechas (MenuFechasPR.c)",
+                        description: "Realizar un programa que trabaje con una fecha representada por tres variables: día, mes y año. El programa debe permitir validar fechas, considerar años bisiestos, cambiar la fecha actual y sumar días a una fecha.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Inicializar la fecha a 1-1-2023</li>
+                            <li>Implementar la función validarFecha que devuelve 1 si la fecha es correcta</li>
+                            <li>Implementar la función esBisiesto para determinar si un año es bisiesto</li>
+                            <li>Implementar la función sumarDias para añadir días a una fecha</li>
+                        </ul>
+                        <pre>
+                MENU DE OPCIONES
+                ================
+
+                    1.- Cambiar fecha
+                    2.- Sumar n días a la fecha
+                    3.- Mostrar fecha
+                    4.- Finalizar ejecución
+
+                            Introduzca opción: 
+                        </pre>`,
+                        hints: [
+                            "Para validar una fecha, verifica que el mes esté entre 1 y 12, y que el día sea válido según el mes (considerando los años bisiestos para febrero).",
+                            "Un año es bisiesto si es divisible por 4 pero no por 100, o si es divisible por 400.",
+                            "Al sumar días, debes incrementar el día y ajustar el mes y año cuando sea necesario, considerando la cantidad de días de cada mes."
+                        ]
+                    },
+                    {
+                        id: "circunferencia",
+                        title: "3. Circunferencia para tres Puntos no colineales (CircunferenciaTresPuntosPR.c)",
+                        description: "Construir un programa que lea por teclado las coordenadas bidimensionales de 3 puntos diferentes no colineales (que no estén en la misma línea recta), y que calcule e imprima en pantalla el centro y el radio de la circunferencia que definen.",
+                        expected: `
+                        <p>El programa debe verificar que los puntos no son colineales y calcular el centro y radio de la circunferencia.</p>
+                        <table>
+                            <tr>
+                                <th>(x₁,y₁)</th>
+                                <th>(x₂,y₂)</th>
+                                <th>(x₃,y₃)</th>
+                                <th>(xc,yc)</th>
+                                <th>r</th>
+                            </tr>
+                            <tr>
+                                <td>(0,5)</td>
+                                <td>(5,0)</td>
+                                <td>(0,-5)</td>
+                                <td>(0.00,0.00)</td>
+                                <td>5.00</td>
+                            </tr>
+                            <tr>
+                                <td>(0,0)</td>
+                                <td>(2,2)</td>
+                                <td>(10,8)</td>
+                                <td>(33.00,-31.00)</td>
+                                <td>45.28</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Para verificar si tres puntos están en línea recta (son colineales), calcula el producto vectorial de los vectores formados por los puntos. Si es cero, están en línea recta.",
+                            "Al calcular el centro de la circunferencia, asegúrate de manejar correctamente las divisiones para evitar errores por división entre cero.",
+                            "El radio se calcula como la distancia desde el centro a cualquiera de los puntos dados. Puedes usar la fórmula de distancia euclidiana."
+                        ]
+                    }
+                ]
+            },
+            pr7: {
+                title: "Práctica 7: Estructuras de Datos. Vectores",
+                exercises: [
+                    {
+                        id: "primitiva",
+                        title: "1. Anotar número de lotería primitiva (PrimitivaVectorPR.c)",
+                        description: "Construir un programa en C que solicita al usuario ingresar 6 números para la primitiva, verifica que estén dentro del rango permitido y que no se repitan, los almacena en un vector y luego ordena el vector.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Leer 6 números enteros entre 1 y 49</li>
+                            <li>Verificar que no se repitan</li>
+                            <li>Ordenarlos de menor a mayor</li>
+                            <li>Mostrar el resultado ordenado</li>
+                        </ul>
+                        <p>Ejemplo de ejecución:</p>
+                        <pre>
+            Ingresa 6 números para la primitiva (entre 1 y 49, sin repetir):
+            Número 1: 23
+            Número 2: 5
+            Número 3: 42
+            Número 4: 9
+            Número 5: 31
+            Número 6: 17
+
+            Números ordenados de la primitiva:
+            5 9 17 23 31 42
+                        </pre>`,
+                        hints: [
+                            "Usa un bucle while para leer los 6 números, verificando antes de almacenarlos que estén en el rango correcto (1-49) y que no se repitan.",
+                            "Para verificar si un número ya está en el vector, necesitas implementar la función existeEnArray que recorre el vector buscando coincidencias.",
+                            "La función ordenarArray ya está implementada usando el algoritmo de ordenación burbuja para ordenar los números de menor a mayor."
+                        ]
+                    },
+                    {
+                        id: "polinomio",
+                        title: "2. Derivación polinomio (DerivadaPolinomioPR.c)",
+                        description: "Construir un programa para derivar polinomios, que lea por teclado el grado (máximo 99) y los coeficientes del polinomio a derivar, y que imprima en pantalla el polinomio resultante.",
+                        expected: `
+                        <p>Un polinomio se representa como un vector donde cada posición contiene el coeficiente del término de grado correspondiente al índice.</p>
+                        <p>Para derivar un polinomio, cada coeficiente en la posición i se multiplica por i y se coloca en la posición i-1 del polinomio resultante.</p>
+                        <table>
+                            <tr>
+                                <th>Polinomio original</th>
+                                <th>Derivada</th>
+                            </tr>
+                            <tr>
+                                <td>P = x⁴-8x²+6x-10</td>
+                                <td>dP/dx = 4x³-16x+6</td>
+                            </tr>
+                            <tr>
+                                <td>P = 10x⁵+8x⁴+x</td>
+                                <td>dP/dx = 50x⁴+32x³+1</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Para derivar un polinomio, cada coeficiente en la posición i se multiplica por i y se coloca en la posición i-1 del polinomio resultante.",
+                            "El término constante (grado 0) desaparece en la derivada, y la derivada de un polinomio de grado n tiene grado n-1.",
+                            "Recorre el polinomio original desde i=1 hasta el grado máximo, y para cada posición i, en la derivada coloca en la posición i-1 el valor del coeficiente original multiplicado por i."
+                        ]
+                    },
+                    {
+                        id: "duplicados",
+                        title: "3. Contar duplicados (ContarDuplicadosPR.c)",
+                        description: "Construya un programa en C que, para un vector de hasta 100 enteros en el intervalo [1, 100], indique cuántos números se repiten, especificando cuáles son y cuántas veces se repite cada uno.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Leer números entre 1 y 100 hasta que se ingresa un 0</li>
+                            <li>Utilizar un vector de conteos donde el índice i representa el número i+1</li>
+                            <li>Mostrar qué números se repiten y cuántas veces</li>
+                        </ul>
+                        <p>Ejemplo de ejecución:</p>
+                        <pre>
+            Ingrese números entre 1 y 100 (0 para terminar):
+            5 8 1 5 8 5 8 3 0
+
+            Números que se repiten y sus conteos:
+            Número 5 se repite 3 veces
+            Número 8 se repite 3 veces
+                        </pre>`,
+                        hints: [
+                            "Implementa la función leerVector para leer números entre 1 y 100 hasta que se ingrese un 0, ignorando valores fuera del rango permitido.",
+                            "Usa un segundo vector de 100 elementos donde cada posición i almacena la cantidad de veces que aparece el número i+1 en el vector original.",
+                            "Para mostrar los resultados, recorre el vector de conteos y muestra solo aquellos números que aparecen más de una vez."
+                        ]
+                    },
+                    {
+                        id: "analisis",
+                        title: "4. Análisis de datos (AnalisisDatosPR.c)",
+                        description: "Construir un programa en C que realice el análisis de los datos en bruto (raw) de un experimento, 10 datos y siempre 10. Se ha de realizar un análisis de la validez de esos datos, a través de un limite superior e inferior introducido por el usuario.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Generar aleatoriamente 10 datos entre -100 y 100</li>
+                            <li>Leer límites inferior y superior para validar los datos</li>
+                            <li>Calcular la media de los valores válidos</li>
+                            <li>Mostrar para cada valor válido su diferencia con la media</li>
+                        </ul>
+                        <p>Ejemplo de ejecución:</p>
+                        <pre>
+            Datos generados: -45 67 -23 89 -12 34 56 78 -90 5
+
+            Ingrese el límite inferior: -30
+            Ingrese el límite superior: 50
+
+            Datos válidos: -23 34 5
+            Media de los valores válidos: 5.33
+            Diferencia con la media para -23: -28.33
+            Diferencia con la media para 34: 28.67
+            Diferencia con la media para 5: -0.33
+                        </pre>`,
+                        hints: [
+                            "Usa la función rand() para generar números aleatorios entre -100 y 100. Recuerda inicializar la semilla con srand(time(NULL)).",
+                            "Implementa una función que recorre el vector raw y copia solo los valores dentro del rango [limiteInferior, limiteSuperior] a otro vector (procesados).",
+                            "Calcula la media de los valores procesados y luego muestra cada valor junto con su diferencia respecto a la media."
+                        ]
+                    }
+                ]
+            },
+            pr8: {
+                title: "Práctica 8: Estructuras de datos. Vectores multidimensionales",
+                exercises: [
+                    {
+                        id: "coloreados",
+                        title: "1. Contar coloreados - EJERCICIO MÍNIMO REQUERIDO (VecinosColoreadosPR.c)",
+                        description: "Construir un programa en C que emula una imagen sobre una matriz de tamaño máximo 10x10 con valores 0 (no coloreado) y 1 (coloreado). El programa coloreará aleatoriamente 20 puntos distintos y luego utilizará una función para contar cuántos de esos puntos tienen vecinos coloreados.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Inicializar una matriz 10x10 con ceros</li>
+                            <li>Colorear aleatoriamente 20 puntos distintos (asignarles valor 1)</li>
+                            <li>Contar cuántos puntos coloreados tienen al menos un vecino coloreado</li>
+                        </ul>
+                        <p>Ejemplo de salida:</p>
+                        <pre>
+            Matriz original:
+            0 0 1 0 0 0 0 0 0 0 
+            1 0 0 1 0 0 0 1 0 0 
+            0 1 0 0 0 0 0 0 0 0 
+            0 0 0 0 0 0 1 1 0 0 
+            0 1 0 0 0 0 0 0 0 0 
+            0 0 0 0 0 0 0 0 0 1 
+            1 0 0 0 0 1 1 0 1 1 
+            0 0 1 0 0 0 0 0 0 0 
+            0 0 0 0 0 1 1 0 0 0 
+            0 1 0 0 0 1 0 1 0 0 
+
+            Total de puntos coloreados con vecinos coloreados: 15
+                        </pre>`,
+                        hints: [
+                            "Define la matriz como un tipo de dato usando typedef: typedef int Matriz[FILAS][COLUMNAS];",
+                            "En la función colorearPuntosAleatorios, genera coordenadas aleatorias y verifica si la posición ya está coloreada antes de asignarle un 1.",
+                            "Para contar vecinos coloreados, verifica las 8 posiciones adyacentes a cada punto coloreado (arriba, abajo, izquierda, derecha y las diagonales)."
+                        ]
+                    },
+                    {
+                        id: "matrices",
+                        title: "2. Operaciones con matrices (OperacionesMatricesPR.c)",
+                        description: "Construir un programa que lea por teclado dos matrices rectangulares de hasta 5 filas por 5 columnas, y que calcule (si ello es posible) la suma y el producto de las mismas y lo imprima en pantalla.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Leer las dimensiones y elementos de dos matrices</li>
+                            <li>Verificar si se pueden sumar (mismas dimensiones)</li>
+                            <li>Verificar si se pueden multiplicar (columnas de A = filas de B)</li>
+                            <li>Mostrar los resultados de las operaciones válidas</li>
+                        </ul>
+                        <table>
+                            <tr>
+                                <th>Operación</th>
+                                <th>Condiciones</th>
+                            </tr>
+                            <tr>
+                                <td>Suma</td>
+                                <td>Matrices con las mismas dimensiones</td>
+                            </tr>
+                            <tr>
+                                <td>Multiplicación</td>
+                                <td>Número de columnas de A = Número de filas de B</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Para sumar matrices, ambas deben tener exactamente las mismas dimensiones (filas y columnas).",
+                            "Para multiplicar matrices, el número de columnas de la primera debe ser igual al número de filas de la segunda.",
+                            "En la multiplicación de matrices, el elemento C[i][j] es la suma de los productos A[i][k] * B[k][j] para todo k entre 0 y el número de columnas de A."
+                        ]
+                    },
+                    {
+                        id: "polucion",
+                        title: "3. Estudio de polución (PolucionPR.c)",
+                        description: "Considerar las siguientes estructuras de datos para representar una imagen digital obtenida mediante un satélite correspondiente a una zona rectangular de una ciudad determinada. La imagen está dividida en pequeños cuadrados (píxeles) donde se almacena un valor real comprendido entre 0 y 1, el cual es proporcional a la polución por CO2 en dicha zona.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Leer las dimensiones de la imagen (filas y columnas)</li>
+                            <li>Leer los valores de polución para cada píxel (entre 0 y 1)</li>
+                            <li>Calcular la polución media</li>
+                            <li>Identificar los píxeles con valores superiores al 25% de la media</li>
+                        </ul>
+                        <p>Ejemplo con matriz 3x3:</p>
+                        <pre>
+            Datos de Entrada:
+                1     2     3
+            1 0.130 0.368 0.926
+            2 0.666 0.949 0.119
+            3 0.383 0.568 0.062
+
+            Polución media: 0.464
+            Píxeles con polución superior al 25% de la media (0.579):
+            (1,3) (2,1) (2,2)
+                        </pre>`,
+                        hints: [
+                            "Lee primero las dimensiones de la matriz y valida que no excedan el máximo permitido (5x5).",
+                            "Para calcular la media, suma todos los valores y divide entre el número total de píxeles (filas * columnas).",
+                            "Recorre la matriz para encontrar los píxeles cuyo valor supera el 25% de la media (valor > media * 1.25) y muestra sus coordenadas."
+                        ]
+                    }
+                ]
+            },
+            pr9: {
+                title: "Práctica 9: Estructuras de datos. Registros",
+                exercises: [
+                    {
+                        id: "tiempo",
+                        title: "1. Registro de tiempos - EJERCICIO MÍNIMO REQUERIDO (RegistroTiemposPR.c)",
+                        description: "Construir un programa lo más modular posible que lea por teclado dos registros de tiempo y calcule e imprima en pantalla el tiempo transcurrido desde el primer registro hasta el segundo. Cada registro de tiempo vendrá dado en hora, minutos, segundos y centésimas de segundo.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Leer dos registros de tiempo, cada uno con cuatro campos: h (hora, 0-23), mn (minutos, 0-59), sg (segundos, 0-59) y ct (centésimas, 0-99)</li>
+                            <li>Validar cada componente de tiempo al introducirlo</li>
+                            <li>Calcular el tiempo transcurrido entre ambos registros</li>
+                            <li>Si el segundo registro es anterior al primero, considerar que es del día siguiente</li>
+                        </ul>
+                        <table>
+                            <tr>
+                                <th>Registro inicial</th>
+                                <th>Registro final</th>
+                                <th>Tiempo transcurrido</th>
+                            </tr>
+                            <tr>
+                                <td>00:00:00.00</td>
+                                <td>18:15:34.23</td>
+                                <td>18:15:34.23</td>
+                            </tr>
+                            <tr>
+                                <td>20:05:34.26</td>
+                                <td>22:10:40.12</td>
+                                <td>02:05:05.86</td>
+                            </tr>
+                            <tr>
+                                <td>23:50:00.00</td>
+                                <td>02:01:28.99</td>
+                                <td>02:11:28.99</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Define un registro (struct) con cuatro campos: h (hora), mn (minutos), sg (segundos) y ct (centésimas).",
+                            "Para calcular el tiempo transcurrido, convierte ambos tiempos a centésimas de segundo, calcula la diferencia, y luego convierte de nuevo a formato h:mn:sg:ct.",
+                            "Si el tiempo final es menor que el inicial, asume que ha pasado un día (24 horas) y añade el equivalente a un día en centésimas de segundo."
+                        ]
+                    },
+                    {
+                        id: "figuras",
+                        title: "2. Figuras geométricas (FigurasPR.c)",
+                        description: "Construir un programa que utilice un registro para almacenar información sobre una de 3 posibles figuras geométricas (círculo, rectángulo y triángulo) y calcular su área.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Leer el tipo de figura (C: Círculo, R: Rectángulo, T: Triángulo)</li>
+                            <li>Según el tipo, leer los parámetros necesarios:
+                                <ul>
+                                    <li>Círculo: radio</li>
+                                    <li>Rectángulo: base y altura</li>
+                                    <li>Triángulo: longitud de los tres lados</li>
+                                </ul>
+                            </li>
+                            <li>Validar que los parámetros sean correctos</li>
+                            <li>Calcular y mostrar el área de la figura</li>
+                        </ul>
+                        <table>
+                            <tr>
+                                <th>Figura</th>
+                                <th>Parámetros (cm)</th>
+                                <th>Área (cm²)</th>
+                            </tr>
+                            <tr>
+                                <td>Círculo</td>
+                                <td>Radio: 3</td>
+                                <td>28.27</td>
+                            </tr>
+                            <tr>
+                                <td>Rectángulo</td>
+                                <td>Base: 20, Altura: 30</td>
+                                <td>600.00</td>
+                            </tr>
+                            <tr>
+                                <td>Triángulo</td>
+                                <td>Lado 1: 4, Lado 2: 5, Lado 3: 3</td>
+                                <td>6.00</td>
+                            </tr>
+                        </table>`,
+                        hints: [
+                            "Utiliza una unión (union) con un struct para representar las tres figuras posibles, junto con un campo que indique el tipo de figura.",
+                            "Para el círculo, verifica que el radio sea positivo; para el rectángulo, que base y altura sean positivas; para el triángulo, que cada lado sea menor que la suma de los otros dos.",
+                            "Usa la fórmula de Herón para calcular el área del triángulo: √(s*(s-a)*(s-b)*(s-c)) donde s = (a+b+c)/2."
+                        ]
+                    },
+                    {
+                        id: "lista-figuras",
+                        title: "3. Lista de figuras (ListaFigurasPR.c)",
+                        description: "Extender el ejercicio 2 para que el programa mantenga datos de hasta 10 figuras geométricas. Además, se debe implementar una función que analice la lista de forma que se obtenga como salida el número total de figuras de cada tipo y la suma de las áreas de las figuras de cada tipo.",
+                        expected: `
+                        <p>El programa debe:</p>
+                        <ul>
+                            <li>Permitir ingresar hasta 10 figuras geométricas de diferentes tipos</li>
+                            <li>Para cada figura, validar sus parámetros y calcular su área</li>
+                            <li>Implementar una función de análisis que calcule:
+                                <ul>
+                                    <li>Número total de figuras de cada tipo</li>
+                                    <li>Suma de las áreas por tipo de figura</li>
+                                </ul>
+                            </li>
+                            <li>Mostrar el resultado del análisis</li>
+                        </ul>
+                        <pre>
+            typedef struct {
+                int circulos;
+                int triangulos;
+                int rectangulos;
+                float areaCirculos;
+                float areaTriangulos;
+                float areaRectangulos;
+            } tipo_analisis;
+                        </pre>`,
+                        hints: [
+                            "Crea un arreglo de estructuras figura_t para almacenar hasta 10 figuras de diferentes tipos.",
+                            "Implementa una función analizarFiguras que recorra el arreglo, cuente las figuras de cada tipo y sume sus áreas.",
+                            "Para calcular las áreas, reutiliza las funciones de cálculo implementadas en el ejercicio anterior."
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Variables globales
+        let currentPractice = 'pr3';
+        let currentExercise = null;
+        let activeContainer = null;
+        let activeButton = null;
+
+        // Función para ocultar todos los contenedores
+        function hideAllContainers() {
+            document.getElementById('hint1-container').style.display = 'none';
+            document.getElementById('hint2-container').style.display = 'none';
+            document.getElementById('hint3-container').style.display = 'none';
+        }
+
+        // Función para quitar la clase active de todos los botones
+        function resetActiveButtons() {
+            document.getElementById('hint1-btn').classList.remove('active');
+            document.getElementById('hint2-btn').classList.remove('active');
+            document.getElementById('hint3-btn').classList.remove('active');
+        }
+
+        // Función para cargar los ejercicios de una práctica
+        function loadExercises(practiceId) {
+            currentPractice = practiceId;
+            const exerciseList = document.getElementById('exercise-list');
+            exerciseList.innerHTML = '';
+            
+            // Obtener los ejercicios de la práctica seleccionada
+            const practice = practicas[practiceId];
+            
+            // Añadir cada ejercicio a la lista
+            practice.exercises.forEach(exercise => {
+                const exerciseItem = document.createElement('div');
+                exerciseItem.className = 'exercise-item';
+                exerciseItem.dataset.id = exercise.id;
+                exerciseItem.textContent = exercise.title;
+                
+                // Agregar evento de clic al ejercicio
+                exerciseItem.addEventListener('click', () => {
+                    // Eliminar clase 'active' de todos los ejercicios
+                    document.querySelectorAll('.exercise-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Agregar clase 'active' al ejercicio seleccionado
+                    exerciseItem.classList.add('active');
+                    
+                    // Mostrar los detalles del ejercicio
+                    showExerciseDetails(exercise);
+                });
+                
+                exerciseList.appendChild(exerciseItem);
+            });
+        }
+        
+        // Función para mostrar los detalles de un ejercicio
+        function showExerciseDetails(exercise) {
+            currentExercise = exercise;
+            
+            // Ocultar mensaje inicial y mostrar detalles
+            document.querySelector('.initial-message').classList.add('hidden');
+            document.querySelector('.exercise-details').classList.remove('hidden');
+            
+            // Actualizar contenido
+            document.getElementById('exercise-title').textContent = exercise.title;
+            document.getElementById('exercise-description').textContent = exercise.description;
+            document.getElementById('expected-content').innerHTML = exercise.expected;
+            document.getElementById('hint1-text').textContent = exercise.hints[0] || 'No hay pista disponible';
+            document.getElementById('hint2-text').textContent = exercise.hints[1] || 'No hay pista disponible';
+            document.getElementById('hint3-text').textContent = exercise.hints[2] || 'No hay pista disponible';
+            
+            // Ocultar todos los contenedores y resetear botones activos
+            hideAllContainers();
+            resetActiveButtons();
+            
+            // Reiniciar variables de control
+            activeContainer = null;
+            activeButton = null;
+        }
+        
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cargar los ejercicios de la práctica inicial
+            loadExercises(currentPractice);
+            
+            // Agregar eventos a los botones de práctica
+            document.querySelectorAll('.practice-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Eliminar clase 'active' de todos los botones
+                    document.querySelectorAll('.practice-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // Agregar clase 'active' al botón seleccionado
+                    btn.classList.add('active');
+                    
+                    // Cargar los ejercicios de la práctica seleccionada
+                    loadExercises(btn.dataset.practice);
+                    
+                    // Ocultar detalles y mostrar mensaje inicial
+                    document.querySelector('.initial-message').classList.remove('hidden');
+                    document.querySelector('.exercise-details').classList.add('hidden');
+                });
+            });
+            
+            document.getElementById('hint1-btn').addEventListener('click', () => {
+                const container = document.getElementById('hint1-container');
+                const button = document.getElementById('hint1-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+            
+            document.getElementById('hint2-btn').addEventListener('click', () => {
+                const container = document.getElementById('hint2-container');
+                const button = document.getElementById('hint2-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+            
+            document.getElementById('hint3-btn').addEventListener('click', () => {
+                const container = document.getElementById('hint3-container');
+                const button = document.getElementById('hint3-btn');
+                
+                if (container === activeContainer) {
+                    // Si ya está activo, lo desactivamos
+                    container.style.display = 'none';
+                    button.classList.remove('active');
+                    activeContainer = null;
+                    activeButton = null;
+                } else {
+                    // Ocultar todos los contenedores y resetear botones activos
+                    hideAllContainers();
+                    resetActiveButtons();
+                    
+                    // Mostrar este contenedor y activar este botón
+                    container.style.display = 'block';
+                    button.classList.add('active');
+                    activeContainer = container;
+                    activeButton = button;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
