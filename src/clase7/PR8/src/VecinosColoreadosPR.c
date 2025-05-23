@@ -1,100 +1,119 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "PR8.h"
 
 #define FILAS 10
 #define COLUMNAS 10
 #define PUNTOS_ALEATORIOS 20
 
-typedef int Matriz[FILAS][COLUMNAS];
+void introducirDatosEnMatrizManual(int** matriz){
+    for(int i = 0; i < FILAS; i++) {
+        matriz[i] = malloc(COLUMNAS * sizeof(int));
+        for(int j = 0; j < COLUMNAS; j++){
+            printf("Introduce el valor de la posicion [%d][%d]:", i, j);
+            scanf("%d", &matriz[i][j]);
+        }
+        printf("\n");
+    }
 
-// Funciones
-void inicializarMatriz(Matriz matriz);
-void mostrarMatriz(Matriz matriz);
-void colorearPuntosAleatorios(Matriz matriz);
-int contarVecinosColoreados(Matriz matriz, int fila, int columna, int distancia);
-int contarPuntosConVecinosColoreados(Matriz matriz);
-
-int main(int argc, char *argv[])
-{
-    Matriz matriz;
-
-    inicializarMatriz(matriz);
-    colorearPuntosAleatorios(matriz);
-    printf("Matriz original:\n");
-    mostrarMatriz(matriz);
-
-    int puntosConVecinosColoreados = contarPuntosConVecinosColoreados(matriz);
-
-    printf("\nTotal de puntos coloreados con vecinos coloreados: %d\n", puntosConVecinosColoreados);
-
-    return 0;
 }
 
-void inicializarMatriz(Matriz matriz) {
-    for (int i = 0; i < FILAS; i++) {
-        for (int j = 0; j < COLUMNAS; j++) {
-            matriz[i][j] = 0;  // Inicializar la matriz con 0 (no coloreado)
+void introducirDatosEnMatrizAuto(int** matriz){
+    for(int i = 0; i < FILAS; i++) {
+        matriz[i] = malloc(COLUMNAS * sizeof(int));
+        for(int j = 0; j < COLUMNAS; j++){
+            matriz[i][j] = 0;
         }
     }
 }
 
-void mostrarMatriz(Matriz matriz) {
+void mostrarMatriz(int** matriz) {
     for (int i = 0; i < FILAS; i++) {
-        for (int j = 0; j < COLUMNAS; j++) {
+        for(int j = 0; j < COLUMNAS; j++){
             printf("%d ", matriz[i][j]);
         }
         printf("\n");
     }
 }
 
-void colorearPuntosAleatorios(Matriz matriz) {
+void colorearPuntosAleatorios(int** matriz) {
     srand(time(NULL));
-
-    int puntosColoreados = 0;
-    while (puntosColoreados < PUNTOS_ALEATORIOS) {
-        int fila = rand() % FILAS;
-        int columna = rand() % COLUMNAS;
-
-        if (matriz[fila][columna] == 0) {
-            matriz[fila][columna] = 1;  // Colorear el punto
-            puntosColoreados++;
+    for (int i = 0; i < PUNTOS_ALEATORIOS; i++) {
+        int filaAleatoria = rand() % FILAS;
+        int columnaAleatoria = rand() % COLUMNAS;
+        while(matriz[filaAleatoria][columnaAleatoria] == 1){
+            filaAleatoria = rand() % FILAS;
+            columnaAleatoria = rand() % COLUMNAS;
         }
+        matriz[filaAleatoria][columnaAleatoria] = 1;
+        // if(matriz[filaAleatoria][columnaAleatoria] == 1) {
+        //     i--;
+        //     //break; TERMINA Y SE VA
+        //     //continue; TERMINA LA ITERACION ACTUAL Y VUELVE A EMPEZAR
+        //     continue;
+        // }
     }
 }
 
-int contarVecinosColoreados(Matriz matriz, int fila, int columna, int distancia) {
-    int contador = 0;
-
-    for (int i = -distancia; i <= distancia; i++) {
-        for (int j = -distancia; j <= distancia; j++) {
-            int nuevaFila = fila + i;
-            int nuevaColumna = columna + j;
-
-            // Verificar que la posición esté dentro de los límites de la matriz
-            if (nuevaFila >= 0 && nuevaFila < FILAS && nuevaColumna >= 0 && nuevaColumna < COLUMNAS) {
-                // Excluir el punto central y verificar si el vecino está coloreado
-                if (!(i == 0 && j == 0) && matriz[nuevaFila][nuevaColumna] == 1) {
-                    contador++;
+void contarPuntosConVecinosColoreados(int** matriz, int* contador){
+    int vecinoEncontrado = 0;
+    for(int i = 0; i < FILAS; i++) {
+        for(int j = 0; j < COLUMNAS; j++){
+            if(matriz[i][j] == 1){
+                // Verificar vecinos
+                for (int ii = -1; ii <= 1; ii++){
+                    for(int jj = -1; jj <= 1; jj++){
+                        if(ii == 0 && jj == 0) {
+                            continue;
+                        }
+                        int filaVecino = i + ii;
+                        int columnaVecino = j + jj;
+                        if(filaVecino >= 0 && filaVecino < FILAS
+                        && columnaVecino >= 0 && columnaVecino < COLUMNAS){
+                            if(matriz[filaVecino][columnaVecino] == 1){
+                                (*contador)++;
+                                printf("Punto Vecino [%d][%d] vecino de [%d][%d]\n es coloreado", filaVecino, columnaVecino, i, j);
+                                printf("\n");
+                                vecinoEncontrado = 1;
+                                break;
+                            }
+                        }
+                    }
+                    if(vecinoEncontrado == 1){
+                        vecinoEncontrado = 0;
+                        break;
+                    }
                 }
             }
         }
     }
-
-    return contador;
 }
 
-int contarPuntosConVecinosColoreados(Matriz matriz) {
-    int puntosConVecinosColoreados = 0;
+// Funciones
+int main(int argc, char *argv[])
+{
 
-    for (int i = 0; i < FILAS; i++) {
-        for (int j = 0; j < COLUMNAS; j++) {
-            if (matriz[i][j] == 1 && contarVecinosColoreados(matriz, i, j, 1) > 0) {
-                puntosConVecinosColoreados++;
-            }
-        }
-    }
+    int** matriz = malloc(FILAS * sizeof(int*));
+    int contadorPuntosVecinosColoreados = 0;
 
-    return puntosConVecinosColoreados;
+
+
+    //Inicializar la matriz
+    // introducirDatosEnMatrizManual(matriz);
+    introducirDatosEnMatrizAuto(matriz);
+    mostrarMatriz(matriz);
+    printf("\n");
+    //Colorear puntos aleatorios
+    colorearPuntosAleatorios(matriz);
+    mostrarMatriz(matriz);
+    //Mostrar la matriz
+    // mostrarMatriz(matriz);
+    
+    contarPuntosConVecinosColoreados(matriz, &contadorPuntosVecinosColoreados);
+    printf("Total de puntos con vecinos coloreados: %d\n", contadorPuntosVecinosColoreados);
+    //Contar puntos con vecinos coloreados
+    // contarPuntosConVecinosColoreados(matriz, &contadorPuntosVecinosColoreados);
+
+    return 0;
 }
+
