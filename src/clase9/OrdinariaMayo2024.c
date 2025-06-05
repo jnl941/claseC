@@ -15,40 +15,40 @@ relativa es 3/10 en el caso de 4 su frecuencia absoluta es 1 y su frecuencia rel
 #define MAX_TIRADAS 1000
 
 typedef int tipo_tiradas[MAX_TIRADAS];
-typedef struct  {
-    int frecuencia_absoluta;
-    float frecuencia_relativa;
-} tipo_frecuencias[6];
 
-int tirar_dados(tipo_tiradas tiradas) {
-    for(int i = 0; i < MAX_TIRADAS; i++){
-        int numero_sacado = (int) rand() % 6 + 1;
-        tiradas[i] = numero_sacado;
-    }
-    return MAX_TIRADAS; // Retorna el número de tiradas realizadas
-}
+//6 porque son 6 números del dado, del 1 al 6
+typedef int tipo_frecuencias[6];
+
+int tirar_dados(tipo_tiradas tiradas);
+
 //n = 1000 tiradas
 //frecuencia_absoluta = int
 int main() {
     // Definicion e inicializacion de las frecuencias
-    tipo_frecuencias frecuencias;
-    for (int i = 0; i < 6; i++) {
-        frecuencias[i].frecuencia_absoluta = 0;
-    }
+    tipo_frecuencias frecuencia_absoluta = {0}; // IMPORTANTE: Inicializamos todas las frecuencias a 0 con {0} 
     tipo_tiradas tiradas;
     int n = tirar_dados(tiradas); //llamada a la funcion ya construida
+
     for (int i = 0; i < n; ++i) {
-        frecuencias[tiradas[i] - 1].frecuencia_absoluta++;
+        frecuencia_absoluta[tiradas[i] - 1]++;
     }
 
     
     printf("\nFrecuencias relativas:\n");
     for(int i = 0; i < 6; i++)
     {
-        frecuencias[i].frecuencia_relativa = (float)frecuencias[i].frecuencia_absoluta / (float)n;
-        printf("Tirada %d: %.2f\n", i + 1, (float)frecuencias[i].frecuencia_absoluta / n);
+        printf("Tirada %d: %.2f\n", i + 1, (float)frecuencia_absoluta[i] / n);
     }
     return 0;
 }
 
 // ubicacion de la implementacion de la funcion tirar_dados que no deben implementar
+int tirar_dados(tipo_tiradas tiradas) {
+    int n;
+    for(int i = 0; i < MAX_TIRADAS; i++){
+        int numero_sacado = (int) rand() % 6 + 1; // Podeis obviar la declaracion de la variable numero_sacado
+                                                    // y simplemente usar la expresion directamente
+        tiradas[i] = numero_sacado;
+    }
+    return n;
+}
