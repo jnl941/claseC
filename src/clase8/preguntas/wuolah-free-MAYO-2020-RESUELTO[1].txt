@@ -1,0 +1,635 @@
+MAYO-2020-RESUELTO.pdf
+
+SuperIngenieros
+Programación
+1º Grado en Ingeniería Electrónica Industrial
+Escuela Superior de Ingeniería
+Universidad de Almería
+
+.
+
+Reservados todos los derechos.
+No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797332
+
+Examen de Programación (Grados en Ingeniería Mecánica, Eléctrica, Electrónica y Química Industrial)
+24 de Mayo 2020
+APELLIDO/S:
+DNI:
+
+NOMBRE:
+GRUPO DOCENTE:
+
+GRUPO TRABAJO:
+
+Instrucciones:
+Para seleccionar la respuesta (o respuestas) correcta(s), rodear la letra de la opción con un círculo O
+Para anular una respuesta ya seleccionada tachar el círculo con una cruz X
+Para volver a seleccionar de nuevo una respuesta anulada usar una flecha a la izq. de la opción ³
+El examen consta de 30 preguntas tipo test de respuestas múltiples
+Cada pregunta admite una o varias opciones correctas (hay que seleccionar todas las opciones correctas)
+Puntuación de cada pregunta: 8.0/30 (si se han seleccionado solamente todas las opciones correctas)
+0.0 (en caso contrario)
+"
+
+¿Cuál ó cuáles de las siguientes afirmaciones son correctas?
+a. La representación en C de un número con el tipo float es exacta pero con límites
+b. La representación en C de un número con el tipo int es exacta pero con límites
+c. La representación en C de un número con el tipo float es exacta y sin límites
+d. La representación en C de un número con el tipo int es exacta y sin límites
+e. Todas las afirmaciones anteriores son incorrectas
+Respecto a los nombres o identificadores en lenguaje C, marcar la opción u opciones correctas:
+a. Puede contener espacios en blanco
+b. Puede ser de cualquier longitud
+c. Pueden contener cualquier secuencia de letras, números y caracteres de subrayado (_)
+d. No se diferencia entre letras mayúsculas y minúsculas
+e. Ninguna de las otras opciones es correcta
+Dado el siguiente código en lenguaje C, señale la afirmación o afirmaciones correctas:
+#include <stdio.h>
+a. El programa tiene un error que se detecta en
+int main(void){
+tiempo de compilación (no compila).
+float num, *res;
+b. La variable res almacena el doble del valor de num.
+printf ("Introduzca un numero:\n");
+c. El programa muestra en pantalla el valor
+scanf(" %f", &num);
+acumulado en la variable res.
+res = 2*num;
+printf("%f", *res);
+d. El programa muestra por pantalla la dirección de la
+return 0;
+variable res.
+}
+e. Todas las respuestas anteriores son incorrectas
+Indique cuál (o cuáles) de las siguientes afirmaciones es verdadera en lenguaje C:
+a. Una variable de tipo "int" puede almacenar valores negativos.
+b. Una variable de tipo "float" no puede almacenar valores enteros.
+c. La sentencia <char letra=b;= asigna a la variable letra el valor correspondiente a la letra b.
+d. La sentencia float f=3,2 asigna a la variable f el valor 3,2.
+e. Todas las afirmaciones anteriores son verdaderas
+f. Todas las afirmaciones anteriores son falsas
+En lenguaje C ¿qué operación (u operaciones) de las siguientes es correcta?:
+a. 25 * 3,5
+b. 33.7 % 5.0
+c. 33 / 5.3
+d. 10,5 % -15,4E2
+e. Todas las operaciones anteriores son incorrectas
+En lenguaje C, ¿cuál o cuáles de las siguientes afirmaciones es correcta respecto del operador binario %?
+a. Puede dar error para operandos con valores naturales (1,2,3,&)
+b. Nunca da error para operandos de tipo int
+c. Nunca da error para operandos de tipo float, siempre que el operando de la derecha sea no nulo
+d. Está definido para operandos de cualquier tipo de datos
+e. No existe este operador en C
+f. Todas las respuestas anteriores son falsas
+.
+
+"
+
+"
+
+"
+
+"
+
+"
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+"
+
+"
+
+"
+
+"
+
+En C, si tenemos tres variables enteras con los siguientes valores asignados: a=1, b=0 y c=0, indicar ¿qué
+expresión (o expresiones) devuelven como resultado 1 (verdadero)?:
+a. !(! a || c || !b)
+b. !(! c || b && a)
+c. a && ! (a || ! c)
+d. a && ! c || b
+e. Ninguna de las anteriores devuelve 1
+Dado el siguiente fragmento de código en C, Después de su ejecución la variable n contiene el valor:
+int n=0;
+a. -1
+if(n=2){
+b. 0
+n=n+1;
+c. 1
+}else{
+d. 2
+n=n-1;
+e. 3
+}
+En lenguaje C, ¿cuál ó cuales de las siguientes sintaxis es correcta para el bucle for si n es una variable de tipo
+int?:
+a. for(n,n<3,n++)
+b. for( ;n,n++)
+c. for(;;)
+d. for(;n<3;n+)
+e. Todas las anteriores son incorrectas
+Tras ejecutar el siguiente programa en C ¿qué valores que se muestran por pantalla?
+#include <stdio.h>
+a. 4 3
+int main(void){
+b. 20 144
+int a=4,b=3,mayor;
+c. 8 12
+while((a<4)||(b<100)){
+d. Error de compilación
+if(a>b){
+e. Ninguna de las respuestas anteriores es correcta
+mayor = a;
+}else{
+mayor = b;
+}else{
+mayor = 0;
+}
+a=a+mayor;
+b=b*mayor;
+}
+printf("%i %i",a,b);
+}
+
+"
+
+"
+
+¿Qué imprime el siguiente programa en pantalla?
+a. 6
+b. 5
+c. 4
+d. 3
+e. No imprime nada (bucle infinito)
+
+#include <stdio.h>
+int main(void) {
+int i=0, r;
+while(i<3){
+switch(i) {
+case 0:
+r = i;
+break;
+case 1:
+r = i+1;
+break;
+case 2:
+r = i+2;
+case 3:
+r = i+3;
+}
+i++;
+}
+printf("%i ", r);
+return 0;
+}
+
+¿Es posible ejecutar un programa construido en C que no tenga la función main()?
+a. No, en ningún caso
+b. Sí, siempre es posible
+c. Sólo en el caso de que el programa incluya la librería <stdio.h>
+d. Sólo en el caso de que el programa tenga otra función
+.
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797332
+
+"
+
+"
+
+La palabra reservada void en la declaración de la función: void func(int a, float *b); indica que&
+a. La función no devuelve ningún resultado a través de la lista de parámetros formales.
+b. La función devuelve el valor 0.0 a través del nombre o identificador de la misma.
+c. Todos los parámetros formales pueden ser excepcionalmente de salida.
+d. No indica nada (void significa nulo).
+e. Es un error de compilación.
+f. Ninguna de las respuestas anteriores es correcta.
+¿Cuál es el resultado que se muestra por pantalla tras ejecutar el siguiente programa?
+#include <stdio.h>
+a. 140, 5
+int producto(int a,int b);
+b. 140, 20
+int main(void){
+int n1=5, n2=7;
+c. 35, 5
+n2 = producto(n1,n2);
+d. 35, 20
+printf ("%i, %i", n2, n1);
+return 0;
+e. Error de compilación
+}
+int producto (int a,int b){
+a= 20;
+return (a * b);
+}
+
+"
+
+"
+
+"
+
+Considerar el siguiente fragmento de código en lenguaje de programación C. ¿Cuál o cuáles de las siguientes
+expresiones no es correcta?:
+float a, *p;
+a. a
+a=-4.55;
+b. p
+p=&a;
+c. &a
+d. &p
+e. *a
+f. *p
+g. &*p
+h. *&p
+i. *&a
+j. &*a
+Supongamos el siguiente fragmento de código en C. Después de la ejecución de este fragmento, ¿cuál o cuáles
+de las siguientes afirmaciones es correcta?:
+void CuaCubo(int *x, int *x2, int *x3){
+a. A vale 4 y B vale 1
+*x2 = *x*(*x);
+b. A vale 4 y B vale 16
+*x3 = *x*(*x)*(*x);
+c. A vale 4 y B vale 1024
+}
+d. A vale 16 y B vale 1
+&&&
+e. A vale 16 y B vale 64
+B = 1;
+A = 4;
+f. A vale 16 y B vale 4096
+CuaCubo(&A, &A, &B);
+g. Error en tiempo de ejecución
+Dada la siguiente definición de función en C, Indicar el resultado en pantalla de la siguiente activación:
+saludo(3);
+
+a. HolaHolaHola
+b. Hola
+Hola
+Hola
+c. Hola Hola Hola
+d. Error de compilación
+e. Ninguna de las respuestas anteriores es correcta
+
+void saludo(void){
+printf("Hola\n");
+}
+&
+saludo(3);
+&
+
+.
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797332
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797332
+
+"
+
+Dado el siguiente programa: ¿cuál ó cuáles de las siguientes líneas de código podría escribirse en la línea de
+guiones (----------- ) para que el programa compilase sin errores?
+#include <stdio.h>
+a. printf ("%f", mi_funcion(a,b,letra));
+float mi_funcion(float a, int b, char c);
+b. printf ("%f", mi_funcion(&a,&b,&letra));
+int main(){
+c. printf ("%f", mi_funcion(b,a,letra));
+float a=5.5;
+d. printf ("%f", mi_funcion(*b,*a,*letra));
+int b=4.0;
+e. El programa no compila porque la sentencia
+char letra;
+------------------previa de asignación int num_b=4.0; es
+return(0);
+incorrecta.
+.
+
+}
+float mi_funcion(float a, int b, char c){
+c='k';
+return(a+b);
+}
+
+"
+
+Considerar el siguiente programa en C, donde la función llamada hace uso de la variable global (o externa) a:
+Después de la ejecución de este programa:
+#include <stdio.h>
+a. La variable a vale 2
+int a;
+b. La variable a vale 3
+void Func_1(int *b){
+c. La variable a vale 6
+a=3;
+d. La variable a vale 9
+*b=a*(*b);
+e. Error de compilación: el lenguaje C prohíbe }
+int main(){
+el uso de variables externas.
+a=2;
+f. Todas las respuestas anteriores son
+Func_1(&a);
+incorrectas
+printf("a=%d\n",a);
+return 0;
+
+}
+
+"
+
+Dada la siguiente función recursiva: ¿Cuál o cuáles de las siguientes afirmaciones es correcta?
+int fact(int x){
+a. Al llamar a fact(0), escribe en pantalla 1
+if (x==0)
+b. Al llamar a fact(1), escribe en pantalla 1
+return (1);
+c. Al llamar a fact(2), escribe en pantalla 1 2
+else{
+d. Al llamar a fact(3), escribe en pantalla 1 2 6
+x = x*fact(x-1);
+e. Hay un error al compilar la función
+printf (" %d",x);
+return (x);
+f. Todas las afirmaciones anteriores son
+}
+incorrectas
+}
+
+"
+
+Considere el siguiente prototipo de una función C que calcula la integral definida de una función f de R en R, en
+el intervalo de la recta [a,b]:
+double integral(double (*f)(double x),double a,double b);
+
+"
+
+Cuál o cuáles de las siguientes instrucciones no es sintácticamente correcta:
+a. printf(" Area= %.3f" ,integral(sin,0, M_PI/2.0));
+b. printf(" Area= %.3f" ,integral(sin(x),0, M_PI/2.0));
+c. printf(" Area= %.3f" ,integral(exp,0, 10));
+d. printf(" Area= %.3f" ,integral(exp*sin,0, M_PI));
+e. printf(" Area= %.3f" ,integral(&sin,0, M_PI/2.0));
+f. printf(" Area= %.3f" ,integral(*sin,0, M_PI/2.0));
+g. Todas las anteriores son correctas
+Dado el siguiente vector de enteros inicializado con los correspondientes valores, indique ¿qué opción (u
+opciones) utilizaría para imprimir por pantalla el número 10?.
+static int vector[10]={3, 20, 4, 5, -2, 6, 7, 10, 15, 0};
+
+a.
+b.
+c.
+d.
+e.
+f.
+
+printf("%d", &(vector +8));
+printf("%d", *(vector+8));
+printf("%d", &vector[8]);
+printf("%d", vector[8]);
+printf("%d", *vector[8]);
+Ninguna de las anteriores.
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+"
+
+De las siguientes opciones de declaración de nuevos tipos de datos, indicar cuál o cuáles seleccionaría para poder
+representar en C las temperaturas (en grados centígrados y con dos decimales de precisión) del combustible que
+va por una tubería de 1.5 km de longitud, medidas en ambos extremos de la misma y en puntos equidistantes 50
+m:
+tipo a;
+a. typedef double tipo[1..30];
+b. typedef double tipo[0..29];
+c. typedef double tipo[29];
+d. typedef double tipo[30];
+e. typedef double tipo[31];
+f. Ninguna de las anteriores
+Indique ¿cuál o cuáles de las siguientes afirmaciones respecto a un <array= en C son correctas?:
+a. Los datos de los <arrays= deben procesarse elemento a elemento empezando siempre por el primero.
+b. Un <array= completo no puede imprimirse directamente como si fuera un bloque.
+c. Un <array= no puede contener elementos que sean a su vez <arrays=.
+d. Un array puede compararse directamente con otro usando los operadores relacionales siempre que los
+dos contengan el mismo tipo de datos y sean del mismo tamaño.
+e. Todas las afirmaciones anteriores son incorrectas.
+¿Qué se imprimirá al ejecutar este programa?
+#include <stdio.h>
+a. 25 4 3 8 10 11
+void fun(int *x, int n){
+b. 4 3 8 10 11
+if(n==0)
+c. 11 10 8 3 4 25
+return;
+d. 10 8 3 4 25
+else{
+e. Error de compilación
+n--;
+printf(" %d", *(x+n));
+f. Error en tiempo de ejecución
+fun(x,n);
+(<stack overflow=:
+}
+desbordamiento de pila)
+.
+
+"
+
+"
+
+}
+int main(){
+static int x[6]={25,4,3,8,10,11};
+fun(x,6);
+return 0;
+}
+
+"
+
+"
+
+¿Qué imprime el siguiente programa?
+a. lunes martes miercoles jueves
+viernes sábado
+b. lunes martes miercoles jueves
+viernes sabado domingo
+c. lunes martes miercoles jueves
+viernes
+d. viernes jueves miercoles martes
+lunes
+e. Error de compilación
+f. Error en tiempo de ejecución (<stack
+overflow=: desbordamiento de pila)
+
+#include <stdio.h>
+#include <string.h>
+void fun(int i, char p[][10]);
+int main(){
+static char p[7][10]={"lunes","martes",
+"miercoles","jueves","viernes",
+"sabado","domingo"};
+fun(0,p);
+return 0;
+}
+void fun(int i, char p[][10]){
+if(strcmp(p[i],"sabado")==0)
+return;
+fun(i+1,p);
+printf("%s ", p[i]);
+}
+
+En el lenguaje C, para implementar un tipo de datos registro con parte variante se necesita:
+a. La definición de al menos un tipo <struct= y varios tipos <union= (uno para cada una de las variantes).
+b. La definición de varios tipos struct (uno para cada variante) o bien de un único tipo <union=.
+c. Sólo la definición de un tipo <struct= y un tipo <union= para representar todas las variantes.
+d. La definición de un tipo <struct=para el registro, de un tipo <union= para todas las variantes, y
+posiblemente varios tipos <struct= para la configuración de campos de cada una de las variantes.
+e. No es posible representar registros con parte variante en lenguaje C.
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797332
+
+.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797332
+
+Dado el siguiente código en lenguaje C indique ¿qué valor tomaría la variable X.B después de ejecutar el
+programa?:
+#include <stdio.h>
+a. 3.4
+#include <string.h>
+b. 5.7
+typedef struct{
+c. 5
+int A;
+d. 3
+char string[10];
+e. Error de compilación
+float B;
+}ejemplo;
+int main(void){
+static ejemplo X={5, "string1", 3.4};
+ejemplo Y;
+Y.A=3;
+strcpy(Y.string, "string1");
+Y.B=5.7;
+X=Y;
+printf ("%.1f\n", X.B);
+return 0;
+}
+
+"
+
+Dada la siguiente definición de una nueva tipología de datos, ¿cómo se declararía un vector de 10 elementos de
+tipo 8cancion9 y se asignan valores al primer elemento?
+typedef struct{
+char interprete[20];
+float duracion;
+}cancion;
+
+a. cancion descargas[10];
+strcpy (descargas.interprete[0], "U2");
+descargas.duracion[0] = 20.7;
+b. cancion descargas[10];
+strcpy (descargas.interprete[0], "U2");
+strcpy(descargas.duracion[0], 20.7);
+c. typedef cancion descargas[10];
+strcpy (descargas.interprete[0], "U2");
+descargas[0].duracion = 20.7;
+d. No puede realizarse, es necesario incluir valores en todos los elementos del vector.
+e. No puede realizarse, un vector no puede almacenar estructuras de datos.
+f. Todas las respuestas anteriores son incorrectas.
+"
+
+¿Cuántas iteraciones requiere el bucle del algoritmo de búsqueda binaria para localizar la posición de la primera
+ocurrencia del elemento de clave=15 en el vector V?
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+V
+1
+8
+10
+11
+15
+15
+15
+15
+17
+29
+31
+31
+40
+a. 1
+b. 2
+c. 3
+d. 4
+e. 5
+f. 6
+g. 7
+h. No se puede aplicar el algoritmo de búsqueda binaria en este vector.
+.
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+"
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797332
+
+¿Sigues con dudas?
+No te preocupes, en mi canal de YouTube encontrarás videos
+explicativos y detallados que te ayudarán a entender mejor el
+tema:
+
+PINCHA AQUÍ
+
+Contacto
+¿Necesitas algo más? Contáctame sin compromiso:
+
+601 23 17 86
+@Superingenieros_
+
+.
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+

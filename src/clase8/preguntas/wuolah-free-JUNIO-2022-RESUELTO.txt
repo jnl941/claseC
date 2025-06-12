@@ -1,0 +1,844 @@
+JUNIO-2022-RESUELTO.pdf
+
+SuperIngenieros
+Programación
+1º Grado en Ingeniería Electrónica Industrial
+.
+
+Escuela Superior de Ingeniería
+Universidad de Almería
+
+Reservados todos los derechos.
+No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+Examen de Programación (Grados en Ingeniería Mecánica, Eléctrica, Electrónica y Química Industrial)
+23 de Junio 2022
+APELLIDO/S:
+DNI:
+
+NOMBRE:
+GRUPO DOCENTE:
+
+GRUPO TRABAJO:
+
+REPOSITORIO TI:
+
+Instrucciones:
+Para seleccionar la respuesta (o respuestas) correcta(s), rodear la letra de la opción con un círculo O
+Para anular una respuesta ya seleccionada tachar el círculo con una cruz X
+Para volver a seleccionar de nuevo una respuesta anulada usar una flecha a la izq. de la opción 
+El examen consta de 30 preguntas tipo test de respuestas múltiples
+Cada pregunta admite una o varias opciones correctas (hay que seleccionar todas las opciones correctas)
+Puntuación de cada pregunta: 8.0/30 (si se han seleccionado solamente todas las opciones correctas)
+0.0 (en caso contrario)
+
+
+
+
+
+
+
+
+
+
+En cuál de los siguientes registros internos de la Unidad de Control de un procesador central (CPU) se encuentra
+la siguiente instrucción a ejecutar una vez que finalice la ejecución de la instrucción actual:
+a. IR (<Instruction Record=  Registro de Instrucción)
+b. PC (<Program Counter=  Contador de Programa)
+c. SP (<Stack Pointer=  Puntero a la cima de la Pila)
+d. En ninguno de los anteriores
+Cuál sería la representación binaria en complemento a dos del número -21, considerando un tamaño de
+representación de 6 dígitos para los números enteros con signo:
+g. Ninguna de las
+d. 010101
+a. 110101
+anteriores
+e. 001011
+b. 101011
+f. 001010
+c. 101010
+En IEEE-754 simple precisión (32 bits, ne=8, nm=23), a qué número en el sistema de numeración decimal le
+corresponde la siguiente representación interna en hexadecimal: 7F8000001
+e. +NaN
+i. Ninguno de los
+a. 1.4*10-45
+f. -NaN
+anteriores
+b. -1.4*10-45
+g. +∞
+c. 1.4*10-38
+h. -∞
+d. -1.4*10-38
+¿Cuál o cuáles de las siguientes constantes literales son válidas en lenguaje C?
+a. 0,00
+e. 0xA73
+i. '/n'
+b. 1.E-3
+f. "0xG73"
+j. "/n"
+c. ' \\'
+g. -1.0E4.2
+k. Ninguna de las
+d. "Stop: '1' peligro"
+h. true
+anteriores es válida
+Dado el siguiente código en lenguaje C para calcular la longitud del lado de un triángulo rectángulo opuesto al
+ángulo de 30°, dado por teclado la longitud de la hipotenusa, señale la afirmación o afirmaciones correctas:
+#include <stdio.h>
+a. El programa calcula e imprime correctamente la
+#include <math.h>
+longitud del cateto correspondiente
+#define ANG 30.0 /* 30 grados */
+b. Error de compilación: falta la librería stdlib.h
+int main(){
+float a,h;
+c. Error de compilación: falta un ; en la tercera línea
+printf("Introduzca hipotenusa: ");
+(tras 30.0)
+scanf(" %f", &h);
+d. Error de diseño en el cálculo de a: debería ser
+a=h*sin(ANG);
+printf("a: %.2f", a);
+a=h/sin(ANG);
+return 0;
+e. Todas las afirmaciones anteriores son incorrectas
+}
+.
+
+
+
+En C, si tenemos que a, b y c son variables de tipo int, float y char, respectivamente, y que tienen asignados los
+valores a=1, b=5.1 y c='x', indicar qué expresión (o expresiones) devuelven como resultado verdadero (distinto de
+cero):
+a. !((a>b)||(c!='x'))
+b. (a==(a=3)%2) || ! (a && c)
+c. --a || ! c && b
+d. (a<b)&&(a>-b)&&(!a)
+e. Ninguna de las anteriores
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+
+
+¿Qué mensaje aparece en pantalla al ejecutar el siguiente programa en C?
+#include <stdio.h>
+a. Temperatura=0 grados
+int main(){
+b. Temperatura positiva
+double temp=-30.0;
+c. Temperatura negativa
+if(temp=0)
+d. (No aparece nada en pantalla)
+printf("Temperatura=0 grados");
+e. Error de compilación
+else if(temp>0)
+printf("Temperatura positiva");
+f. Error de ejecución
+else
+if(temp<0)
+g. Ninguna de las respuestas
+printf("Temperatura negativa");
+anteriores es correcta
+return 0;
+
+}
+
+
+
+¿Qué mensaje se presenta en pantalla cuando se ejecuta el siguiente programa?
+#include <stdio.h>
+a. 0
+int main(){
+b. 1
+int a=2;
+c. 2
+switch(a){
+d. 3
+case 1: a++;
+e. 4
+case 2: ++a;
+case 3: a++;
+f. (No aparece nada en pantalla)
+default: --a;
+g. Error de compilación
+}
+h. Error de ejecución
+printf("%d",a--);
+i. Ninguna de las respuestas anteriores es correcta
+return 0;
+}
+
+
+
+Indicar los resultados que imprime en pantalla el siguiente programa en C:
+#include <stdio.h>
+a. Suma=0
+int main(){
+b. Suma=10
+int i=0, n=10, suma=0;
+c. Suma=55
+for(;i<=10;++i);
+d. Suma=110
+suma+=i;
+e. Error de compilación
+printf("Suma=%d", suma);
+return 0;
+f. Error de ejecución (bucle infinito)
+}
+g. Ninguna de las respuestas anteriores es correcta
+ Tras ejecutar el siguiente programa en C, ¿qué valores se muestran por pantalla?
+#include <stdio.h>
+a. 3600=1
+int main(){
+b. 3600=1*2
+int n=3600,i=2;
+c. 3600=1*2*2*2*3*5
+printf("%d=1",n);
+d. 3600=1*2*2*2*2*3*3*5*5
+while((n!=1)&&(i<=n))
+e. 3600=1*2*2*2*2*2*3*3*3*5*5
+if(n%i) ++i;
+else{
+n/=i;
+f. Error de compilación
+printf("*%d",i);
+g. Error en tiempo de ejecución
+}
+h. Ninguna de las respuestas anteriores es correcta
+return 0;
+
+}
+
+
+
+¿Qué mensaje se presenta en pantalla cuando se ejecuta el siguiente programa?
+#include <stdio.h>
+a. El valor de x es 50
+int main(void) {
+b. El valor de x es 55
+float x=0.0;
+c. El valor de x es 60
+int i,j,k;
+d. El valor de x es 65
+for(i=1;i<=5;i++)
+e. El valor de x es 100
+for(j=1;j<=i;j++)
+for(k=j;k<=5;k++)
+f. El valor de x es 102
+x++;
+g. (No aparece nada en pantalla)
+printf("El valor de x es %.0f",x);
+h. Error de compilación
+return 0;
+i. Error de ejecución (bucle infinito)
+}
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+.
+
+
+
+
+
+¿Cuál (o cuáles) de las siguientes afirmaciones es cierta en relación con el prototipo de una función en C?
+a. Es opcional su inclusión al principio del código fuente
+b. Si se incluyen, el orden de escritura de las definiciones de las funciones en el código fuente es arbitrario.
+c. El prototipo de una función coincide con la primera línea de definición de una función, pero acabada en ;
+d. No existen los prototipos de funciones en C en programas que constan de una única función.
+e. Ninguna de las respuestas anteriores es cierta
+¿Cuál es el resultado que se muestra por pantalla tras ejecutar el siguiente programa?
+#include <stdio.h>
+a. x=3 y=5
+void intercambiar(double *x, double *y);
+b. x=5 y=3
+int main(void){
+c. x=3.000000 y=5.000000
+double x=3, y=5;
+intercambiar(x,y);
+d. x=5.000000 y=3.000000
+printf("x=%.0f
+y=%.0f",x,y);
+e. Error de compilación
+return 0;
+f. Error en tiempo de ejecución
+}
+g. Ninguna de las respuestas anteriores
+void intercambiar(double *x, double *y){
+*x=*y-*x;
+*y=*y-*x;
+*x=*x+*y;
+}
+
+
+
+Dada el siguiente programa en C, indicar el resultado que aparecería en pantalla tras su ejecución:
+#include <stdio.h>
+a. Hola
+int saludos(int n);
+Hola
+int main(){
+Hola
+printf("%d",saludos(3));
+b. 3
+return(0);
+Hola
+}
+int saludos(int n){
+c. 2
+printf("Hola\n");
+Hola
+return --n;
+d. Hola
+}
+3
+e. Hola
+2
+f. Ninguna de las anteriores
+ Dado el siguiente fragmento de programa: ¿cuál o cuáles de las activaciones de la función f podría escribirse
+en la línea de guiones (-----------) para que el programa compilase sin errores ni avisos (<warnings=)?
+#include <stdio.h>
+a. f(x,c,&z);
+void f(int x, char c, float *z);
+b. z=f(*x,*y,c);
+int main(){
+c. f(4,z,&x);
+int c=4;
+d. f(4,'A',z);
+char z='C';
+e. f(4,'A',3.3);
+float x;
+------------------f. Error de compilación
+return(0);
+g. Todas las anteriores son incorrectas.
+}
+void f(int x, char c, float *z){
+/* Definición de función */
+}
+
+
+
+Considerar el siguiente programa en C, donde la función llamada hace uso de la variable global (o externa) a.
+Después de la ejecución de este programa, ¿cuál es el resultado que aparecerá en pantalla?
+#include <stdio.h>
+a. Variable a = 0
+int a=1;
+b. Variable a = 1
+void proc (int *b, int *c){
+*b=3;
+c. Variable a = 2
+*c=a%2;
+d. Variable a = 3
+*b=a+(*b)*(*c);
+e. Variable a = 4
+}
+int main(){
+f. Variable a = NaN
+proc(&a,&a);
+g. Error de compilación
+printf("Variable a = %d", a);
+h. Todas las respuestas anteriores son incorrectas
+return 0;
+.
+
+}
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+
+
+Indicar qué escribe en pantalla el siguiente programa al ejecutarlo:
+#include <stdio.h>
+a. 13
+void imprime_binario(int n){
+b. 0
+imprime_binario(n/2);
+c. 1
+printf(" %d" , n%2);
+d. 1 1 0 1
+}
+e. 1 0 1 1
+int main(){
+imprime_binario(13);
+f. Error de compilación
+return 0;
+g. Error en tiempo de ejecución
+.
+
+}
+
+
+
+Considere el siguiente prototipo de una función C:
+double f(double (*f)(double x,double y),double x, double y);
+
+¿Cuál o cuáles de las siguientes instrucciones son correctas?
+a. printf(" Resultado= %f" ,f(sin,M_PI,2*M_PI));
+b. printf(" Longitud= %f" ,f(atan,5.0,4.0));
+c. printf(" Longitud= %f" ,f(pow,5.0,4.0));
+d. printf(" Longitud= %f" ,f(pow+sin,5.0,4.0));
+e. Ninguna de las anteriores (error de sintaxis en el prototipo de la función)
+ ¿Cuál (o cuáles) de las siguientes instrucciones permiten declarar en C una variable <array= unidimensional de 100
+reales en doble precisión?
+e. typedef double tipo_vector;
+a. typedef double v[100];
+tipo_vector v[100];
+b. double v[100];
+f. typedef double tipo_vector[100];
+c. typedef tipo_vector double[100];
+tipo_vector v;
+tipo_vector v;
+g. Ninguna de las anteriores
+d. typedef double tipo_vector[100];
+tipo_vector v[100];
+ Considerar el siguiente programa en C, e indicar qué resultado(s) aparecería en pantalla tras su ejecución:
+#include <stdio.h>
+a. 1 -3 -5 2 8 -7 4
+#define MAX 100
+b. 1 -3 2 8 4
+typedef int tipo_vector[MAX];
+c. 1 -5 2 8 -7 4
+int main(){
+d. 1 -5 2 8 4
+int i,j,n;
+e. 1 2 8 -7 4
+tipo_vector v={1,-3,-5,2,8,-7,4};
+n=7;
+f. 1 2 8 4
+for(i=0;i<n;++i){
+g. Error de sintaxis (faltan llaves {})
+if(v[i]<0){
+h. Error en tiempo de ejecución
+for(j=i;j<n-1;++j)
+i. Ninguna de las anteriores
+v[j]=v[j+1];
+n--;
+}
+}
+for(i=0;i<n;++i)
+printf("%d ",v[i]);
+return 0;
+}
+
+
+De las siguientes declaraciones de nuevos tipos de datos en C, indicar cuál o cuáles seleccionaría para representar
+los valores de la temperatura atmosférica terrestre, medidas en múltiplos puntos con las siguientes características:
+ Todos ellos situados a 10000 km en dirección radial medidos desde el centro de la tierra.
+ Separados cenitalmente por 10° de latitud desde -90° hasta +90°.
+ Separados acimutalmente por 10° de longitud desde 0° hasta +350°.
+a. typedef double tipo[19];
+b. typedef double tipo[36];
+c. typedef double tipo[19][36];
+d. typedef double tipo[36][19];
+e. typedef double tipo[10][19][36];
+f. typedef double tipo[10][36][19];
+g. Ninguna de las anteriores
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a. ¿Cuál o cuáles de los siguientes fragmentos de código en C utilizaría para trasponer una matriz dada como
+parámetro de E y S?
+#include <stdio.h>
+a. for(i=0;i<*f;++i)
+#define FIL 10
+for(j=0;j<*c;++j){
+#define COL 10
+x=A[i][j];
+typedef double array2d[FIL][COL];
+A[i][j]=A[j][i];
+void traspuesta(array2d A, int *f, int *c){
+A[j][i]=x;
+}
+int i,j;
+double x;
+b. for(i=0;i<*c;++i)
+i=*f;
+for(j=0;j<*f;++j){
+*f=*c;
+x=A[i][j];
+*c=i;
+A[i][j]=A[j][i];
+/* CODIGO A INSERTAR */
+A[j][i]=x;
+}
+}
+int main(){
+c. for(i=0;i<*f;++i)
+array2d A={{1,2,3,4},{5,6,7,8}};
+for(j=i+1;j<*c;++j){
+int f=2, c=4;
+x=A[i][j];
+traspuesta(A,&f,&c);
+A[i][j]=A[j][i];
+…
+A[j][i]=x;
+}
+d. for(i=0;i<*c;++i)
+for(j=i+1;j<*f;++j){
+x=A[i][j];
+A[i][j]=A[j][i];
+A[j][i]=x;
+}
+e. Ninguno de las anteriores
+.
+
+
+
+Indicar cuál o cuáles de los siguientes fragmentos de código es el adecuado para que la correspondiente función
+en C elimine todos los caracteres no alfabéticos de la cadena de caracteres que se le pasa como argumento:
+a. while(cad[i]){
+if(isalpha(cad[i])){
+cad[j]=cad[i];
+++j;
+}
+i++;
+}
+b. while(cad[i]!='\0'){
+if(isalpha(cad[i])=='1'){
+cad[i]=cad[j];
+++j;
+}
+i++;
+}
+c. for(i=0;i!='\0';++i){
+if(isalpha(cad[i])){
+cad[j]=cad[i];
+++i;
+}
+j++;
+}
+d. for(i=0;i!='\0';++i){
+if(isalpha(cad[i])){
+cad[j]=cad[i];
+++j;
+}
+i++;
+}
+e. Ninguna de las anteriores
+
+#include <stdio.h>
+#include <ctype.h>
+int eliminar(char *cad){
+int i=0,j=0;
+/* FRAGMENTO DE CODIGO */
+cad[j]='\0';
+}
+int main(){
+static char cad[30]="Hola 12.;adios+3 ";
+eliminar(cad);
+printf("%s",cad);
+return 0;
+}
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+.
+
+
+
+
+
+Indicar cuál o cuáles de las siguientes sentencias en relación con las estructuras de dato tipo registro en lenguaje
+C (struct), son correctas:
+a. No son estructuras de datos estáticas.
+b. Solo pueden contener componentes que obligatoriamente tienen que ser de tipos de datos diferentes.
+c. Los componentes de un registro tienen que ser datos simples.
+d. El acceso a los componentes se realiza a través de su nombre o identificador mediante el operador de
+indexación [].
+e. El acceso a los componentes se realiza a través de su posición relativa mediante el operador de selección
+de campo ->.
+f. El acceso a los componentes se realiza a través de su nombre o identificador mediante el operador de
+selección de campo ->.
+g. Al igual que los <arrays=, solo se pueden pasar a través de las interfaces de las funciones por dirección.
+h. Ninguna de las respuestas anteriores es correcta
+Dado el siguiente fragmento de código en lenguaje C indique cuál o cuáles de los siguientes bloques de
+instrucciones son correctos (tanto sintáctica como semánticamente):
+#include <stdio.h>
+a. p2=p1;
+#include <math.h>
+b. p2=*p1;
+typedef struct{
+c. &p1=p2;
+double x,y;
+d. p2=&p1;
+}tipPunto;
+v=p2->v;
+typedef tipoPunto tipoVector[10];
+typedef struct{
+e. p1.v.x=75.0;
+int n;
+p1.v.y=45.3;
+tipoVector v;
+f. p1[0].v.x=100;
+}tipoLista;
+p1[0].v.y=100);
+int main(void){
+g. p2=&p1;
+tipo_lista p1,*p2;
+tipo_vector v;
+p2.v[0]->x=100;
+p1.n=3;
+p2.v[0]->y=200;
+...
+h. Ninguno de los anteriores
+return 0;
+
+}
+
+
+
+
+
+V
+
+De las siguientes declaraciones de nuevos tipos de datos, indicar cuál o cuáles seleccionaría para representar
+únicamente los códigos de color (0: Rojo, 1: Verde, 2: Azul,&) de las caras visibles de cada pieza de un cubo de
+Rubik formado por N3 cubos unitarios:
+a. typedef int tipoPieza[6];
+typedef tipoPieza tipoCubo[N][N][N];
+b. typedef int tipoCubo[6][N][N];
+c. typedef int tipoCara[6][6];
+typedef tipoCara tipoCubo[N];
+d. typedef int tipoCara[N][N];
+typedef struct{
+tipoCara sup,inf,izq,der,del,det;
+}tipoCubo;
+e. Ninguna de las anteriores
+¿Cuántas iteraciones requiere el bucle del mejor algoritmo de búsqueda secuencial para localizar la posición de la
+primera ocurrencia de un elemento de clave=2 en el vector V?
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+9
+9
+8
+7
+7
+7
+6
+6
+5
+5
+4
+3
+1
+1
+1
+1
+0
+a.
+b.
+c.
+d.
+e.
+f.
+g.
+
+12
+13
+14
+15
+16
+17
+No se puede aplicar el algoritmo de búsqueda secuencial a este vector
+.
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+
+
+
+
+
+
+Considerando la siguiente declaración: FILE *f;, indicar qué instrucción (o instrucciones) pueden ser correctas para
+crear y abrir para escritura un archivo de texto de nombre <fichero.txt= situado en el directorio actual:
+f. f=fopen("fichero.txt", 'a');
+a. fopen(f, "fichero.txt", "w");
+g. fopen("fichero.txt", 'w');
+b. fopen(f, "fichero.txt","a");
+h. fopen("fichero.txt", 'a');
+c. f==fopen("fichero.txt","w");
+d. f==fopen("fichero.txt","a");
+i. Ninguna de las anteriores
+e. f=fopen("fichero.txt",'w');
+Tenemos un archivo de texto en el directorio actual llamado <sensores.txt= conteniendo cada línea 10 números
+reales separados por al menos un espacio en blanco. Considerando las siguientes declaraciones y suponiendo que
+el archivo se ha abierto correctamente para lectura a través de la variable f, si queremos leer una línea completa
+del archivo, indicar qué instrucción o instrucciones son las correctas:
+a. fscanf(f, " %10f", v);
+#include <stdio.h>
+b. fscanf(f, " 10%f", v);
+typedef float tipo_vector[10];
+c. for(i=0;i<10;++i)
+int main(){
+fscanf(f, " %f", v[i]);
+FILE *f;
+d. for(i=1;i<=10;++i)
+int i;
+fscanf(f, " %f",&v[i]);
+tipo_vector v;
+e. i=0;
+...
+while(!feof(f)
+return 0;
+fscanf(f, " %f", &v[i++]);
+}
+f. Ninguna de las anteriores es correcta
+Tenemos un archivo de texto en el directorio actual llamado <notas.txt= conteniendo la información de todos los
+alumnos de una asignatura con el siguiente formato:
+Nombre: Juan Apellido: García Asignatura: Programación Nota: 6.66
+Nombre: Pedro Apellido: Revilla Asignatura: Programación Nota: 4.83
+Nombre: Arturo Apellido: Rodríguez Asignatura: Programación Nota: 8.15
+&
+Si queremos leer una línea del mismo, suponiendo que el archivo se ha abierto para lectura correctamente a
+través de la variable f, y dadas las siguientes variables, indicar qué instrucción o instrucciones son las correctas:
+char nombre[50], apellido[50], asignatura[50];
+FILE *f;
+float nota;
+a. fscanf(f, " Nombre: %s Apellido: %s Asignatura: %s Nota: %f", nombre, apellido, asignatura, nota);
+b. fscanf(f, " Nombre: %s Apellido: %s Asignatura: %s Nota: %f", &nombre, &apellido, &asignatura, &nota);
+c. fscanf(f, " Nombre: %s Apellido: %s Asignatura: %s Nota: %f", nombre, apellido, asignatura, &nota);
+d. fscanf(f, " Nombre: %s Apellido: %s Asignatura: %s Nota: %f", &nombre, &apellido, &asignatura, &nota);
+e. Ninguna de las anteriores
+
+.
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+1
+d
+b
+e
+b,c,d,e,f,j
+e
+a
+
+2
+d
+d
+g
+d
+b
+
+Página
+3
+4
+a, b, c, d
+g
+e
+c
+e
+b, e, f
+c
+d
+c
+c, d
+
+5
+d
+a
+
+6
+h
+d
+b,d
+b
+
+7
+i
+f
+b, c
+
+.
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+Ejercicio
+1
+2
+3
+4
+5
+6
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797331
+
+¿Sigues con dudas?
+No te preocupes, en mi canal de YouTube encontrarás videos
+explicativos y detallados que te ayudarán a entender mejor el
+tema:
+
+PINCHA AQUÍ
+
+Contacto
+¿Necesitas algo más? Contáctame sin compromiso:
+
+601 23 17 86
+@Superingenieros_
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+.
+
+

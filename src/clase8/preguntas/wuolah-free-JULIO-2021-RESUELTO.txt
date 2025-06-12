@@ -1,0 +1,749 @@
+JULIO-2021-RESUELTO.pdf
+
+SuperIngenieros
+Programación
+1º Grado en Ingeniería Electrónica Industrial
+Escuela Superior de Ingeniería
+Universidad de Almería
+
+.
+
+Reservados todos los derechos.
+No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+Examen de Programación (Grados en Ingeniería Mecánica, Eléctrica, Electrónica y Química Industrial)
+1 de Julio 2021
+APELLIDO/S:
+DNI:
+
+NOMBRE:
+GRUPO DOCENTE:
+
+GRUPO TRABAJO:
+
+Instrucciones:
+Para seleccionar la respuesta (o respuestas) correcta(s), rodear la letra de la opción con un círculo O
+Para anular una respuesta ya seleccionada tachar el círculo con una cruz X
+Para volver a seleccionar de nuevo una respuesta anulada usar una flecha a la izq. de la opción 
+El examen consta de 30 preguntas tipo test de respuestas múltiples
+Cada pregunta admite una o varias opciones correctas (hay que seleccionar todas las opciones correctas)
+Puntuación de cada pregunta: 8.0/30 (si se han seleccionado solamente todas las opciones correctas)
+0.0 (en caso contrario)
+
+
+¿Cuál ó cuáles de las siguientes afirmaciones son correctas?
+a. La representación en C de los datos long int siempre ocupa el doble de almacenamiento de los datos int
+b. La representación en C de un número real con el tipo double es exacta y sin límites
+c. La representación en C de un dato con el tipo char siempre ocupa 1 byte de almacenamiento
+d. La representación en C de los datos lógicos se hace a través de otros tipos de datos (int o char)
+e. Todas las afirmaciones anteriores son incorrectas
+ ¿Cuál o cuáles de las siguientes constantes literales son válidas en lenguaje C?
+i. '/n'
+e. 0xA73F
+a. 0
+j. "/n"
+f. "0xA73F"
+b. 1.E-3
+k. Ninguna de las
+g. -1.0E4.2
+c. ' \101'
+h. true
+anteriores es válida
+d. "Stop: '1' peligro"
+ Dado el siguiente código en lenguaje C, señale la afirmación o afirmaciones correctas:
+#include <stdio.h>
+a. El programa lee por teclado el número del DNI y
+int main(void){
+luego una letra, tras lo cual imprime el NIF
+int num;
+b. Error de compilación: falta la librería stdlib.h
+char c;
+printf("Introduzca numero DNI: ");
+c. Error de compilación: falta un ; tras llave de cierre }
+scanf(" %i", num);
+d. El programa tiene un error en tiempo de ejecución:
+printf("Introduzca letra: ");
+no se puede restar un entero a un carácter (%i-%c)
+scanf(" %c",c);
+printf("NIF: %i-%c", num, c);
+e. Todas las afirmaciones anteriores son incorrectas
+.
+
+return 0;
+}
+
+
+
+
+
+
+
+Indique cuál (o cuáles) de las siguientes afirmaciones es verdadera en lenguaje C:
+a. Una variable de tipo unsigned int puede almacenar valores negativos.
+b. Una variable de tipo double no puede almacenar valores enteros.
+c. La sentencia <char letras='ab';= asigna a la variable letras la cadena de caracteres 'ab'.
+d. La sentencia <double if=3.2;= asigna a la variable if el valor 3.2.
+e. Todas las afirmaciones anteriores son falsas
+En lenguaje C, ¿qué instrucción/instrucciones de las siguientes utilizaría para escribir en pantalla un número real
+en doble precisión con 3 cifras decimales almacenado en la variable x?
+d. printf("%f3.3", x);
+a. printf("%3f", x);
+e. printf("%3f", *x);
+b. printf("%.3f", x);
+f. Ninguna de las anteriores
+c. printf("%f3", x);
+En C, si tenemos que a, b y c son variables de tipo int, float y char, respectivamente, y que tienen asignados los
+valores a=10, b=5.1 y c='x', indicar qué expresión (o expresiones) devuelven como resultado verdadero (distinto
+de cero):
+a. !((a<b)&&(c=='x'))
+b. (a=(a=20)%5) || ! (a && ! c)
+c. a && ! c || b
+d. (b-->5.0)&&(++a>10)
+e. Ninguna de las anteriores
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+
+
+¿Qué mensaje aparece en pantalla al ejecutar el siguiente programa en C?
+#include <stdio.h>
+a. Agua hirviendo
+int main(){
+b. Agua muy caliente
+double temp=15;
+c. Agua caliente
+if(temp>0)
+d. Agua congelada
+if(temp>=100)
+e. (No aparece nada en pantalla)
+printf("Agua hirviendo");
+else if(temp>50)
+f. Error de compilación: se asigna un valor entero
+printf("Agua muy caliente");
+a una variable real
+else if(temp>25)
+g. Error de ejecución: el programa entra en un
+printf("Agua caliente");
+bucle infinito
+else printf("Agua congelada");
+return 0;
+}
+
+
+
+Indicar los valores que imprime en pantalla el siguiente programa en C:
+#include <stdio.h>
+a. 10 9 8 7 6 5 4 3 2 1 0
+int main(){
+b. 10 9 8 7 6 5 4 3 2 1
+int a=10, b;
+c. 9 8 7 6 5 4 3 2 1 0 -1
+while(a>0){
+d. 9 8 7 6 5 4 3 2 1
+b=a--;
+e. Error de compilación
+printf("%i ", b);
+}
+return 0;
+}
+
+
+
+Tras ejecutar el siguiente programa en C, ¿qué valores se muestran por pantalla?
+#include <stdio.h>
+a. 16 64
+int main(){
+b. 20 144
+int a=1,b=1,mayor;
+c. 80 4096
+while((a<40)&&(b<100)){
+d. 4096 16777216
+if(a>b) mayor=a;
+e. Error de compilación
+else
+mayor=b;
+a=a+mayor;
+f. Ninguna de las respuestas anteriores es correcta
+b=b*mayor;
+}
+printf("%i %i",a,b);
+return 0;
+}
+
+
+
+.
+
+¿Qué mensaje se presenta en pantalla cuando se ejecuta el siguiente programa?
+#include <stdio.h>
+a. El valor de x es 0
+int main(void) {
+b. El valor de x es 1
+int x=2;
+c. El valor de x es 2
+switch(x){
+d. El valor de x es distinto de 0,1 y 2
+case '0': printf("El valor de x es 0");
+e. No aparece nada en pantalla
+break;
+case '1': printf("El valor de x es 1");
+break;
+case '2': printf("El valor de x es 2");
+break;
+default: printf("El valor de x es ");
+printf("distinto de 0,1 y 2");
+}
+return 0;
+}
+
+
+
+¿Cuál (o cuáles) de las siguientes afirmaciones es cierta en relación con el prototipo de una función en C?
+a. Es obligatoria su inclusión al principio del código fuente
+b. Es obligatoria su inclusión al final del código fuente
+c. Puede ser eliminado sin ninguna consecuencia en el orden de escritura de las definiciones de las
+funciones en el código fuente
+d. En lenguaje C está prohibida su utilización a menos que se incluya la librería stdlib.h
+e. Ninguna de las respuestas anteriores es cierta
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+
+
+
+
+En lenguaje C, ¿cuál o cuáles de las siguientes afirmaciones es correcta cuando se considera el siguiente
+prototipo de función?
+void Uno(Dos Tres, Cuatro *Cinco);
+a. Uno es un identificador de función
+b. Tres y Cinco pueden ser el mismo identificador
+c. Uno es un identificador de variable
+d. Dos y Cuatro pueden ser el mismo identificador
+e. Error de sintaxis: la función debe devolver un tipo de dato distinto de void
+¿Cuál es el resultado que se muestra por pantalla tras ejecutar el siguiente programa?
+#include <stdio.h>
+a. x=3 y=5
+void intercambiar(double *x, double *y);
+b. x=5 y=3
+int main(void){
+c. x=3.000000 y=5.000000
+double x=3, y=5;
+d. x=5.000000 y=3.000000
+intercambiar(&x,&y);
+printf("x=%f
+y=%f",x,y);
+e. Ninguna de las respuestas anteriores
+return 0;
+}
+void intercambiar(double *x, double *y){
+*x=*y;
+*y=*x;
+}
+
+
+
+Considerar el siguiente fragmento de código en lenguaje de programación C. ¿Cuál o cuáles de las siguientes
+instrucciones puede utilizar en la línea de puntos --------- de la función leer_datos para que el compilador no
+genere ningún error ni aviso (<warning=)?
+#include <stdio.h>
+a. leer_entero_rango(0,n,&m);
+void leer_datos(int *n, int *m);
+b. leer_entero_rango(0,*n,*m);
+void leer_entero_rango(int a,int b,int *m);
+c. leer_entero_rango(0,&n,m);
+int main(){
+d. leer_entero_rango(0,*n,m);
+int n,m;
+e. Ninguna de las anteriores
+leer_datos(&n,&m);
+return(0);
+}
+void leer_datos(int *n, int *m){
+leer_entero_rango(0,100,n);
+---------}
+void leer_entero_rango(int a,int b,int *m){
+/* Definición de función */
+}
+.
+
+
+
+Al ejecutar el siguiente programa en C, ¿qué resultado aparecerá en pantalla?
+#include <stdio.h>
+a. 4
+int suma(int n);
+b. 6
+int main(){
+c. 8
+printf("%d",suma(suma(2)));
+d. Error de sintaxis en función suma
+return(0);
+e. Error en tiempo de ejecución: bucle infinito
+}
+int suma(int n){
+int i=0,s=0;
+while(i<=n){
+s+=i;
+++i;
+}
+return(s);
+}
+
+
+
+Dada la siguiente definición de función en C, indicar el resultado almacenado en la variable x tras la siguiente
+activación:
+x=leer_entero_intervalo(5,-5);
+int leer_entero_intervalo(int a, int b){
+a. Un valor entero no nulo en intervalo [-5,5]
+int x;
+b. Un valor entero en intervalo [-5,5]
+do{ printf("Numero [%d,%d]: ",a,b);
+c. Un valor entero en intervalo (-5,5)
+scanf(" %i",&x);
+d. Error de compilación
+}while((x<a)||(x>b)||(!x));
+e. Error de ejecución: bucle infinito
+return x;
+}
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+
+
+Dado el siguiente fragmento de programa: ¿cuál ó cuáles de las activaciones de la función f podría escribirse
+en la línea de guiones (-----------) para que el programa compilase sin errores ni avisos (<warnings=)?
+#include <stdio.h>
+a. f(x,y,c,*z);
+void f(int x, int y, char c, float *z);
+b. z=f(x,y,c);
+int main(){
+c. f(x+y,3,c,z);
+int x=4, y=5;
+d. f(y,x,'A',z);
+char c='C';
+e. Todas las anteriores son incorrectas.
+float *z;
+------------------return(0);
+}
+void f(int x, int y, char c, float *z){
+/* Definición de función */
+}
+
+
+
+Considerar el siguiente programa en C, donde la función llamada hace uso de la variable global (o externa) a.
+Después de la ejecución de este programa:
+#include <stdio.h>
+a. Variable a = 0
+int a=1;
+b. Variable a = 1
+void proc (int *b, int *c){
+*b=3;
+c. Variable a = 2
+*c=a%2;
+d. Error de compilación: el lenguaje C prohíbe el uso
+*b=a+(*b)*(*c);
+de variables externas.
+}
+int main(){
+e. Todas las respuestas anteriores son incorrectas
+proc(&a,&a);
+printf("Variable a = %d", a);
+return 0;
+}
+
+
+
+
+
+Indicar qué instrucciones hay que sustituir en lugar del comentario para que el siguiente programa imprima la
+representación en binario del número entero n que se recibe como argumento:
+void imprime_binario(int n){
+a. printf(" %d" , n%2);
+if(n>=2){
+imprime_binario (n/2);
+/* COMENTARIO A SUSTITUIR */
+b. imprime_binario (n/2);
+}else printf(" %d" , n);
+printf(" %d" , n%2);
+}
+c. imprime_binario (n/2);
+printf(" %d" , n/2);
+d. imprime_binario (n%2);
+printf(" %d" , n%2);
+Considere el siguiente prototipo de una función C que calcula la longitud de un tramo de una curva alabeada
+⃗ (�㖕) = (ý(�㖕), þ(�㖕), ÿ(�㖕)) comprendido entre los valores del parámetro t=t1 y t=t2:
+paramétrica cualquiera �㖄
+.
+
+double longCurva(void (*c)(double t,double *x,double *y,double *z),
+double t1, double t2);
+
+Si el siguiente prototipo de función se corresponde con la implementación en C de la hélice cilíndrica
+c(t)=(10*cos(t),-10*seno(t),0.5*t):
+void c(double t,double *x,double *y,double *z);
+
+
+
+¿Cuál o cuáles de las siguientes instrucciones presenta en pantalla la longitud del tramo de dicha curva
+comprendido entre t=0 y t=20*π?
+a. printf(" Longitud= %f" ,longCurva(c(t,&x,&y,&z),0,20*M_PI));
+b. printf(" Longitud= %f" ,longCurva(c(t,*x,*y,*z),0,20*M_PI));
+c. printf(" Longitud= %f" ,longCurva(*c,0,20*M_PI));
+d. printf(" Longitud= %f" ,longCurva(c,0,20*M_PI));
+e. Ninguna de las anteriores
+¿Cuál (o cuáles) de las siguientes instrucciones lee un carácter desde teclado en la posición i-ésima de un <array=
+unidimensional de caracteres en C de nombre v?
+a. scanf(" %c", v[i]);
+b. scanf(" %c", &v[i]);
+c. scanf(" %c", *v[i]);
+d. v[i] = getchar();
+e. Ninguna de las anteriores
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+
+
+De las siguientes declaraciones de nuevos tipos de datos, indicar cuál o cuáles seleccionaría para representar el
+número total de vueltas que da una rueda en un intervalo de tiempo de 100 segundos. La rueda está inicialmente
+en reposo y se somete a una aceleración angular constante α durante 10 segundos: tipo a;
+a. typedef double tipo[1..100];
+b. typedef double tipo[99];
+c. typedef double tipo[100];
+d. typedef double tipo[101];
+e. Ninguna de las anteriores
+Dadas las variables A y B de tipo <array= unidimensional de diez reales en doble precisión, ¿cuál o cuáles de las
+siguientes instrucciones utilizaría para copiar todos los elementos de A en B en lenguaje C?
+a. A=B;
+d. for(int i=1; i<=10; i++){
+b. B=A;
+B[ i ] = A[ i ];
+c. for(int i=0; i<10;++i){
+}
+B[ i ] = A[ i ];
+e. for(int i=0; i<10; ++i){
+}
+A[ i ] = B[ i ];
+}
+De las siguientes declaraciones de nuevos tipos de datos, indicar cuáles seleccionaría para representar las
+posiciones espaciales en coordenadas cartesianas de un avión en 100 instantes de tiempo diferentes: tipo a;
+a. typedef double tipo[0..99,0..99,0..99];
+b. typedef double tipo[99][99][99];
+c. typedef double tipo[100][100][100];
+d. typedef double tipo[101][101][101];
+e. Ninguna de las anteriores
+¿Cuál o cuáles de los siguientes fragmentos de código en C utilizaría para sumar todos los elementos de un <array=
+bidimensional de reales en doble precisión del tipo de datos indicado?
+#include <stdio.h>
+a. for(i=0;i<FIL;++i)
+#define FIL 10
+for(k=0;k<COL;++k)
+#define COL 20
+suma+=m[i][k];
+typedef double tipo_matriz[FIL][COL];
+b. for(i=0;i<COL;++i)
+…
+for(k=0;k<FIL;++k)
+tipo_matriz m;
+int i,k;
+suma+=m[i][k];
+double suma=0;
+c. for(i=1;i<=COL;i++)
+…
+for(k=1;k<=FIL;k++)
+suma+=m[i][k];
+d. for(i=0;i<COL;++i)
+for(k=0;k<FIL;++k)
+suma+=m[k][i];
+e. Ninguna de las anteriores
+Indicar cuál o cuáles de las siguientes funciones presenta por pantalla la cadena de caracteres que se pasa como
+argumento, pero escrita al revés:
+a. void escribir (char *n){
+c. void escribir (char *n){
+if (*n!=0) {
+if (*n!='\0'){
+escribir (n+1);
+escribir (n+1);
+putchar(*n);
+putchar (*n);
+}
+}
+}
+}
+b. void escribir (char *n){
+d. void escribir (char *n){
+if (*n!=0){
+if (*n!=0){
+escribir (n++);
+escribir (++n);
+putchar (*n);
+putchar (n);
+}
+}
+}
+}
+e. Ninguna de las anteriores
+
+
+
+
+
+
+
+
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+.
+
+.
+
+
+
+
+
+Dadas las siguientes declaraciones en lenguaje C, indique cuál o cuáles de las siguientes instrucciones es correcta:
+typedef struct{
+a. printf("%f %f", *p.real, *p.imag);
+float real;
+b. scanf(" %f %f", p->real, p->imag);
+float imag;
+c. scanf(" %f %f", &p->real, &p->imag);
+}complejo;
+d. scanf(" %f %f", x[0]->real, x[0]->imag);
+complejo x[10], *p;
+e. Todas las instrucciones anteriores son incorrectas p=&x[0];
+Dado el siguiente fragmento de código en lenguaje C indique cuál o cuáles de los siguientes bloques de
+instrucciones son correctos (tanto sintáctica como semánticamente):
+#include <stdio.h>
+a. p2=p1;
+#include <math.h>
+b. p3=p1;
+typedef struct{
+c. *p3=p1;
+int tipo; /* 0: cartesianas, 1: polares */
+d. p3=&p1;
+union{
+*p3=p2;
+struct{
+double x,y;
+e. p1->x=75.0;
+};
+p1->y=45.3;
+struct{
+f. p1.tipo=1;
+double r,z;
+p1.r=sqrt(p1.x*p1.x+p2.x*p2.x);
+};
+p1.z=atan2(p1.y/p1.x);
+};
+}tipo_coordenadas;
+g. p3=&p1;
+int main(void){
+p3.tipo=1;
+tipo_coordenadas p1,p2,*p3;
+p3.x=50.0;
+p1.tipo=0;
+p3.y=M_PI/2;
+p1.x=100.0;
+h. Ninguno de los anteriores
+p1.y=100.0;
+...
+return 0;
+}
+
+
+
+
+
+De las siguientes declaraciones de nuevos tipos de datos, indicar cuál o cuáles seleccionaría para representar una
+imagen digitalizada de 1024*1024 cuadrículas, que contiene el color de cada cuadrícula en formato RGB (rojo,
+verde y azul) mediante 3 números reales en el intervalo [0,1]:
+#define NF 1024
+a. typedef tipoColor tipoImagen[NF][NC];
+#define NC 1024
+typedef struct{
+/* Definición de tipoImagen */
+double r,g,b;
+tipoImagen a;
+}tipoColor;
+b. typedef struct{
+double r,g,b;
+}tipoColor;
+typedef tipoColor tipoImagen[NF][NC];
+c. typedef struct{
+double r,g,b;
+}tipoColor;
+typedef tipoImagen tipoColor[NF][NC];
+d. Ninguna de las anteriores
+¿Cuántas iteraciones requiere el bucle del algoritmo de búsqueda binaria para localizar la posición de inserción
+(primer elemento de clave estrictamente mayor) de un nuevo elemento de clave=15 en el vector V?
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+V
+1
+8
+10
+11
+15
+15
+15
+15
+17
+29
+31
+31
+40
+.
+
+a.
+b.
+c.
+d.
+e.
+f.
+
+3
+4
+5
+6
+7
+No se puede aplicar el algoritmo de búsqueda binaria a este vector
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+n
+Ejercicio
+1
+2
+3
+4
+5
+6
+
+1
+c, d
+a, b, c, d,
+e, f, j
+e
+e
+b
+a, b, c, d
+
+2
+d
+b
+
+3
+a, d
+e
+
+4
+c, d
+c
+
+5
+e
+c
+
+6
+c
+a, d
+
+c
+d
+e
+
+d
+b
+e
+
+b
+c, d
+b, d
+
+e
+a, d
+a, c
+
+b
+b
+
+.
+
+superinenieros
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-11797330
+
+¿Sigues con dudas?
+
+PINCHA AQUÍ
+
+Contacto
+¿Necesitas algo más? Contáctame sin compromiso:
+
+601 23 17 86
+
+.
+
+@Superingenieros_
+
+superinenieros
+
+Plan Turbo - Eliminar los vídeos + 10 descargas sin publicidad por sólo 0,99€ / mes - Oferta limitada
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+No te preocupes, en mi canal de YouTube encontrarás videos
+explicativos y detallados que te ayudarán a entender mejor el
+tema:
+
+

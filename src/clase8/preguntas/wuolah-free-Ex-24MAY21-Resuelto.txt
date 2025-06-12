@@ -1,0 +1,976 @@
+Ex-24MAY21-Resuelto.pdf
+.
+
+Anónimo
+Programación
+1º Grado en Ingeniería Electrónica Industrial
+Escuela Superior de Ingeniería
+Universidad de Almería
+
+Reservados todos los derechos.
+No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351884
+
+Examen de Programaci—n (Grados en Ingenier’a Mec‡nica, ElŽctrica, Electr—nica y Qu’mica Industrial)
+24 de Mayo 20z
+
+APELLIDo/S:
+
+IUIVI
+
+DNI:
+
+RE"
+
+GRUPO D0CENTE:
+
+Instrucciones:
+
+GRUPO TRABAJ0:
+
+EXAMEN 24 MAYO 21
+
+Para seleccionar la respuesta (o respuestas) correcta(s), rodear la letra de la opci—n con un c’rculo 0
+Para anular una respuesta ya seleccionada tachar el c’rculo con una cruz X
+Para volver a seleccionar de nuevo una respuesta anulada usar una flecha a la izq, de la opci—n
+
+El examen consta de 30 preguntas tipo test de respuestas mœltiples
+Cada pregunta admite una o varias opciones correctas (hay que seleccionar todas las opciones correctas)
+Puntuaci—n de cada pregunta: 8.0/30 (si se han seleccionado solamente todas las opciones correctas)
+0.0 (en caso contrario)
+
+Cu‡l — cu‡les de las siguientes afirmaciones son correctas?
+La representaci—n en C de un nœmero con el tipo float es exacta pero con l’mites
+La representaci—n en C de un nœmero con el tipo int es exacta pero con l’mites
+
+a.
+
+La representaci—n en C de un nœmero con el tipo float es exacta y sin l’mites
+d. La representaci—n en C de un nœmero con el tipo int es exacta y sin l’mites
+
+fodas las afirmaciones anteriores son ind
+
+Respecto a los nombres o identificadores en lenguaje C, marcar la opci—n u opciones correctas:r
+* Puede contener espacios en blanco
+.
+Puede ser de cualquier longitud
+
+Pueden contener cualquier secuencia de letras, nœmeros y caracteres de subrayado (-No1pid
+(
+ar
+u.
+
+diferencia entre letras mayœsculas y minœsculas
+
+c
+
+Ninguna de las otras opciones es correcta
+
+le 3See
+
+Dado el siguiente c—digo en lenguaje C, se–ale la afirmaci—n 0 afirmaciones correctas:
+#include
+stdio.h>
+int main (void)
+tiempo de compilaci—n (no compila).
+
+a. El programa tiene un error que se detecta en
+L
+
+able res almacena el doble del valor de num.
+
+float
+
+um,*res;
+
+printf ("Introduzca
+.
+
+c.El programa muestra en pantalla el valor
+ulado en la variable res.
+
+un numero: \n");
+
+scanf (" sf", &num) ;
+res=2 * num ;
+
+d. El programa muestra por pantalla la direccion de la
+variable res.
+
+printf (" f", *res);
+return 0;
+
+Todaslas respuestas anteriores son incorrectas
+
+dique cu‡l (o cu‡les) de las siguientes afirmaciones es verdadera en lenguaje C:
+riable de tipo "int" puede almacenar valores negativos.
+b. Una variable de tipo "float" no puede almacenar valores ente
+
+c.La sentencia "char letra=b;" asigna a la variable letra el valor correspondiente a la letra b.
+d. La sentencia float f=3,2
+
+asigna a la variable fel valor 3,2.
+
+e. Todaslas afirmaciones anteriores son verdader
+Todaslas afirmaciones anteriores son falsa
+
+5). En lenguaje C quŽ operaci—n (u operaciones) de las siguientes es correcta?:
+a. 25 * 3,5pN0
+
+b. 33.7% 5.0
+
+N 7
+
+% s
+
+plirable (en Ageity § ebevo §
+
+33 /5.3SL
+
+10,5 % -15,4E2
+
+0
+
+e. Todaslas operaciones anteriores son incorrectas
+
+6. En lenguaje C, cu‡lo cu‡les de las siguientes afirmaciones escor ecta respecto del operador binario %?
+a. Puede dar error para operandos con valores naturales (1,2,3,..)
+
+Nunca da error para operandos de tipo int - Si derdes eke0 di ma
+Nunca da error para operandos de tipo float, siempre que el operando de la derecha sea no nulo
+d. Est‡ definido para operandos de cualquier tipo de datos
+
+No existe este operador en C
+Todaslas respuestas anteriores son falsas
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351884
+
+En C, si tenemos tres variables enteras con los siguientes valores asignados: a=1, b=0 y c=0, indicar quŽ
+expresi—n (o expresiones) devuelven como resultado 1 (verdadero) :
+
+d.
+e.
+
+a 8& H(all)- y notl2o0)-, 4yno( fI) Ð1y no()Ð Y0-40
+
+a && Ic||b
+1y no0Jlo
+Ninguna
+de las Ð,anteriores
+devvewvel 1Ytiio - tiio-n
+
+. Dado el siguiente fragmento de c—digo en C, DespuŽs de su ejecuci—n la variable n contiene el v
+if (n=2)
+(* - = 2 + =
+ntn=0;
+
+b.
+
+n=n+1;
+
+else(
+
+d.
+
+a.
+
+0
+
+V
+
+n=n-1;
+
+enguaje C, cu‡l— cuales de las siguientes sintaxis es cor ecta para el bucle for si n es una variable de tipo
+int ?:
+a.
+.
+
+for(n,n<3,n++)n
+
+for( n, ++)
+
+i
+
+for(;) ha
+
+bovele inain ke poro es Ganreka
+
+for(;n<3;n+)
+. Todaslas anteriores son incorrectase
+/). Tras ejecutar el siguiente programa en C quŽvalores que se muestran por pantalla ?
+#include
+a.
+4 3
+u.
+
+int
+
+20 144
+
+stdio.hs
+
+main (void) (
+
+int a=4, b=3, mayor;
+hile ((a<4)|| (b<100))E
+
+8 12
+
+d Error de compilaci—n -eho peck ba be d.S
+
+if (a>b) (
+
+e.Ninguna de las respuestas anteriores es correcta
+
+Chibe (No ||Sp)$i (
+
+nayor
+)else (e
+
+Si
+
+mayor=
+
+3)
+
+=
+
+b;
+
+/else (
+
+mayor = 0;
+
+prayey = a
+iho - Maoox =b 3
+
+100
+
+= a;
+
+a=a+mayor;
+b=b* mayo
+
+-8
+
+printf (" i 8i", a, b);
+
+QuŽ imprime el siguiente programa en pantalla ?
+#include <stdio.h »
+
+6
+
+it
+
+int i=0,r;
+
+4
+d.
+
+main (void)
+while (i 3)
+
+3
+
+switch (i)
+
+No imprime nada (bucle infinito)
+
+case0 :
+
+i- (O
+
+Case
+
+.
+
+resbos 0
+
+1:
+
+3
+case 2:
+
+Swuikd(0)
+
+case3:
+
+fase 0y (=0
+
+=
+
+wiles |
+
+G w tf
+
+L
+
+printf("$i ", r);
+
+se / aY= 1H 2e
+
+return 0;
+
+No, en ningun CaS0
+C,
+
+s
+
+(te
+
+3
+
+1. Es posible ejecutar un programa construido en C que no tenga la funci—n main|()?
+b.
+
+r
+i;
+break;
+i+l;
+break;e
+r =i+2:
+i+3;
+
+5 , Siempre es posible
+
+S—lo en el caso de que el programa incluya la librer’a <stdio.h »
+
+d. S—lo en el caso de que el programa tenga otra funci—n
+
+1 coin = 1 pdf sin publicidad
+
+(
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+(la || |1b) -| no(nof| ll no0) - n (O t) no() - 0
+ll && a) no((2o0||oy() Ð no( tio) Ð no(1) -0
+
+a.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351884
+
+La palabra reservada void en la declaraci—n de la funci—n: void func(int a, float *b|; indica que.
+
+a. La funci—n no devuelve ningœn resultado a travŽs de la lista de par‡metros formales.
+b. La funci—n devuelve el valor 0.0 a travŽs del nombre o identificador de la misma.
+c. Todos los par‡metros formales pueden ser excepcionalmente de salida.
+
+(os ron bo e b si piecu se
+
+Es un error de compilaci—n.
+
+pricirdos p eldli o q
+
+6 Ninguna delasrespuestasanterionestlatras eje
+
+((c
+
+a (a u ci—h
+
+Cu‡l es el resultado que se muestra por pantalla tras ejecutar el siguiente programa ?
+#include <stdio.h »
+(a) 140, 5
+b.
+
+int producto (int a, int b) ;
+
+140, 20
+
+int
+
+main (void)(
+
+35, 5
+
+int nl =5, n2 Ð7;
+
+laaga/*S d
+
+n2 = producto (n1,n2);Az - 5
+
+d. 35, 20
+
+- 5
+
+printf ("gi, Bi", n2, n1);
+
+C. Error de compilaci—n
+
+return 0;
+
+.
+
+pri
+
+Cpno
+ayb n0
+(levo * o 5e
+
+ve g a= 20;
+
+b return (a * þ)
+
+0
+
+15o Considerar el siguiente fragmento de c—digo en lenguaje de programaci—n C. Cu‡l o cu‡les de las siguientes
+N0
+
+expresiones no es correcta ?:
+a.
+
+float a, *p;
+
+a
+
+p
+
+p=&a;
+
+&a
+
+&p
+
+a na se prck (eye elerubovdo ole
+
+&*p
+
+vaabe awaalley
+
+*&p
+
+&a
+
+&al
+Supongamos el siguiente fragmento de c—digo en C. DespuŽs de la ejecuci—n de este fragmento, cu‡l o cu‡les
+de las siguientes afirmaciones es correcta ?:
+void CuaCubo (int *X,
+A vale 4 y B vale 1
+* * x2int * X3) (
+
+*a2 0 ** (*x);
+
+D, A vale 4 y B vale 16
+
+x"
+
+- 096
+
+A
+
+A vale 16 y B vale 1
+e.A vale 16 y B vale 64
+
+B
+
+A vale 16 y B vale 4096
+
+A=
+
+g.Error en tiempo de ejecuci—n
+
+4;
+
+CuaCubo (GA, GA,
+
+B)i
+
+Dada la siguiente definici—n de funci—n en C, Indicar el resultado en pantalla de la siguiente activaci—n
+d.
+
+b.
+
+1-x , --16
+
+*x3 - ** (*x) * (*x) ;- 1M4 .46
+
+A vale 4 y B vale 1024
+
+saludo (3);
+HolaHolaHola
+Hola
+
+roid saludo (void)
+printf ("Hola\n");
+
+Hola
+Hola
+
+saludo (3);
+
+OdOIdi0la
+
+Error de com ilacIor
+
+Ninguna de las respuestas anteriores es correcta
+
+1 coin = 1 pdf sin publicidad
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+d. No indica nada ( oid significa nulo).
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351884
+
+17 . Dado el siguiente programa: cu‡l— cu‡ales de las siguientes lineas de c—digo podr’a escribirse en lalinea de
+guiones (--------) para que el programa compilase sin errores?
+printf ("%", mi_funcion(a,b,letra));
+printf ("%", mi_ funcion(&a,&b,&letra));
+C. printf ("%t", mi_funcion(b,a,letra));
+
+a.
+
+#include stdio.h»
+float mi _funcion (floata, int b, char ),
+
+int main ()
+float a=5.5;
+
+d. printf ("%P", mi_funcion(*b, *a, *letra));
+e El programa no compila porque la sentencia
+
+int b=4.0;
+char letra;
+
+previa de asignaci—n int num_b=4.0; es
+incorrecta.
+
+sy Sn abt st podi p e) &
+
+d
+40
+
+return (0) ;
+
+da
+
+at mlunc1on (Il0at a,ln D,Char C)
+
+C=
+
+0 Sas Q kevo7 ne e pove
+
+k ';
+
+return (atb)
+
+Considerar el siguiente programa en C, donde la funci—n llamada hace uso de la variable global (o externa) a:
+DespuŽs de la ejecuci—n de este programa:
+La variable a vale 2
+, La variable a vale 3
+
+a.
+
+La variable a vale 6
+
+finclude stdio.h»
+int
+
+a=3;
+
+b=a* (*b) ;- *b= 3
+
+d)La variable a vale 9
+
+Error de compilaci—n: el lenguaje C proh’be
+el uso de variables externas.
+
+a;
+
+void Func_1 (int *b)(
+
+-
+
+int main ()(
+
+fodas las respuestas anteriores son
+O rectas
+
+=2;
+Func 1&a);
+
+printf ("a=d\n", a) ;
+return 0;
+
+Dada la siguiente funci—n recursiva: Cu‡lo cu‡les de las siguientes afirmaciones es cor ecta
+a. Al Ilamar a fact(0), escribe en pantalla 1
+
+Ahamar sel eateepaie 12
+
+d. Al lamar a fact(3), escribe en pantalla 1 2 6
+Hay un error al compilar la funci—n
+Todas las afirmaciones anteriores son
+
+if (x==0)
+§ un(1 )
+
+3lse (
+
+x =
+
+*fact (x-1) ;
+
+printf (" sd",x)
+
+curn (x) ;
+
+7. Considere el siguiente prototipo de una funci—n C que calcula la integral definida de una funci—nf de Ren R, en
+el intervalo de la recta (a,b):
+double integral (double (*f)(double x) , double a, double b) ;
+
+Cu‡l o cu‡les de las siguientes instrucciones no es sint‡cticamente correcta:
+a. printf(" Area= %.3f" ,integral(sin,0, M_PI/2.0)|;
+6. printf(" Area= %.3" , integral(sin(x),0,
+
+M_PI/2.0));
+printf(" Area= %.3" ,integral(exp,0, 10);
+
+printf(" Area=%.3f" ,integral(exp *sin,0, M_PI)|);
+e. printf("' Area= %.3f",integral(&sin,0, M P/2.0));
+printf(" Area= %.3f" ,integral| * sin,0, M_PI/2.0));
+
+.
+
+fodas las anteriores son correctas
+
+W . Dado el siguiente vector de enteros inicializado con los correspondientes valores, indique quŽopci—n (u
+opciones) utilizar’a para imprimir por pantalla el nœmero 10?.
+
+static int vector|101 =(3, 20, 4, 5, -2, 6, 7, 10, 15, 0);
+
+a. printf("%d", &(vector +8));
+
+printf("%d", *(vector+8));
+printf("%d", &vector(8|);
+printf("%d", vector|8|);
+printf("%d", *vector(8|);
+Ninguna de las anteriores.
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351884
+
+De las siguientes opciones de declaraci—n de nuevos tipos de datos, indicar cu‡l o cu‡les seleccionar’a para poder
+
+spresentar en C las temperaturas (en grados centigrados y con dos decimales de precisi—n) del combustible qu
+
+va por una tuber’a de 1.5 km de longitud, medidas en ambos extremos de la misma y en puntos equidistantes 50
+tipo a;
+
+typedef double tip [1.30);
+b.typedef double tip |0..29);
+ypedef double tip |29);
+d.typedef double tip |30); 1So0 o cl oora
+typedef double tip 31);
+
+Mwlo
+
+o e vo
+
+As
+Ninguna de las anteriores
+Indique cu‡lo cu‡les de las siguientes afirmaciones respecto a un "ar ay" en C son cor ectas ?: To m r a o §
+
+Los datos de los "arrays" deben procesarse elemento a elemento empezando siempre por el primerd3
+
+a.
+
+Un "array" completo no puede imprimirse directamente como si fuera un bloque. (a no 5e qes e
+Un "array" no puede contener elementos que sean a su vez "arrays".
+
+d.
+
+evclo
+
+cha )
+
+Un array puede compararse directamente con otro usando los operadores relacionales siempre que lOs
+
+dos contengan el mismo tipo de datos y sean del mismo tama–o.
+e) Todaslas afirmaciones anteriores son incorrectas.
+
+15. QuŽse imprimr‡ al ej cutar este programa ?
+
+finclude <stdio.h »
+toid fun (int *X, int n)
+
+a. 25 4 3 8 10 11
+b. 4 3 8 10 11
+11 10 8 3 4 25
+d. 10 8 3 4 25
+e.
+
+.
+
+if(n==0)
+
+else C
+
+Error de compilaci—n
+
+;
+
+Error en tiempo de ejecuci—n)
+("stack overflow".
+
+printf (" sd", * (x+n));
+fun (X, n);
+
+desbordamiento de pila)
+I
+
+II |) i
+
+static int x |6) =(25, 4, 3, 8, 10, 11);
+fun (x, 6) ;
+
+1o esl poav’o sie vet Je
+dertveihov
+
+mld
+
+se aeitava
+
+return
+
+0;
+
+l6.2QuŽ imprime el siguiente programa ?
+#include kstdio.h»
+
+). lunes martes miercoles jueve
+
+#include <string.h »
+
+viernes s‡bado
+b.
+
+voi d fun (inti,char
+
+lunes martes miercoles jueves
+
+viernes sabado domingo
+
+static char p(71|101= ("lunes", "martes",
+
+c. lunes martes miercoles jueves
+
+"miercoles", "jueves", "viernes",
+
+viernes
+V T|
+
+5 Ju
+
+p (1
+
+int main ()(
+
+"sabado", "domingo");
+VC
+
+IHIEl
+
+UI
+
+fun (0 ,p);
+
+|1ldr Le5
+
+lunes
+Error de compilaci—n
+
+Error en tiempo de ejecuci—n (Òstack
+
+overflow": desbordamiento de pila)
+
+return
+
+0;
+
+void fun (int
+
+i,
+
+char
+
+p(
+
+10 1)
+
+if (stremp (plil, "sabado") ==0)
+t 1L1L §
+fun (i+1,p);
+printf ("s ", pli));
+
+e datos regõStro CO
+a.
+.
+
+La definici—n de al menos un tipo "struct" y varios tipos Òunion" (uno para cada una de las var’antes).
+La definici—n de varios tipos struct (uno para cada variante) o bien de un œnico tipo "unionÓ,
+S—lo la definici—n de un tipo "struct" y un tipo "union" para representar todas las variantes,
+
+d. La definici—n de un tipo "struct"para el registro, de un tipo "union" para todas las variantes, y
+posiblemente varios tipos "struct" para la configuraci—n de campos de cada una de las variantes.
+No es posible representar registros con parte variante en lenguaje C.
+
+1 coin = 1 pdf sin publicidad
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+an
+
+.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351884
+
+Dado el siguiente c—digo en lenguaje Cindique quŽvalor tomar’a la variable X.B despuŽs de ejecutar el
+?:
+
+int
+
+TTU
+
+A;
+
+char string |101;
+float B;
+
+ae CO m llaCIOn
+
+Jejemplo;
+
+int main (void)
+
+static ejemplo X={5, "string1", 3.4};
+ejemplo Y;
+v
+
+Ñ
+
+.
+
+trcpy (Y.string, "string1");
+Y. B = 5.7;
+X=Y;
+return
+
+0;
+
+9. Dada la siguiente definici—n de una nueva tipologia de datos, Žc—mo se declarar’a un vector de 10 elementos d
+tipo 'cancion' y se asignan valores al primer elemento ?
+typedef
+
+struct (
+
+char interprete |201;
+f10a
+
+duracion ;
+
+)cancion;
+
+a.
+
+cancion descargas(10];
+
+strc y (descargas.interprete[ ), "U2");
+descargas.duracion(0 = 20.7;
+b. cancion descargas[10];
+strc y (descargas.interprete[ ), "U2");
+
+strc (descargas.duracion(0], 20.7);
+
+u.
+
+typedef cancion descargas[10);
+strc y (descargas.interprete[ ), "U2");
+descargas(0). duracion = 20.7;
+No puede realizarse, es necesario incluir valores en todos los elementos del vector.
+No puede realizarse, un vector no puede almacenar estructuras de datos.
+Todas las respuestas anteriores son incorrectas
+
+70
+
+Cu‡ntas iteraciones requiere el bucle del algoritmo de bœsqueda binaria para localizar la posici—n de la primera
+ocurrencia del elemento de clave=15 en el vector V?
+3
+
+4
+
+10
+
+JJ
+
+1011 1515551 29 31
+31 40
+poe 47
+0(-0 42
+6
+-9 = -e6- §
+/0
+7emn =ZH1 3
+C 3 E
+K
+= 4=
+nfvoolo
+
+8
+
+3
+
+No se puede aplicar el algoritmo de bœsqueda binaria en este vector.
+
+0i 0 y Pr4(n 174 Ht haw)
+Si No sheiaovohno §
+
+0
+
+e
+
+m
+
+0|
+
+.
+
+:5
+
+-AV =r )- si pho as
+
+ga hcbstwner aalbodo prdie bosoer la poseva eaer duera
+
+.4-§
+
+2 = ? - Mo - 10
+
+0 14 - DJs15-oo H 5-('s rs 3H
+
+5 - - mt = 7+
+
+0 ~ z.8§ f5§ Ñ §
+
+1 coin = 1 pdf sin publicidad
+
+3
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+#include
+
+#include <string. h»
+typedef struct (
+
+d. 3
+e.
+
+stdio.h »
+
+3.4
+5.7
+
+

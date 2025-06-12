@@ -1,0 +1,973 @@
+Ex-6JUN22-Resuelto.pdf
+
+Anónimo
+Programación
+1º Grado en Ingeniería Electrónica Industrial
+Escuela Superior de Ingeniería
+Universidad de Almería
+
+.
+
+Reservados todos los derechos.
+No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351882
+
+Examen de Programaci—n (Grados en Ingenier’a Mec‡nica, ElŽctrica, Electr—nica y Qu’mica Industrial)
+6 de Junio 2022
+
+APELLID0/S:
+
+IVUVIDN.
+
+DNI:
+
+GRUPO D0CENTE:
+
+REPOSITORIO TI:
+
+GRUPO TRABAIO:
+
+.
+
+Instrucciones:
+
+EXAMEN 6JUN22
+
+Para seleccionar la respuesta (o respuestas) correcta(s), rodear la letra de la opci—n con un c’rculo 0
+Para anular una respuesta ya seleccionada tachar el c’rculo con una cruz X
+
+Para volver a seleccionar de nuevo una respuesta anulada usar una flecha a la izq, de la opci—n
+El examen consta de 30 preguntas tipo test de respuestas mœltiples
+
+Cada pregunta admite una o varias opciones correctas (hay que seleccionar todas las opciones correctas)
+Puntuaci—n de cada pregunta: 8.0/30 (si se han seleccionado solamente todas las opciones correctas)
+0.0 (en caso contraric
+
+1. Un disco duro de un TeraByte(TB), cu‡ntosbits aproximadamente puede almacenar ?
+8, 1.000.000.000.000
+e 8.000.000.000.000
+5
+
+Nð bo*
+
+b. 1.000.000.000.000.000
+c.
+
+4.000.000.000.000
+
+0.UUU.UUU.U U.U U.UUU
+
+g.Ninguna de las anteriores
+
+d. 4.000.000.000.000.000
+
+2. Considerar la representaci—n binaria sesgada (o desplazada) para los nœmeros enteros con signo, con un tama–o
+de representaci—n de 6 d’gitos. Cu‡l ser’a la repres ntaci—n del nœmero -21?
+a.
+
+110101
+
+100000
+
+010101
+
+b. 101011
+
+001011
+
+101010
+
+g. 001010
+h.
+
+d. 100101
+
+011111
+
+k.
+
+Ninguna de las
+anteriore
+
+000101
+
+3. En cu‡l de los siguientes registros internos de la Unidad de Control de un procesador central (CPU) se almacena la
+recci—n de memoria central de la siguiente instrucci—n a ejecutar en dicho procesador
+
+prd"
+
+Registro de Instrucci—n)
+
+6. PC ("Program Counter"
+
+Contador de Programa)
+
+C*
+
+SP ("Stack Pointer"
+
+d.
+
+En cualquiera de los anteriore
+
+Puntero a la cima de la Pila)
+
+e. En ninguno de los anteriores
+4. Cu‡l o cu‡les de los siguientes identificadores son v‡lidos en lenguaje C?
+fals
+alse
+
+double
+
+(6 aiI ay
+
+speed
+
+E+2
++23
+
+b.
+
+DOS PI
+
+c.
+
+30Junio
+
+g. |IU a
+
+I|I1CI
+
+k. Ninguno de los
+
+a
+
+0 tipo_vector
+
+d.) real
+
+anteriores es v‡lido
+
+5.En lenguaje C, quŽinstruc i—n/i struc iones de las siguientes utilizar’a para escribir en pantal a un nœmero real
+
+de doble precisi—n almacenado en la variable x, en un campo de tama–o 10 a partir de la posici—n actual del cursor,
+justificado a la derecha y con 2 cifras decimales?
+a. printf("%10.2d", x);
+b. printf("%13.2d", x);
+printf("%10.26", x);
+
+9. printt|"%13.2, k)
+
+printf("%10.21", x);
+printf("%13.2r", x);
+g. printf("%10.21r", x);
+h. printf("%13.21r", x);
+e.
+
+f.
+
+i. printf("%-10.ZIr, X);
+printf("%-13.21r", x);
+k. Ninguna de las
+anteriore
+
+6. Dado el siguiente programa en lenguaje C, se–ale la afirmaci—n o afirmaciones correctas:
+a.
+
+El programa lee por teclado dos nœmeros reales y
+luego imprime su diferencia en valor absoluto
+
+(6 El programa lee por teclado dos nœmeros reales y
+C.
+
+luego siempre imprime 0.00 de distancia
+Error de compilaci—n: falta la librer’a math.h
+
+d. Error de compilaci—n: falta un ; tras Ilave de cierre )
+e.CIIU
+
+enI UIC
+
+U u
+
+J uuIU§ a Y §
+
+§
+
+haberse declarado como reales en doble precisi—n
+
+#include stdio. h »
+#include <stdlib.h »
+i nt ma1I
+float a, b;
+printf ("Introduzca
+
+posici—n
+
+l: ");
+
+" tE", a);
+printf ("Introduzca posicion 2: ");
+scanf(" 8f",&b);
+
+printf ("Distancia:
+
+.2r", abs (b-a))
+
+eturnU ;
+
+Todas las afirmaciones anteriores son incorrectas
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351882
+
+.
+
+Todos los planes de suscripción incluyen descargas sin publicidad con coins
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351882
+
+12.
+
+Cu‡l (o cu‡les) de las siguientes afirmaciones es cierta en relaci—n con la definici—n de funciones en C?
+
+a. Un programa C consta de varias definiciones de funciones, que se pueden escribir en cualquier orden y
+tener cualquier nombre (siempre que se respeten las reglas de los identificadores de C).
+Toda funci—n devuelve por defecto a travŽs de su identificador un resultado de tipo int, a no ser qu
+especifique bien un tipo de dato diferente o bien que no devuelve nada.
+instrucciones de llamada a otras funcione
+d.
+
+Es obligatorio que antes de las definiciones de las funciones (al principio del c—digo fuente) se incluyan los
+prototipos de las funciones (primera l’nea de la definici—n de cada funci—n acabada en ;).
+La inclusi—n de la librer’a stdio.h permite construir programas que constan
+
+de m‡s de una definici—n de
+
+funci—n.
+f.
+
+Todas las afirmaciones anteriores son incor
+
+13. Cu‡les el resultado que se muestra por pantal a tras ejecutar el siguiente programa ?
+#include
+
+a. x=3 y=5
+
+stdio.h»
+
+pid intercambiar (double *X, double *y);
+
+0 x=5 y=3
+
+int main (void)
+double
+=3,y=!
+
+0000
+=3.000000 y=5.00000
+
+#5;
+
+d. x=5.000000 y=3.000000
+
+intercambiar (&X, &y);
+
+e. Error de sintaxis
+Ninguna de las respuestas anteri
+
+return 0;e
+
+printf ("x=8.0f y= .0f", X, y);
+
+oid intercambiar (double *K, double *y) (
+*=*y-* ;
+*y=*y-*X;
+* x=* X
+
+* Y;
+
+14. Considerar el siguiente fragmento de c—digo en lenguaje de programaci—n C. Cu‡lo cu‡les de las siguientes
+
+instrucciones puede utilizar en la l’nea de puntos Ñ----- de la funci—n leer_datos para que el compilador no genere
+ningœn error ni aviso (Òwarning") ?
+b.
+
+leer_entero_rango(0,&n,&m);
+
+#include
+
+leer_entero_rango(0,n, *m);
+
+void leer_entero_rango (int a, int b, int *m) ;
+
+leer_entero_rango(0,&(n+m),&m);
+
+stdio.h»
+
+bid leer datos (int *n,
+
+int
+
+int main ()(
+
+d. leer_entero_rango(0, *(n+m), m);
+
+int n, m;
+
+inguna de las anteriores
+
+leer_datos (Gn, Gm) ;
+turn (0);r
+
+ors
+i
+
+S
+
+i
+
+void leer_datos (int *n, int *m) (ate e
+leer entero _rango (0,100, n) ;
+
+void leer_entero_rango (int a,int b, int *m)(
+/ * Definici—n de funci—n *|
+
+15. Dada la siguiente definici—n de funci—n en C, indicar el resultado almacenado en la variable x tras la siguiente
+activaci—n:
+( .
+
+=leer_entero_intervalo (5, 5);
+
+Un valor entero no nulo en intervalo |-5,5)
+
+int leer_entero_intervalo (int a, int b)
+int ;
+
+b. Un valor entero en intervalo |-5,5)
+c. Un valor entero en intervalo (-5,5)
+
+do( printf ("Numero |8d, d): ", a, b);
+scanf (" sd", &x) ;
+
+)while ((xka) & (x b) & (Ix));
+
+d. Un valor entero fuera del intervalo (-5,5) o bien
+
+return
+
+el valor 0
+
+X;
+
+Un valor entero no nulo cualquiera
+f
+
+Error de compilaci—n
+.
+
+Error de ejecuci—n: bucle infinito
+
+Todos los planes de suscripción incluyen descargas sin publicidad con coins
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+La funci—n denominada main es la que inicia la ejecuci—n del programa, y Žsta puede contener
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351882
+
+16. Dado el siguiente fragmento de programa: Žcu‡l — cu‡les de las activaciones de la funci—n f podr’a escribirse
+en la l’nea de guiones ()para que el programa compilase sin errores ni avisos ("warnings")
+a.
+
+#include
+
+y=f(x,c,2);
+
+stdio. h
+
+int f(int *X, char *c, int
+
+b. =f|(&x, &c,&z);
+
+int
+
+c. y=f(x+3, ,2);
+=f(*x, *,*2);
+
+* z)
+
+main ()
+int X=4, y,
+
+d.
+
+char C= C';
+
+0 Todaslas anteriores son incorrectas.
+
+Z=&X;
+
+return (0) ;
+
+int f (int *x, char *C, int * z)(
+/ * Definici—n
+
+de funci—n */
+
+17. Indicar quŽ escribe en pantalla el siguiente programa al ejecutarlo:
+#include <stdio.h »
+
+a. verdadero
+
+int
+
+falso
+
+d.
+e.
+
+es par (int
+
+n) ;
+
+int es_impar (int n) ;
+int ma+n ()(
+
+0
+
+printf (" sd" , es_impar (6) );
+1 01 01 0
+0 10 1 0 1
+
+eturn0 ;
+
+int es_par(int n) (
+
+g. Error de compilaci—n
+Error en tiemp0
+
+”f (n)return (es_impar (n-1));
+tulIL
+
+de eiecuci—n
+
+.
+
+else
+
+nt es_impar (int n)
+
++f (n) return (es_par (n-1));
+elsereturn
+
+8.
+
+0;
+
+Considere el siguiente prototipo de una funci—n C:double f (double (*f) (double x) , double x) ;
+Cu‡l o cu‡les de las siguientes instrucciones son correctas ?
+
+a. printf(" Resultado= %",f(sin,M_PI);
+b printf(" Longitud= %f" ,f(atan,1.0));
+printf(" Longitud= %e" ,f(pow,5.0,4.0));
+d. printf(" Longitud= %" f(coStsin, M_PI));
+
+19.
+
+e. Ninguna de las anterio
+Cu‡l(o cu‡les) de las siguientes instrucciones escribe en pantal a un nœmero real situado en la posici—n i-Žsima
+
+de un "array" unidimensional de reales de doble precisi—n en C de nombre v?
+a. printf(" %.1f", *vti);e
+printf(" %.1f", *( +i));
+
+printf(" %.1f", vli+1]);
+printf(" %.1f", &vil);
+e. Ninguna de las anteriores
+20. Considerar
+
+el siguiente programa en C,
+
+1 -3 -5 2 8 -74
+
+b. 1 -3 -5 2 -5 -3 1
+4 -78 2 -5 -3 1
+d. 111 111 1
+e.44 4 444 4
+
+lo(s) aparecer’a en pantalla tras su ejecuci—n:
+
+#include <stdio.h
+#define MAX 100
+typedef int tipo_vector (MAXJ;
+
+void invertir (tipo_vector v, int n) t
+int
+
+i, X;
+
+for (i=0 ;i<n;++i)|
+
+Error de sintaxis (falta el prototipo de la funci—n
+vertir)
+
+X=v
+
+iJ;
+
+vi]=v [n-i-1l;
+v [nÐi-1] =X;
+
+g.Ninguna de las anteriores
+int main ()|
+
+tipo_vector v=|1,-3, -5,2,8,-7,4);
+int n=7,i;
+for (
+
+=0; i<n;
+
+printf ("d ", v|i|);r
+
+0.
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351882
+
+21. De las siguientes declaraciones de nuevos tipos de datos en C, indicar cu‡l o cu‡les seleccionar’a para representar
+la cantidad de masa vegetal en kg que hay en cada metro cœbico de un invernadero con forma rectangular y
+
+cubierta plana horizontal, cuyas dimensiones son 100 m de largo, 50 m de ancho y 5 m de alto:
+
+C
+
+0 typedef double tip |5||50|100);
+
+typedef double tip |99]|49)|4);
+typedef double tip |49||99]|4);
+typedef double tip |4||49)|99);
+
+g.typedef double tipo|101||51](6);
+h. typedef double tip |51J|101]|6);
+
+typedef double tipo(100]|50|5};
+
+i. typedef double tipo|6)|51]|101);
+
+typedef double tip [50]|100]5);
+
+j.Ninguna de las anterior
+
+(2. Cu‡l o cu‡les de los sigui
+matriz dada?
+
+tilizar’a para calcular la matriz traspuesta de una
+
+guientes fragm
+
+#include <stdio. h>
+
+for(i=0;ica;++i)
+
+#define FIL 10
+#define cOL 10
+
+for(j=0;jsfa;+tj)
+Bi)=AljD);
+b. for(i=0;ikfa;Hti)
+
+typedef double array2d(FIL] (cOL};
+
+void traspuesta (array2d A, int fa, int
+
+forl =0;j<ca;++j)
+
+array2d
+
+B, int * fb,
+
+int *cb)
+
+int i,j;
+
+B(l=Alll);
+c. for(i=0;isca;+ti)
+for(j=0;jkfa;+tj)
+Blilli)=AfiJlil;
+for(i=0;isfa;++i)
+for(j=0;jkca;+tj)
+Blli)=AliJlil;
+
+*
+
+k= f §
+
+fb=ca;
+
+/ * cODIGO A INSERTAR */
+at
+
+main ()
+
+array2d A= (1,2,3),|4,5,6)};
+array2dB;
+
+int fa=2, ca=3, fb, cb ;
+raspuesta (A, fa, ca, B, &fb, &cb);
+
+e.Ninguna de las anteriores
+
+23. Dada la funci—n posicion en C, indicar quŽ resultado se escribe en pantalla al ejecutar el siguiente programa:
+#include
+
+a.
+
+stdio.h »
+
+posicion (char * cad, char c)
+int pos=-1;
+int i=0 ;
+
+while (cad[i] !='1O')
+if (cad [i]==c)
+
+0
+
+3
+
+pos=i;
+
+4
+i + 4 :
+
+return (pos);
+8
+
+int
+
+9
+
+main () (
+
+print ("zd", posicion ("EJEMPLO DE", 'E'));
+
+10
+
+frror de compilaci—n
+
+(
+
+J
+
+1
+
+t
+
+n.Ninguna de las anteriores
+24. QuŽdiferencias existen entre los dos constructores de estructuras de datos struct y union del lenguaje C?
+
+No existe ninguna diferencia, ambos se utilizan para construir registros.
+struct se utiliza para construir registros planos (sin parte variante), mientras que union se utiliza para
+.
+
+construir registros con parte variante.
+
+struct se utiliza para construir registros que tienen todos sus componentes del mismo tipo de datos,
+
+mientras que en el caso de union los componentes pueden ser de tipos de datos diferen
+d. Los componentes de las estructuras de datos que se construyen con struct se representan en MC e
+
+posiciones independientes del segmento de pila ("stack"), mientras que en el caso de union se
+representan en el segmento de "heap", reservando el compilador memoria suficiente para todos ellos.
+Los componentes de las estructuras de datos que se construyen con struct se representan en MC en
+
+posiciones independientes, mientras que en el caso de union todos se representan en las mismas
+posiciones, reservando el compilador memoria suficiente para el mayor de todos elld
+Ninguna de las respuestas anteriores es correcta.
+
+Todos los planes de suscripción incluyen descargas sin publicidad con coins
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+b.
+
+.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351882
+
+25. De las siguientes declaraciones de nuevos tipos de datos, indicar cu‡l o cu‡les se podr’an seleccionar para
+representar una lista de 10 puntos tridimensionales como m‡ximo:
+typedef float tipoPuntos|10|10]|101;
+
+typedef struct(
+tipoPuntos p;
+J
+,
+
+la,
+
+typedef struct(
+int n;
+
+float x|10), y[10],z[10);
+
+Jtipoista;
+C.
+
+typedef struct(
+
+float X,Y,z;
+J I
+
+UP urL )
+
+typedef struct(
+
+int n;
+tipoPunto p|10);
+JtipoLista;
+d.
+
+ypedef struct(
+float X, ,z;
+tipoPunto;
+typedef tipoPunto tipoVector(10);
+typedef struct(
+int n;
+tipoVector p;
+JtipoLista;
+
+e. Ninguna
+
+de las anteriores
+.
+
+26. Dado el siguiente fragmento de c—digo en lenguaje C indique cu‡l o cu‡les de los siguientes bloques de
+strucciones son correctos (tanto sint‡ctica como sem‡nticamente):
+#include <stdio.h »
+#include <math.h »
+
+a. v1.p.x=1.5;
+
+b. v1.p.x[0)=1.5;
+
+typedef struct (
+
+C.v1| ).p.x=1.5;
+
+float X Y, Z;
+
+d. v1.p[0}.x=1.5;
+e.
+v2=v1;
+f. *v3=v2;
+g. 2([ ). |1].x=2.2;
+
+typedef struct (
+int n ;
+tipoPunto p[100];
+)tipoLis
+int main (void)(
+tipoLista vl, v2 [101, *v3;
+
+h.*V3=V1;
+
+33->p(0->X=3.9;
+* 3=v1;
+
+v1. n=3;
+v3=&v1;
+
+3.p|0],x=3.9;
+* 3=v2( );
+
+LeCurn 0 ;
+
+k.Ninguno de los anteri
+
+27. Cu‡ntas iteraciones requiere el bucle del algoritmo de bœsqueda binaria para localizar la posici—n de inserci—n
+
+(primer elemento de clave estrictamente menor) de un nuevo elemento de clave=1 en el vector V?
+2
+
+3
+
+4
+
+5
+
+6
+
+8
+
+9
+
+1011
+
+121314
+
+1516
+
+3
+b. 4
+5
+6
+
+No se puede aplicar el algoritmo de bœsqueda binaria a este vector
+
+Todos los planes de suscripción incluyen descargas sin publicidad con coins
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+int n;
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351882
+
+28. En lenguaje de programaci—n C, la instrucci—n fopen("datos,txt", "a");, cu‡l o cu‡les de las siguientes accione
+realiza:
+e ,
+
+Abre el archivo "datos.txt" situado en el directorio actual en modo lectura y devuelve un puntero FILE no
+nulo si la operaci—n tiene Žxito o bien un puntero NULL si la operaci—n no tiene Žxito (probablemente
+porque no existe el archivo).
+
+b.
+
+Abre el archivo "datostxt" situado en el directorio actual en modo escritura y devuelve un puntero FILE
+no nulo si la operaci—n tiene Žxito o bien un puntero NULL si la operaci—n no tiene Žxito (probablemente
+
+porque no existe el archivo).
+*
+
+Crea el archivo "datos.txt" situado en el directorio actual y lo abre seguidamente en modo escritura,
+
+devolviendo un puntero FILE no nulo. En caso de existir el archivo, se destruyen sus contenidos (sin avisar)
+y se crea vac’o de contenidos
+
+Abre el archivo "datos.txt" situado en el directorio actual en modo escritura y devuelve un puntero FILE
+
+no nulo si la operaci—n tiene Žxito. En el caso de no existir el archivo en el directorio actual, se crea
+previamente.
+e.
+
+No existe la funci—n fopen en ninguna de las librer’as est‡ndar de C.
+Ninguna de las respuestas anteriores es correcta.
+
+29. El archivo "datos.txt" situado en el directorio actual contiene las temperaturas m‡ximas diarias registradas en una
+estaci—n meteorol—gica a lo largo de un mes. Cu‡l o cu‡les de los siguientes fragmentos de programa utilizar’a
+para calcular correctamente la temperatura media de las m‡ximas registrada en ese periodo:
+datos.txt=(23.5 25.1 26.7 24.2 25.9 30.1 29.0 29.2 29.4 31.6 30.8 28.8 27.5 24.4 23.2 21.9 25.7 28.1 30.1 31.3)
+a. fscanf(f," %f",x);
+#include <stdio.h »
+while(Ifeof(f)K
+Suma
+
+=X;
+
+b. while( !feof(f)K
+
+fscanf(f," %",&x);
+5
+
+ITld
+
++;
+
+main ()
+FILE *f;
+
+float X, suma=0;
+
+++;
+
+fscanf(f," %",x);
+
+n
+
+int
+
+int
+
+printf ("Error al abrir archivo") ;
+
+/ * FRAGMENTO
+)elsel
+fclose (f);
+
+DE PROGRAMA * |
+
+printf ("Media: 8.1fin",, suma/n) ;
+printf ("Sin datos \n");
+
+if (n)
+)elsel
+
+=X ,
+
+fscanf(" %t",8X);
+
+n=0 ;
+
+if ((f=fopen ("datos,txt", " ") ) ==NULL)E
+
+return 0;r
+
+while( !feof(f)|E
+,
+
+,
+
+fscanf(" %f",&x);
+d. while|lfeof(f)|
+suma+=X;
+nt+;
+
+fscanf(" %f",x);
+
+inguna las anteriores
+30. Tenemosun archivo de texto en el directorio actual Ilamado "temperatura.txt" conteniendo cada l’nea un registro
+.
+
+de la temperatura medida en cada instante de tiempo con el siguiente formato: Hora (entero) y temperatura (real),
+ambos datos separados por al menos un espacio en blanco. Considerando las siguientes declaraciones, si
+
+queremos leer un registro del mismo, indicar quŽ instrucci—n o instrucciones son las correctas:
+canf(f, "%d %", reg);
+fscanf(f, "%d %", &reg);
+fscanf(f, "%d %", reg.h, reg.t);
+fscanf(f, "%d %", reg-»h,reg- »t);
+fscanf(f, "%d %", &reg.h,&reg.t);
+fscanf(f, "%d %8", &reg- h,&reg- t);
+g.Ninguna de las anteriores es correcta
+d.
+
+b.
+
+#include <stdio.h »
+
+ypedef struct|
+
+int h;
+float t;
+Li
+
+0r
+
+i
+
+hin()E
+FILE *f;
+
+tipo_reg reg,
+
+if||f=fopen("temperaturatxt","r")| !=NULL)
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+

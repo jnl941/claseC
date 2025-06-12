@@ -17,10 +17,7 @@ int main(int argc, char *argv[])
     printf("Ingrese el grado del polinomio (maximo 99): ");
     scanf("%d", &grado);
 
-    if (grado < 0 || grado > 99) {
-        printf("Grado invalido. Debe estar entre 0 y 99.\n");
-        return 1;
-    }
+    // Verificar que el grado no exceda el máximo permitido
 
     printf("Ingrese los coeficientes del polinomio:\n");
     leerPolinomio(polinomio, &grado);
@@ -37,25 +34,14 @@ int main(int argc, char *argv[])
 }
 
 void leerPolinomio(tipo_polinomio polinomio, int *grado) {
-    for (int i = 0; i <= *grado; i++) {
-        printf("Coeficiente de x^%d: ", i);
-        scanf("%lf", &polinomio[i]);
-    }
+
 }
 
 void derivarPolinomio(tipo_polinomio polinomio, tipo_polinomio derivado, int grado) {
-    for (int i = 1; i <= grado; i++) {
-        derivado[i - 1] = polinomio[i] * i;
-    }
+
 }
 
 void imprimirPolinomio(tipo_polinomio polinomio, int grado) {
-    for (int i = 0; i <= grado; i++) {
-        if (i == 0) {
-            printf("%lf", polinomio[i]);
-        } else {
-            printf(" + %lfx^%d", polinomio[i], i);
-        }
-    }
+
     printf("\n");
 }

@@ -1,0 +1,291 @@
+Ex-Parcial-23-Solucionado.pdf
+
+Anónimo
+Programación
+1º Grado en Ingeniería Electrónica Industrial
+Escuela Superior de Ingeniería
+Universidad de Almería
+
+.
+
+Reservados todos los derechos.
+No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351886
+
+Examen de Programación (Grados en Ingeniería Mecánica, Eléctrica, Electrónica y Química Industrial)
+Abril de 2023
+APELLIDO/S:
+DNI:
+
+NOMBRE:
+GRUPO DOCENTE:
+
+GRUPO TRABAJO:
+
+REPOSITORIO TI:
+
+Instrucciones:
+EXAMEN PARCIAL DE ABRIL 2023
+Para seleccionar la respuesta correcta, rodear la letra de la opción con un círculo O
+Para anular una respuesta ya seleccionada tachar el círculo con una cruz X
+Para volver a seleccionar de nuevo una respuesta anulada usar una flecha a la izq. de la opción ð
+El examen consta de 25 preguntas tipo test
+Cada pregunta admite una única opción correcta
+Puntuación de cada pregunta: 0.4 (si se ha elegido la opción correcta) 0.0 (en caso contrario)
+.
+
+1. En binario sin signo, ¿cuántos bits necesitamos para representar el número decimal 9?
+a. 1
+b. 2
+c. 3
+d. 4
+2. ¿Cuál es el equivalente, en binario, al número decimal 27?
+a. 11001
+b. 11010
+c. 11011
+d. No es posible convertir directamente un número decimal a binario.
+3. ¿Cuál es el resultado de 11001-111?
+a. 11110
+b. 10010
+c. 00111
+d. 10000
+4. ¿Cuál es el resultado de 1001*101?
+a. 100100001001
+b. 10011001
+c. 101101
+d. 101
+5. Un número real normalizado:
+a. Incluye la parte entera y la parte real.
+b. Se guarda solo el signo y la mantisa, el exponente no es necesario porque está normalizado.
+c. Se guarda signo, exponente y mantisa.
+d. Se convierte a complemento a 2, que es como operan los ordenadores.
+6. ¿Cómo se representa el número decimal -6 en binario en signo y magnitud?
+a. 1110
+b. 0110
+c. 0111
+d. 1111
+7. ¿Cómo se representa el número decimal -5 en complemento a 2?
+a. 1011
+b. 0110
+c. 0111
+d. 1111
+8. Dado el fragmento de código if (4 == 849) { printf(<Hola=);}, ¿qué ocurrirá?
+a. Nada, puesto que no se le puede asignar un valor a 4, que no es una variable.
+b. Se imprimirá <Hola= por pantalla.
+c. Nada, puesto que la instrucción printf no se ejecutará.
+d. Se imprimirá <Hola= pero solo algunas veces.
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351886
+
+a.
+b.
+c.
+d.
+
+Se muestra por pantalla la palabra <masa=.
+Se muestra por pantalla un valor aproximado de 0.88.
+Se muestra por pantalla un valor aproximado de 1.51.
+Se muestra por pantalla un valor aproximado de 2.00.
+
+10. ¿Qué efectos produce este algoritmo, expresado mediante el siguiente diagrama de flujo?
+
+.
+
+a. Lee dos variables de teclado y las guarda en tmax solo si se cumple la condición.
+b. Lee dos variables y realiza un bucle de 2 iteraciones para mostrar ambas por pantalla, en orden de
+mayor a menor.
+c. Lee dos variables y muestra la mayor por pantalla. Si son iguales, muestra el valor de t1.
+d. Lee dos variables y muestra por pantalla la que coincida con una tercera variable llamada tmax,
+guardada de antemano.
+
+1 coin = 1 pdf sin publicidad
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+9. ¿Qué salida proporcionará el siguiente algoritmo, representado a través de un diagrama de flujo, si se lee el
+valor 6 para el diámetro?
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351886
+
+a.
+b.
+c.
+d.
+
+x = -0.8. x1 y x2 mantendrán los valores que tuvieran inicialmente.
+x1 = -0.5 y x2=-3.5. x mantendrá el valor que tuviera inicialmente.
+x1 = 0.5 y x2=3.5. x mantendrá el valor que tuviera inicialmente.
+Se muestra <Raíces imaginarias= por pantalla.
+
+12. Dado el siguiente código, ¿qué se mostrará por pantalla?
+
+a.
+b.
+c.
+d.
+
+Se muestra <Error: datos no válidos=, y a continuación <Advertencia: g1 está al límite=.
+Se muestran los tres mensajes.
+Se muestra <Error: datos no válidos=.
+Se muestra <Advertencia: g1 está al límite=.
+.
+
+13. Dado el siguiente fragmento de código, ¿qué valor debe tener v para que se calcule t?
+
+a.
+b.
+c.
+d.
+
+Basta con que el valor sea menor que 5, o que sea mayor que 10.
+Cualquier valor entre 5 y 10, incluyendo 5 y 10.
+Tiene que ser un número mayor que 5 y menor que 10.
+Cualquier valor que no sea 5 o de lo contrario t valdrá -30.
+
+1 coin = 1 pdf sin publicidad
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+11. Dado el siguiente fragmento de diagrama de flujo, y asumiendo que A=1, B=4 y C=9, ¿qué producirá?
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351886
+
+14. Asumiendo que a1=3, a2=5, b1=3, b2=7, c1=6 y c2=10, ¿las rectas son coincidentes o paralelas?
+
+a.
+b.
+c.
+d.
+
+Las rectas son paralelas.
+Las rectas son coincidentes.
+Falta información para poder realizar la comparación.
+Se están utilizando operadores no permitidos en C y, por lo tanto, el programa no funcionará.
+
+15. ¿Qué realiza el siguiente programa?
+
+.
+
+a.
+b.
+c.
+d.
+
+Imprime 10 veces la tabla de multiplicar del 2.
+Imprime las tablas de multiplicar del 1 al 10.
+Imprime las tablas de multiplicar del 2 al 9.
+Imprime las tablas de multiplicar de los números pares, empezando en 2.
+
+16. ¿Qué valor de contador se imprimirá en el printf de este código?
+
+a.
+b.
+c.
+d.
+
+110
+100
+20
+90
+
+17. En el siguiente código queremos comprobar si la variable contiene el valor 2, ¿qué estamos haciendo mal?
+
+a.
+b.
+c.
+d.
+
+Las instrucciones del if-else no están entre llaves.
+Los printf no pueden estar en la misma línea que el if o el else.
+Las instrucciones printf no están bien construidas.
+La comparación de la condición del if no se ha realizado con el operador adecuado
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351886
+
+a.
+b.
+c.
+d.
+
+1
+2
+3
+No se llega nunca a la instrucción printf.
+
+19. ¿Qué realiza este fragmento de programa?
+
+a. Imprime un triángulo de asteriscos, de forma que la primera fila (superior) tiene un solo asterisco, y
+la última (inferior) tiene N asteriscos.
+b. Imprime un triángulo de asteriscos, de forma que la primera fila (superior) tiene N asteriscos, y la
+última (inferior) tiene un solo asterisco.
+c. Imprime N! (factorial de N) asteriscos consecutivos.
+d. No hace nada porque el índice del bucle interno se inicializa al índice del bucle externo.
+20. ¿Qué es un puntero?
+a. Una dirección de memoria.
+b. Una variable que guarda una dirección de memoria.
+c. La dirección de una variable.
+d. Una forma especial de pasar argumentos a una función.
+21. Si declaro una variable int a = 10; en una función A(), ¿puedo utilizar su valor desde otra función B()?
+a. Sí, puesto que toda variable declarada dentro de una función es global.
+b. Sí, pero solamente si la función B() está declarada debajo de la función A().
+c. No, la variable a solo existe en su ámbito, es decir, en la función A().
+d. No, salvo que B() sea de tipo void.
+22. ¿En qué punto empieza la ejecución de un programa en C?
+a. En la primera línea del programa
+b. En la primera línea de código que no sea un comentario.
+c. En la función main().
+d. En la primera función que haya en el programa, siempre empezando desde el principio
+23. ¿Una función puede llamarse a sí misma?
+a. No, pues producirá siempre un bucle infinito.
+b. No, pero puede llamar a otras funciones.
+c. Sí, a eso se le llama recursividad.
+d. Sí, pero debe ser obligatoriamente de tipo void.
+.
+
+1 coin = 1 pdf sin publicidad
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+18. ¿Qué valor imprimirá el printf del código siguiente?
+
+.
+
+a64b0469ff35958ef4ab887a898bd50bdfbbe91a-8351886
+
+24. ¿Qué valor tiene el vector resultante?
+
+a.
+b.
+c.
+d.
+
+(0, 0)
+(2, 4)
+(1, 2)
+El programa es erróneo, pues las variables x e y existen en la función main y en la función
+SumaVectores2D.
+
+25. Suponiendo que llamamos a la función D() desde main, ¿qué se muestra por pantalla?
+
+a.
+b.
+c.
+d.
+
+Se muestra <4132=
+Se muestra <4321=
+Se muestra <1234=
+Se muestra <4=
+
+1 coin = 1 pdf sin publicidad
+
+Reservados todos los derechos. No se permite la explotación económica ni la transformación de esta obra. Queda permitida la impresión en su totalidad.
+
+.
+
+
